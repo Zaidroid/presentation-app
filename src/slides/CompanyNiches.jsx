@@ -6,39 +6,48 @@ import AnimatedMetric from '../components/AnimatedMetric';
 
 // Sector data
 const sectors = [
-    { name: 'Software Development', count: 22 },
-    { name: 'Digital Services', count: 14 },
-    { name: 'Frontier Tech', count: 10 },
-    { name: 'Business Solutions', count: 9 },
-    { name: 'EdTech & Learning', count: 8 },
-    { name: 'Advisory & M&E', count: 7 },
+    { name: 'ERP & Business Mgmt', count: 17 },
+    { name: 'Web & Mobile Dev', count: 11 },
+    { name: 'Digital Marketing', count: 8 },
+    { name: 'AI & Emerging Tech', count: 7 },
+    { name: 'SaaS', count: 5 },
+    { name: 'Platforms & Markets', count: 5 },
+    { name: 'IT Consulting', count: 5 },
+    { name: 'UI/UX Design', count: 4 },
+    { name: 'Outsourcing', count: 4 },
+    { name: 'EdTech', count: 4 },
+    { name: 'Specialized Tech', count: 8 }, // VR, VLSI, Cyber, etc.
 ];
 
-const totalCompanies = 70;
+const totalCompanies = 73;
 const maxCount = Math.max(...sectors.map(s => s.count));
 
 const SectorBar = ({ name, count, index, isHighlighted }) => (
     <motion.div
         animate={{
             scale: isHighlighted ? 1.02 : 1,
-            x: isHighlighted ? 8 : 0,
+            x: isHighlighted ? 5 : 0,
         }}
         transition={{ duration: 0.4 }}
         style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '1rem',
-            marginBottom: '1.25rem',
+            gap: '0.75rem',
+            marginBottom: '0.75rem',
+            width: '100%'
         }}
     >
         {/* Sector Name */}
         <div style={{
-            width: '180px',
-            fontSize: '1rem',
+            width: '140px',
+            fontSize: '0.9rem',
             color: isHighlighted ? 'var(--color-text-primary)' : 'var(--color-text-secondary)',
             fontWeight: isHighlighted ? 600 : 400,
             textAlign: 'right',
             transition: 'all 0.3s ease',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis'
         }}>
             {name}
         </div>
@@ -46,35 +55,35 @@ const SectorBar = ({ name, count, index, isHighlighted }) => (
         {/* Bar */}
         <div style={{
             flex: 1,
-            height: '32px',
-            background: 'rgba(255,255,255,0.05)',
-            borderRadius: '6px',
+            height: '24px',
+            background: 'var(--color-bg-tertiary)',
+            borderRadius: '4px',
             overflow: 'hidden',
         }}>
             <motion.div
                 initial={{ width: 0 }}
-                animate={{ width: `${(count / maxCount) * 100}%` }}
-                transition={{ delay: index * 0.12 + 0.5, duration: 0.8, ease: 'easeOut' }}
+                animate={{ width: `${(count / 17) * 100}%` }} // Max count is now 17
+                transition={{ delay: index * 0.05 + 0.5, duration: 0.8, ease: 'easeOut' }}
                 style={{
                     height: '100%',
                     background: isHighlighted
                         ? 'var(--gradient-primary)'
                         : 'linear-gradient(90deg, rgba(222, 99, 54, 0.7), rgba(222, 99, 54, 0.4))',
-                    borderRadius: '6px',
-                    boxShadow: isHighlighted ? '0 0 15px rgba(222, 99, 54, 0.4)' : 'none',
+                    borderRadius: '4px',
+                    boxShadow: isHighlighted ? '0 0 10px rgba(222, 99, 54, 0.4)' : 'none',
                     transition: 'all 0.3s ease',
                 }}
             />
         </div>
 
-        {/* Count - Outside the bar for readability */}
+        {/* Count */}
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: index * 0.12 + 1 }}
+            transition={{ delay: index * 0.05 + 1 }}
             style={{
-                width: '40px',
-                fontSize: '1.1rem',
+                width: '25px',
+                fontSize: '0.95rem',
                 fontWeight: 700,
                 color: isHighlighted ? 'var(--color-accent-primary)' : 'var(--color-text-primary)',
                 textAlign: 'left',
@@ -166,7 +175,7 @@ export default function CompanyNiches() {
                         position: 'relative',
                         zIndex: 1,
                     }}>
-                        Tech Companies
+                        Companies Interviewed
                     </div>
                     <div style={{
                         fontSize: '1rem',
@@ -188,11 +197,13 @@ export default function CompanyNiches() {
                             style={{
                                 marginTop: '2rem',
                                 padding: '0.6rem 1.25rem',
-                                background: 'rgba(255,255,255,0.05)',
+                                padding: '0.6rem 1.25rem',
+                                background: 'var(--color-surface)',
                                 borderRadius: '20px',
                                 fontSize: '0.85rem',
                                 color: 'var(--color-text-secondary)',
-                                border: '1px solid rgba(255,255,255,0.08)',
+                                border: 'var(--glass-border)',
+                                backdropFilter: 'blur(var(--glass-blur))',
                             }}
                         >
                             {highlightedIndex % 3 === 0 && "Cohort 1 & 2 Combined"}
@@ -215,14 +226,21 @@ export default function CompanyNiches() {
                         Sector <span className="gradient-text">Breakdown</span>
                     </motion.h2>
 
-                    {sectors.map((sector, i) => (
-                        <SectorBar
-                            key={i}
-                            {...sector}
-                            index={i}
-                            isHighlighted={highlightedIndex === i}
-                        />
-                    ))}
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: '1fr 1fr', // 2 columns
+                        gap: '1rem 3rem', // Row gap, Column gap
+                        width: '100%'
+                    }}>
+                        {sectors.map((sector, i) => (
+                            <SectorBar
+                                key={i}
+                                {...sector}
+                                index={i}
+                                isHighlighted={highlightedIndex === i}
+                            />
+                        ))}
+                    </div>
 
                     <motion.div
                         variants={fadeInUp}
@@ -234,9 +252,10 @@ export default function CompanyNiches() {
                             color: 'var(--color-text-tertiary)',
                         }}
                     >
-                        <span>Elevate 1: 25 companies</span>
+                        <span><strong>Selected for Elevate:</strong></span>
+                        <span>Cohort 1: 25</span>
                         <span>•</span>
-                        <span>Elevate 2: 35 companies</span>
+                        <span>Cohort 2: 35</span>
                     </motion.div>
                 </div>
             </motion.div>

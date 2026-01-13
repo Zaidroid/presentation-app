@@ -22,7 +22,7 @@ const TimelineItem = ({ time, title, subtitle, isLast }) => (
                 top: '20px',
                 bottom: 0,
                 width: '1px', // Thinner line
-                background: 'linear-gradient(to bottom, var(--color-accent-primary), rgba(255,255,255,0.05))',
+                background: 'linear-gradient(to bottom, var(--color-accent-primary), var(--color-border-subtle))',
                 opacity: 0.3
             }} />
         )}
@@ -154,7 +154,7 @@ export default function Agenda() {
                     transition={{ duration: 1, delay: 0.2 }}
                     style={{
                         width: '1px',
-                        background: 'white',
+                        background: 'var(--color-border-medium)',
                         height: '70%',
                         flexShrink: 0
                     }}

@@ -81,8 +81,8 @@ export default function ElevatePhases() {
                                                 : 'none',
                                             borderColor: isActive
                                                 ? (index === phases.length - 1 ? 'var(--color-success)' : 'var(--color-accent-primary)')
-                                                : 'rgba(255,255,255,0.1)',
-                                            background: isActive ? 'var(--color-surface)' : 'rgba(255,255,255,0.02)'
+                                                : 'var(--glass-border)',
+                                            background: isActive ? 'var(--color-surface)' : 'var(--glass-border)'
                                         }}
                                         style={{
                                             width: '90px',
@@ -120,7 +120,7 @@ export default function ElevatePhases() {
                                     <div style={{
                                         flex: 1,
                                         height: '2px', // Thin line
-                                        background: 'rgba(255,255,255,0.1)',
+                                        background: 'var(--color-border-medium)',
                                         margin: '55px 1rem 0', // Vertical align with center of diamond (approx)
                                         position: 'relative',
                                         minWidth: '60px'
