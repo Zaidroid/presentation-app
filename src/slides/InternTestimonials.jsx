@@ -79,9 +79,9 @@ const TestimonialCard = ({ name, role, company, quote, index }) => (
 export default function InternTestimonials() {
     const testimonials = [
         {
-            name: "Ahmadi", // CSV Row 62 "Ahamd" (Corrected spelling slightly if assuming Ahmad, but kept true to request or slightly polished) - CSV says "Ahamd". I'll use "Ahmad".
-            role: "Partner", // Context implies company representative
-            company: "Gaza Company", // Not specified in snippet but implied
+            name: "Ahmad",
+            role: "Founder",
+            company: "Accessline",
             quote: "Despite the significant challenges we faced due to regional instability and the war on Gaza, the Elevate project played a pivotal role in strengthening our company's workforce."
         },
         {

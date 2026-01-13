@@ -18,6 +18,7 @@ import QASession from './slides/QASession';
 import Networking from './slides/Networking';
 import ElevatePhases from './slides/ElevatePhases';
 import InternTestimonials from './slides/InternTestimonials';
+import CompanyNiches from './slides/CompanyNiches';
 
 import { Individuals1, Individuals2, Individuals3, Individuals4, Individuals5 } from './slides/Hazem/Content';
 import { CapacityBuilding, Marketing, WorkingSpaces, SuccessStories } from './slides/Raouf/Content';
@@ -97,6 +98,9 @@ function App() {
     },
     // NEW: Elevate Overview
     { component: <ElevateOverview />, speaker: SPEAKERS.RAOUF },
+
+    // NEW: Company Niches
+    { component: <CompanyNiches />, speaker: SPEAKERS.RAOUF },
 
 
 

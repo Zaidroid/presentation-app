@@ -176,107 +176,196 @@ export function ElevateBridgeModule() {
 }
 
 export function MarketAccessImpact() {
+    const [infoIndex, setInfoIndex] = React.useState(0);
+
+    // Cycling info items
+    const infoItems = [
+        'Target Markets: UAE • KSA • Jordan • USA',
+        'Conferences: GITEX • Xpand • Future Blockchain Summit',
+        'C-Suite Coaching & Legal Support Provided',
+    ];
+
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            setInfoIndex(prev => (prev + 1) % infoItems.length);
+        }, 4000);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <Slide>
             <motion.div
                 initial="hidden"
                 animate="visible"
                 variants={containerVariants}
-                style={{ height: '100%' }}
+                style={{
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                }}
             >
-                <motion.h2 variants={fadeInUp} style={{ marginBottom: 'var(--space-2xl)' }}>
-                    Impact & Success
+                <motion.h2
+                    variants={fadeInUp}
+                    style={{
+                        fontSize: '2.5rem',
+                        fontWeight: 700,
+                        marginBottom: 'var(--space-2xl)',
+                    }}
+                >
+                    Impact & <span className="gradient-text">Success</span>
                 </motion.h2>
 
-                <div className="grid-2">
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: '1fr 1fr',
+                    gap: 'var(--space-2xl)',
+                }}>
+                    {/* Left: By The Numbers */}
                     <motion.div
                         variants={fadeInUp}
-                        className="glass"
                         style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            padding: 'var(--space-2xl)',
+                            background: 'rgba(255,255,255,0.03)',
+                            backdropFilter: 'blur(10px)',
                             borderRadius: 'var(--radius-2xl)',
-                            boxShadow: 'var(--shadow-lg)',
+                            padding: 'var(--space-2xl)',
+                            border: '1px solid rgba(255,255,255,0.08)',
                         }}
                     >
-                        <h3 style={{ textAlign: 'center', marginBottom: 'var(--space-2xl)' }}>
+                        <h3 style={{
+                            fontSize: '1.25rem',
+                            fontWeight: 600,
+                            textAlign: 'center',
+                            marginBottom: 'var(--space-xl)',
+                            color: 'var(--color-text-secondary)',
+                        }}>
                             By The Numbers
                         </h3>
 
-                        <div className="grid-2" style={{ gap: 'var(--space-2xl)' }}>
+                        <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: '1fr 1fr',
+                            gap: 'var(--space-xl)',
+                        }}>
                             <AnimatedMetric
                                 value={25}
-                                label="Elevate 2 Companies"
+                                label="Elevate 1 Companies"
                                 size="small"
                                 duration={2}
                                 delay={0.2}
                             />
                             <AnimatedMetric
                                 value={35}
-                                label="Elevate 3 Companies"
+                                label="Elevate 2 Companies"
                                 size="small"
                                 duration={1.8}
                                 delay={0.4}
-                                color="secondary"
                             />
                             <AnimatedMetric
-                                value={5}
+                                value={3}
                                 label="Conferences"
                                 size="small"
                                 duration={1.5}
                                 delay={0.6}
-                                color="success"
                             />
                             <AnimatedMetric
-                                value={3}
+                                value={4}
                                 label="Target Markets"
                                 size="small"
                                 duration={1.3}
                                 delay={0.8}
-                                color="info"
                             />
                         </div>
                     </motion.div>
 
-                    <FeatureCard
-                        title="Success Stories"
-                        delay={0.3}
+                    {/* Right: Success Stories */}
+                    <motion.div
+                        variants={fadeInUp}
+                        style={{
+                            background: 'rgba(255,255,255,0.03)',
+                            backdropFilter: 'blur(10px)',
+                            borderRadius: 'var(--radius-2xl)',
+                            padding: 'var(--space-2xl)',
+                            border: '1px solid rgba(255,255,255,0.08)',
+                        }}
                     >
-                        <ul style={{ fontSize: 'var(--font-size-base)', marginTop: 'var(--space-md)' }}>
-                            <li style={{ marginBottom: 'var(--space-lg)' }}>
-                                <strong style={{ color: 'var(--color-text-primary)', fontSize: 'var(--font-size-lg)' }}>
-                                    Strategic Growth Partners
-                                </strong>
-                                <br />
-                                <span style={{ color: 'var(--color-text-tertiary)' }}>
-                                    Comprehensive C-Suite coaching for strategic growth
-                                </span>
-                            </li>
-                            <li style={{ marginBottom: 'var(--space-lg)' }}>
-                                <strong style={{ color: 'var(--color-text-primary)', fontSize: 'var(--font-size-lg)' }}>
-                                    Expanding Enterprises
-                                </strong>
-                                <br />
-                                <span style={{ color: 'var(--color-text-tertiary)' }}>
-                                    Legal registration for expansion
-                                </span>
-                            </li>
-                            <li>
-                                <strong style={{ color: 'var(--color-text-primary)', fontSize: 'var(--font-size-lg)' }}>
-                                    Experts, Palsoft
-                                </strong>
-                                <br />
-                                <span style={{ color: 'var(--color-text-tertiary)' }}>
-                                    GITEX participation for lead generation
-                                </span>
-                            </li>
-                        </ul>
-                    </FeatureCard>
+                        <h3 style={{
+                            fontSize: '1.25rem',
+                            fontWeight: 600,
+                            marginBottom: 'var(--space-xl)',
+                            color: 'var(--color-text-secondary)',
+                        }}>
+                            Success Stories
+                        </h3>
+
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
+                            {[
+                                { title: 'Strategic Growth Partners', desc: 'Comprehensive C-Suite coaching for strategic growth' },
+                                { title: 'Expanding Enterprises', desc: 'Legal registration support for market expansion' },
+                                { title: 'Experts, Palsoft', desc: 'GITEX participation for lead generation' },
+                            ].map((story, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.5 + i * 0.2 }}
+                                    style={{
+                                        paddingLeft: 'var(--space-md)',
+                                        borderLeft: '3px solid var(--color-accent-primary)',
+                                    }}
+                                >
+                                    <div style={{
+                                        fontSize: '1.1rem',
+                                        fontWeight: 600,
+                                        color: 'var(--color-text-primary)',
+                                        marginBottom: '0.25rem',
+                                    }}>
+                                        {story.title}
+                                    </div>
+                                    <div style={{
+                                        fontSize: '0.95rem',
+                                        color: 'var(--color-text-tertiary)',
+                                    }}>
+                                        {story.desc}
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
                 </div>
+
+                {/* Cycling Info Badge */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.2 }}
+                    style={{
+                        marginTop: 'var(--space-2xl)',
+                        display: 'flex',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <motion.div
+                        key={infoIndex}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.5 }}
+                        style={{
+                            padding: '0.75rem 1.5rem',
+                            background: 'rgba(255,255,255,0.05)',
+                            borderRadius: '30px',
+                            fontSize: '0.95rem',
+                            color: 'var(--color-text-secondary)',
+                            border: '1px solid rgba(255,255,255,0.08)',
+                        }}
+                    >
+                        {infoItems[infoIndex]}
+                    </motion.div>
+                </motion.div>
             </motion.div>
         </Slide>
     );
 }
+
 
