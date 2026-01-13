@@ -248,7 +248,7 @@ export function MarketAccessImpact() {
                         <ul style={{ fontSize: 'var(--font-size-base)', marginTop: 'var(--space-md)' }}>
                             <li style={{ marginBottom: 'var(--space-lg)' }}>
                                 <strong style={{ color: 'var(--color-text-primary)', fontSize: 'var(--font-size-lg)' }}>
-                                    AHL Logics, Business Alliance
+                                    Strategic Growth Partners
                                 </strong>
                                 <br />
                                 <span style={{ color: 'var(--color-text-tertiary)' }}>
@@ -257,7 +257,7 @@ export function MarketAccessImpact() {
                             </li>
                             <li style={{ marginBottom: 'var(--space-lg)' }}>
                                 <strong style={{ color: 'var(--color-text-primary)', fontSize: 'var(--font-size-lg)' }}>
-                                    Radix, Sada
+                                    Expanding Enterprises
                                 </strong>
                                 <br />
                                 <span style={{ color: 'var(--color-text-tertiary)' }}>

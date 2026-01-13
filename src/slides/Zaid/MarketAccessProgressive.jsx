@@ -168,7 +168,7 @@ export function MarketAccessProgressive({ step = 0 }) {
                         delay={0.2}
                     >
                         <ul style={{ marginTop: 'var(--space-md)', marginBottom: 'var(--space-md)', fontSize: 'var(--font-size-xs)' }}>
-                            <li>Partner: Andersen Legal Firm</li>
+                            <li>Partner: International Legal Firm</li>
                             <li>3 Companies registering globally</li>
                         </ul>
                         <div style={{ marginTop: 'auto', paddingTop: 'var(--space-sm)', borderTop: '1px solid var(--color-border-subtle)' }}>
