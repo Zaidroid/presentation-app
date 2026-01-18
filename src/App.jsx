@@ -149,7 +149,7 @@ function App() {
     {
       component: <ComponentBrief
         title="Marketing & Branding"
-        description="Amplifying Palestinian tech success stories and building a resilient global brand."
+        description="Improve the visibility and visual identity of companies"
         icon={Megaphone}
       />,
       speaker: SPEAKERS.RAOUF
