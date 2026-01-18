@@ -1,169 +1,168 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Scan, ArrowRight, Users, Briefcase, Award, Heart } from 'lucide-react';
 import Slide from '../components/Slide';
 
 export default function ClosingCTA() {
-    const [isHovered, setIsHovered] = useState(false);
-
     return (
         <Slide>
-            <div style={{ textAlign: 'center', position: 'relative', zIndex: 10 }}>
+            <div style={{
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'relative',
+                zIndex: 10
+            }}>
                 {/* Background Ambient Glow */}
                 <div style={{
                     position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-                    width: '600px', height: '600px',
-                    background: 'radial-gradient(circle, var(--color-accent-primary) 0%, transparent 70%)',
-                    opacity: 0.1,
-                    filter: 'blur(80px)',
+                    width: '80vw', height: '80vw',
+                    background: 'radial-gradient(circle, var(--color-accent-primary) 0%, transparent 60%)',
+                    opacity: 0.08,
+                    filter: 'blur(100px)',
                     zIndex: -1,
                 }} />
 
-                <motion.h2
-                    initial={{ opacity: 0, y: 30 }}
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
-                    style={{ fontSize: 'clamp(2.5rem, 5vmin, 3.5rem)', marginBottom: 'var(--space-lg)' }}
+                    style={{ textAlign: 'center', marginBottom: 'var(--space-2xl)' }}
                 >
-                    Ready to <span className="gradient-text">Elevate?</span>
-                </motion.h2>
+                    <h2 style={{ fontSize: 'clamp(2.5rem, 5vmin, 4rem)', fontWeight: 900, marginBottom: 'var(--space-xs)' }}>
+                        Join <span className="gradient-text">Elevate Community</span>
+                    </h2>
+                    <p style={{ fontSize: '1.25rem', color: 'var(--color-text-secondary)' }}>
+                        Ways to support, collaborate, and engage.
+                    </p>
+                </motion.div>
 
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.4 }}
-                    style={{ fontSize: 'clamp(1.25rem, 2.5vmin, 1.5rem)', marginBottom: 'var(--space-4xl)', color: 'var(--color-text-secondary)' }}
-                >
-                    Join the next wave of Palestinian Tech Excellence.
-                </motion.p>
-
-                {/* Immersive QR Code Card */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    transition={{ delay: 0.6, type: 'spring', stiffness: 60 }}
-                    onHoverStart={() => setIsHovered(true)}
-                    onHoverEnd={() => setIsHovered(false)}
-                    style={{
-                        display: 'inline-block',
-                        position: 'relative',
-                        cursor: 'pointer',
-                    }}
-                >
-                    {/* Glowing Card Container */}
-                    <motion.div
-                        animate={{
-                            boxShadow: isHovered
-                                ? '0 30px 60px -10px rgba(var(--brand-red), 0.3)'
-                                : '0 20px 40px -10px rgba(0,0,0,0.2)',
-                            y: isHovered ? -5 : 0
-                        }}
-                        style={{
-                            padding: '0',
-                            background: 'transparent',
-                            borderRadius: '24px',
-                            position: 'relative',
-                            overflow: 'hidden'
-                        }}
-                    >
-                        {/* Animated Border Shimmer */}
-                        <motion.div
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                            style={{
-                                position: 'absolute', top: '-50%', left: '-50%', width: '200%', height: '200%',
-                                background: 'conic-gradient(transparent, transparent, rgba(255,255,255,0.8), transparent)',
-                                opacity: 0.3,
-                                pointerEvents: 'none',
-                                mixBlendMode: 'overlay',
-                            }}
-                        />
-
-                        {/* Card Content */}
-                        <div style={{
-                            background: 'var(--color-surface)',
-                            padding: 'var(--space-xl)',
-                            borderRadius: '24px',
-                            position: 'relative',
-                            backdropFilter: 'blur(10px)',
-                        }}>
-                            <div style={{ position: 'relative', overflow: 'hidden', borderRadius: '16px' }}>
-                                {/* Scanning Beam Effect */}
-                                <motion.div
-                                    animate={{ top: ['0%', '100%', '0%'] }}
-                                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                                    style={{
-                                        position: 'absolute',
-                                        left: 0,
-                                        width: '100%',
-                                        height: '4px',
-                                        background: 'var(--color-accent-primary)',
-                                        boxShadow: '0 0 20px var(--color-accent-primary)',
-                                        zIndex: 10,
-                                        opacity: 0.8,
-                                    }}
-                                />
-
-                                <img
-                                    src="/qr-download-final.png"
-                                    alt="Scan to Apply"
-                                    style={{
-                                        display: 'block',
-                                        width: 'auto',
-                                        height: '350px',
-                                        borderRadius: '16px',
-                                        userSelect: 'none',
-                                    }}
-                                />
-                            </div>
-
-                            {/* Button */}
+                <div className="grid-2" style={{ maxWidth: '1000px', gap: 'var(--space-3xl)', alignItems: 'center' }}>
+                    {/* Left: Native Resource List (Replicating QR Content) */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
+                        {[
+                            { label: 'Apply to Elevate 3.0', subtitle: 'Start Your Journey', icon: ArrowRight, color: 'var(--brand-orange)' },
+                            { label: 'Collaborate with Us', subtitle: 'Partner with Gaza Sky Geeks', icon: Users, color: 'var(--brand-teal)' },
+                            { label: 'Hire Talent', subtitle: 'Palestinian Tech Professionals', icon: Briefcase, color: 'var(--brand-navy)' },
+                            { label: 'Become a Mentor', subtitle: 'Share Your Expertise', icon: Award, color: 'var(--brand-red)' },
+                            { label: 'Support Us', subtitle: 'Donate & Contribute', icon: Heart, color: 'var(--brand-red)' },
+                        ].map((item, index) => (
                             <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
+                                key={index}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.4 + (index * 0.1) }}
+                                whileHover={{ scale: 1.02, x: 5, backgroundColor: 'rgba(255,255,255,0.1)' }}
+                                whileTap={{ scale: 0.98 }}
                                 style={{
-                                    marginTop: 'var(--space-lg)',
-                                    width: '100%',
-                                    padding: 'var(--space-md)',
-                                    background: 'var(--gradient-primary)',
-                                    border: 'none',
-                                    borderRadius: '12px',
-                                    color: 'white',
-                                    fontWeight: 'var(--font-weight-bold)',
-                                    fontSize: 'var(--font-size-lg)',
-                                    boxShadow: '0 10px 20px -5px rgba(222, 99, 54, 0.4)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    padding: '1.25rem',
+                                    borderRadius: '16px',
+                                    border: '1px solid rgba(255,255,255,0.1)',
+                                    background: 'rgba(255,255,255,0.05)',
+                                    backdropFilter: 'blur(10px)',
+                                    textAlign: 'left',
                                     cursor: 'pointer',
+                                    width: '100%',
                                     position: 'relative',
                                     overflow: 'hidden'
                                 }}
                             >
-                                <span style={{ position: 'relative', zIndex: 1 }}>Apply Now</span>
-
-                                {/* Button Shine */}
-                                <motion.div
-                                    initial={{ x: '-100%' }}
-                                    whileHover={{ x: '100%' }}
-                                    transition={{ duration: 0.5 }}
-                                    style={{
-                                        position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
-                                        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
-                                        skewX: '-20deg'
-                                    }}
-                                />
+                                <div style={{
+                                    background: `rgba(255,255,255,0.1)`,
+                                    padding: '12px',
+                                    borderRadius: '12px',
+                                    marginRight: '1rem',
+                                    color: item.color
+                                }}>
+                                    <item.icon size={24} />
+                                </div>
+                                <div style={{ flex: 1 }}>
+                                    <div style={{ color: 'white', fontWeight: 700, fontSize: '1.1rem' }}>{item.label}</div>
+                                    <div style={{ color: 'var(--color-text-secondary)', fontSize: '0.85rem' }}>{item.subtitle}</div>
+                                </div>
+                                <ArrowRight size={20} style={{ opacity: 0.5 }} />
                             </motion.button>
-                        </div>
-                    </motion.div>
-                </motion.div>
+                        ))}
+                    </div>
 
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.6 }}
-                    transition={{ delay: 1.2 }}
-                    style={{ marginTop: 'var(--space-2xl)' }}
-                >
-                    <p style={{ fontSize: 'var(--font-size-base)', fontWeight: 'var(--font-weight-medium)' }}>
-                        Applications Open until Feb 22nd, 2026
-                    </p>
-                </motion.div>
+                    {/* Right: QR Code Action */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)', alignItems: 'center' }}>
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, rotate: 5 }}
+                            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                            transition={{ delay: 0.6, type: 'spring', stiffness: 100, damping: 20 }}
+                            whileHover={{ scale: 1.05 }}
+                            style={{
+                                background: 'white',
+                                padding: '1.5rem',
+                                borderRadius: '40px', // Softer definition
+                                boxShadow: '0 30px 60px -15px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.2) inset', // Deeper shadow + inner light
+                                display: 'inline-flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                position: 'relative',
+                                background: 'linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%)', // Subtle gradient
+                            }}
+                        >
+                            {/* Stylish scanning markers */}
+                            <div style={{ position: 'absolute', top: 20, left: 20, width: 40, height: 40, borderTop: '5px solid var(--brand-orange)', borderLeft: '5px solid var(--brand-orange)', borderRadius: '12px 0 0 0' }} />
+                            <div style={{ position: 'absolute', top: 20, right: 20, width: 40, height: 40, borderTop: '5px solid var(--brand-orange)', borderRight: '5px solid var(--brand-orange)', borderRadius: '0 12px 0 0' }} />
+                            <div style={{ position: 'absolute', bottom: 20, left: 20, width: 40, height: 40, borderBottom: '5px solid var(--brand-orange)', borderLeft: '5px solid var(--brand-orange)', borderRadius: '0 0 0 12px' }} />
+                            <div style={{ position: 'absolute', bottom: 20, right: 20, width: 40, height: 40, borderBottom: '5px solid var(--brand-orange)', borderRight: '5px solid var(--brand-orange)', borderRadius: '0 0 12px 0' }} />
+
+                            <img
+                                src="/new-qr.png"
+                                alt="Scan QR Code"
+                                style={{
+                                    width: '320px',
+                                    height: '320px',
+                                    display: 'block',
+                                    borderRadius: '16px',
+                                    margin: '10px' // Space for markers
+                                }}
+                            />
+
+                            <motion.div
+                                animate={{ opacity: [0.6, 1, 0.6] }}
+                                transition={{ duration: 2, repeat: Infinity }}
+                                style={{
+                                    marginTop: '1.5rem',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '0.6rem',
+                                    color: 'var(--brand-orange)',
+                                    fontWeight: 800,
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '1.5px',
+                                    fontSize: '1rem'
+                                }}
+                            >
+                                <Scan size={24} strokeWidth={3} />
+                                Scan to Access
+                            </motion.div>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.8 }}
+                            style={{ textAlign: 'center' }}
+                        >
+                            <p style={{
+                                fontSize: '1rem',
+                                color: 'var(--color-text-secondary)',
+                                margin: 0
+                            }}>
+                                Use your camera to view the full document
+                            </p>
+                        </motion.div>
+                    </div>
+                </div>
             </div>
         </Slide>
     );

@@ -17,6 +17,7 @@ import Eligibility from './slides/Eligibility';
 import IceBreaker from './slides/IceBreaker';
 import QASession from './slides/QASession';
 import Networking from './slides/Networking';
+import Lunch from './slides/Lunch';
 import ElevatePhases from './slides/ElevatePhases';
 import InternTestimonials from './slides/InternTestimonials';
 import CompanyNiches from './slides/CompanyNiches';
@@ -240,6 +241,7 @@ function App() {
 
     // NEW: Networking
     { component: <Networking />, speaker: null },
+    { component: <Lunch />, speaker: null },
   ];
 
   const currentSlide = slides[currentIndex];

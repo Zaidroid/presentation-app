@@ -2,9 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Slide from '../components/Slide';
 import elevateLogo from '../assets/elevate-logo.png';
-import { fadeInUp } from '../utils/animations';
 
-export default function Networking() {
+export default function Lunch() {
     return (
         <Slide>
             <div style={{
@@ -44,11 +43,12 @@ export default function Networking() {
                             fontSize: 'var(--font-size-lg)',
                             fontWeight: 'var(--font-weight-bold)',
                             letterSpacing: '2px',
-                            boxShadow: 'var(--shadow-glow)',
-                            animation: 'pulse 3s ease-in-out infinite'
+                            boxShadow: '0 0 30px var(--brand-orange)',
+                            animation: 'pulse 3s ease-in-out infinite',
+                            background: 'var(--brand-orange)'
                         }}
                     >
-                        SESSION
+                        BREAK
                     </motion.div>
 
                     {/* Logo Container */}
@@ -80,7 +80,7 @@ export default function Networking() {
                             style={{
                                 maxHeight: '300px',
                                 width: 'auto',
-                                filter: 'drop-shadow(0 10px 30px rgba(0,0,0,0.15))',
+                                filter: 'drop-shadow(0 10px 30px var(--brand-orange))',
                             }}
                         />
                     </motion.div>
@@ -105,26 +105,29 @@ export default function Networking() {
                         transition={{ delay: 0.6, duration: 0.7 }}
                     >
                         <h1
-                            className="gradient-text"
+                            className="gradient-text-orange"
                             style={{
-                                fontSize: 'clamp(3rem, 7vmin, 6rem)',
+                                fontSize: 'clamp(4rem, 8vmin, 7rem)',
                                 fontWeight: 'var(--font-weight-extrabold)',
                                 lineHeight: 'var(--line-height-tight)',
                                 letterSpacing: '-0.02em',
-                                marginBottom: 'var(--space-md)'
+                                marginBottom: 'var(--space-md)',
+                                background: 'linear-gradient(135deg, var(--brand-orange) 0%, #ff8c00 100%)',
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent'
                             }}
                         >
-                            Networking
+                            Lunch Break
                         </h1>
 
                         <h2
                             style={{
                                 fontSize: 'clamp(1.5rem, 3vmin, 2.5rem)',
                                 fontWeight: 'var(--font-weight-semibold)',
-                                color: 'var(--color-accent-secondary)',
+                                color: 'var(--color-text-secondary)',
                             }}
                         >
-                            Connect • Share • Collaborate
+                            Recharge • Refuel • Relax
                         </h2>
                     </motion.div>
 
@@ -135,7 +138,7 @@ export default function Networking() {
                         transition={{ delay: 1.0, duration: 0.8 }}
                         style={{
                             height: '2px',
-                            background: 'linear-gradient(90deg, var(--color-accent-primary) 0%, transparent 100%)',
+                            background: 'linear-gradient(90deg, var(--brand-orange) 0%, transparent 100%)',
                             borderRadius: 'var(--radius-full)',
                             maxWidth: '400px'
                         }}
@@ -143,7 +146,7 @@ export default function Networking() {
                 </motion.div>
             </div>
 
-            {/* Background Particles */}
+            {/* Background Particles - Warmer for Lunch */}
             <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 0 }}>
                 {[...Array(6)].map((_, i) => (
                     <motion.div
@@ -164,7 +167,7 @@ export default function Networking() {
                             top: `${Math.random() * 100}%`,
                             width: '300px',
                             height: '300px',
-                            background: i % 2 === 0 ? 'var(--color-accent-primary)' : 'var(--color-accent-secondary)',
+                            background: i % 2 === 0 ? 'var(--brand-orange)' : 'var(--brand-teal)',
                             borderRadius: '50%',
                             filter: 'blur(100px)',
                             opacity: 0.05
