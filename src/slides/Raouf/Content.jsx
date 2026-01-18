@@ -315,25 +315,75 @@ export function Marketing() {
 }
 
 export function WorkingSpaces() {
-    const metrics = [
-        { label: 'Bandwidth Speed', v25: '125', v26: '162.5', unit: 'Mbps', impact: '+30%', icon: Wifi, color: 'var(--brand-teal)' },
-        { label: 'Individual Experience', v25: '4.5', v26: '7.5', unit: 'Mbps', impact: '+66.7%', icon: Zap, color: 'var(--brand-orange)' },
-        { label: 'Operating Hours', v25: '10', v26: '12.2', unit: 'H/D', impact: '+22%', icon: Clock, color: 'var(--brand-navy)' },
-        { label: 'Membership Cost', v25: '600', v26: '450', unit: 'ILS', impact: '-25%', icon: ArrowDown, color: 'var(--brand-red)' },
-        { label: 'Space Capacity', v25: '45', v26: '54', unit: 'Seats', impact: '+19.5%', icon: Briefcase, color: 'var(--brand-teal)' },
-        { label: 'Daily Active Users', v25: '22', v26: '33', unit: 'Users', impact: '+52%', icon: Users, color: 'var(--brand-orange)' },
+    const [activeCategory, setActiveCategory] = React.useState(null);
+
+    const categories = [
+        {
+            id: 'connectivity',
+            label: 'Network Strength',
+            icon: Wifi,
+            color: 'var(--brand-teal)',
+            metrics: [
+                { label: 'Bandwidth Speed', v25: '125', v26: '162.5', unit: 'Mbps', growth: '+30%' },
+                { label: 'Individual Experience', v25: '4.5', v26: '7.5', unit: 'Mbps', growth: '+66.7%' }
+            ]
+        },
+        {
+            id: 'availability',
+            label: 'Service Continuity',
+            icon: Clock,
+            color: 'var(--brand-orange)',
+            metrics: [
+                { label: 'Operating Hours', v25: '10', v26: '12.2', unit: 'H/D', growth: '+22%' },
+                { label: 'Utilization Rate', v25: '50.4%', v26: '61.7%', unit: '', growth: '+11.3%' }
+            ]
+        },
+        {
+            id: 'community',
+            label: 'Ecosystem Scale',
+            icon: Users,
+            color: 'var(--brand-navy)',
+            metrics: [
+                { label: 'Space Capacity', v25: '45', v26: '54', unit: 'Seats', growth: '+19.5%' },
+                { label: 'Active Users', v25: '22', v26: '33', unit: 'Users', growth: '+52%' }
+            ]
+        },
+        {
+            id: 'resilience',
+            label: 'Cost Resilience',
+            icon: ArrowDown,
+            color: 'var(--brand-red)',
+            metrics: [
+                { label: 'Membership Cost', v25: '600', v26: '450', unit: 'ILS', growth: '-25%' }
+            ]
+        }
     ];
 
     return (
         <Slide>
-            {/* Background Effects */}
-            <div style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'radial-gradient(circle at 90% 10%, rgba(48, 157, 196, 0.05) 0%, transparent 50%), radial-gradient(circle at 10% 90%, rgba(0, 210, 170, 0.05) 0%, transparent 50%)',
-                zIndex: 0,
-                pointerEvents: 'none'
-            }} />
+            {/* Immersive Background */}
+            <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', zIndex: 0 }}>
+                <div style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'radial-gradient(circle at 50% 50%, rgba(48, 157, 196, 0.08) 0%, transparent 70%)',
+                }} />
+
+                {/* Animated Particles/Nodes Background */}
+                <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
+                    style={{
+                        position: 'absolute',
+                        top: '-50%',
+                        left: '-50%',
+                        width: '200%',
+                        height: '200%',
+                        opacity: 0.1,
+                        background: 'repeating-radial-gradient(circle at 50% 50%, white 0, white 1px, transparent 1px, transparent 100px)',
+                    }}
+                />
+            </div>
 
             <motion.div
                 initial="hidden"
@@ -344,172 +394,216 @@ export function WorkingSpaces() {
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
-                    padding: 'var(--space-md) var(--space-2xl)',
+                    padding: 'var(--space-2xl) var(--space-3xl)',
                     position: 'relative',
                     zIndex: 1
                 }}
             >
-                {/* Header Row */}
+                {/* Central Focus Title */}
+                <div style={{ textAlign: 'center', marginBottom: 'var(--space-2xl)' }}>
+                    <motion.div variants={fadeInUp} className="badge" style={{ background: 'var(--brand-red)', color: 'white', marginBottom: 'var(--space-sm)' }}>
+                        RESILIENCE NETWORK 2026
+                    </motion.div>
+                    <motion.h2
+                        variants={fadeInUp}
+                        style={{ fontSize: 'clamp(3rem, 6vmin, 4.5rem)', fontWeight: 900, margin: 0 }}
+                    >
+                        Spatial <span className="gradient-text">Impact</span> View
+                    </motion.h2>
+                </div>
+
+                {/* Spatial Interface */}
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: '1.2fr 0.8fr',
-                    gap: 'var(--space-2xl)',
-                    marginBottom: 'var(--space-md)',
+                    gridTemplateColumns: 'minmax(350px, 1fr) 2fr',
+                    gap: 'var(--space-3xl)',
+                    flex: 1,
                     alignItems: 'center'
                 }}>
-                    <motion.div variants={fadeInUp}>
-                        <div className="badge" style={{
-                            background: 'var(--brand-red)',
-                            color: 'white',
-                            marginBottom: 'var(--space-xs)',
-                            boxShadow: '0 4px 15px rgba(222, 99, 54, 0.2)'
-                        }} >
-                            Gaza Ecosystem
-                        </div>
-                        <h2 style={{
-                            fontSize: 'clamp(2.5rem, 5vmin, 3.5rem)',
-                            fontWeight: 900,
-                            margin: 0,
-                            letterSpacing: '-0.02em',
-                            lineHeight: 1
-                        }}>
-                            Supporting <span className="gradient-text">Resilience</span>
-                        </h2>
-                        <p style={{
-                            fontSize: 'var(--font-size-md)',
-                            margin: 'var(--space-xs) 0 0',
-                            color: 'var(--color-text-secondary)',
-                            fontWeight: 400,
-                            maxWidth: '600px'
-                        }}>
-                            Revitalizing Gaza’s tech ecosystem through high-performance community hubs.
-                        </p>
-                    </motion.div>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-md)' }}>
-                        <motion.div
-                            variants={fadeInUp}
-                            className="glass-strong"
-                            style={{
-                                padding: 'var(--space-md)',
-                                borderRadius: 'var(--radius-xl)',
-                                borderTop: '4px solid var(--brand-teal)',
-                                textAlign: 'center',
-                                background: 'var(--color-surface-elevated)'
-                            }}
-                        >
-                            <div style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--brand-teal)' }}>61.7%</div>
-                            <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', opacity: 0.7, color: 'var(--color-text-primary)' }}>Utilization Rate</div>
-                            <div style={{ fontSize: '0.7rem', color: 'var(--color-success)', fontWeight: 700 }}>+11.3% Efficiency</div>
-                        </motion.div>
-
-                        <motion.div
-                            variants={fadeInUp}
-                            className="glass-strong"
-                            style={{
-                                padding: 'var(--space-md)',
-                                borderRadius: 'var(--radius-xl)',
-                                borderTop: '4px solid var(--brand-orange)',
-                                textAlign: 'center',
-                                background: 'var(--color-surface-elevated)'
-                            }}
-                        >
-                            <div style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--brand-orange)' }}>Cohort 2</div>
-                            <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', opacity: 0.7, color: 'var(--color-text-primary)' }}>Feb 2026 Expansion</div>
-                            <div style={{ fontSize: '0.7rem', color: 'var(--brand-orange)', fontWeight: 700 }}>7-10 New Spaces</div>
-                        </motion.div>
-                    </div>
-                </div>
-
-                {/* Metrics Bento Grid */}
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(3, 1fr)',
-                    gap: 'var(--space-md)',
-                    flex: 1
-                }}>
-                    {metrics.map((m, idx) => (
-                        <motion.div
-                            key={m.label}
-                            variants={fadeInUp}
-                            className="glass"
-                            whileHover={{ y: -5, boxShadow: 'var(--shadow-lg)' }}
-                            style={{
-                                padding: 'var(--space-lg)',
-                                borderRadius: 'var(--radius-2xl)',
-                                background: 'var(--color-surface)',
-                                border: '1px solid var(--color-border-subtle)',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                gap: 'var(--space-sm)',
-                                position: 'relative',
-                                overflow: 'hidden'
-                            }}
-                        >
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                                <div style={{ padding: '8px', background: `${m.color}15`, borderRadius: '10px', color: m.color }}>
-                                    <m.icon size={20} />
-                                </div>
+                    {/* Left: Category Orbiters */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
+                        {categories.map((cat, idx) => (
+                            <motion.div
+                                key={cat.id}
+                                variants={fadeInUp}
+                                whileHover={{ x: 10 }}
+                                onMouseEnter={() => setActiveCategory(cat)}
+                                style={{
+                                    padding: 'var(--space-lg)',
+                                    borderRadius: 'var(--radius-2xl)',
+                                    background: activeCategory?.id === cat.id ? 'var(--color-surface-elevated)' : 'rgba(255,255,255,0.03)',
+                                    border: `1px solid ${activeCategory?.id === cat.id ? cat.color : 'rgba(255,255,255,0.05)'}`,
+                                    cursor: 'pointer',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 'var(--space-lg)',
+                                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                                    boxShadow: activeCategory?.id === cat.id ? `0 10px 30px ${cat.color}15` : 'none'
+                                }}
+                            >
                                 <div style={{
-                                    padding: '2px 8px',
-                                    borderRadius: '20px',
-                                    fontSize: '0.75rem',
-                                    fontWeight: 700,
-                                    background: m.impact.includes('+') ? 'rgba(0, 210, 170, 0.1)' : 'rgba(222, 99, 54, 0.1)',
-                                    color: m.impact.includes('+') ? 'var(--color-success)' : 'var(--brand-red)'
+                                    width: '48px',
+                                    height: '48px',
+                                    borderRadius: '14px',
+                                    background: `${cat.color}15`,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    color: cat.color,
+                                    boxShadow: activeCategory?.id === cat.id ? `0 0 20px ${cat.color}30` : 'none'
                                 }}>
-                                    {m.impact}
+                                    <cat.icon size={24} />
                                 </div>
-                            </div>
-
-                            <div>
-                                <h4 style={{ margin: 0, fontSize: '0.85rem', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                                    {m.label}
-                                </h4>
-                                <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-                                    <span style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--color-text-primary)' }}>{m.v26}</span>
-                                    <span style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)', opacity: 0.8 }}>{m.unit}</span>
+                                <div>
+                                    <div style={{ fontSize: '1.2rem', fontWeight: 800, color: activeCategory?.id === cat.id ? 'var(--color-text-primary)' : 'var(--color-text-tertiary)' }}>
+                                        {cat.label}
+                                    </div>
+                                    <div style={{ fontSize: '0.8rem', opacity: 0.6, letterSpacing: '0.5px' }}>
+                                        {cat.metrics.length} Critical Indicators
+                                    </div>
                                 </div>
-                            </div>
+                            </motion.div>
+                        ))}
 
-                            <div style={{ marginTop: 'auto', fontSize: '0.75rem', display: 'flex', justifyContent: 'space-between', color: 'var(--color-text-tertiary)' }}>
-                                <span>2025: {m.v25} {m.unit}</span>
-                                <span style={{ fontWeight: 600 }}>scaling...</span>
-                            </div>
+                        {/* Expansion Insight */}
+                        <motion.div
+                            variants={fadeInUp}
+                            className="glass-strong"
+                            style={{
+                                marginTop: 'var(--space-xl)',
+                                padding: 'var(--space-lg)',
+                                borderRadius: 'var(--radius-xl)',
+                                borderLeft: '4px solid var(--brand-orange)'
+                            }}
+                        >
+                            <div style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--brand-orange)' }}>Expansion Focus</div>
+                            <div style={{ fontSize: '1.4rem', fontWeight: 900 }}>7-10 New Hubs</div>
+                            <div style={{ fontSize: '0.75rem', opacity: 0.7 }}>Targeting Feb 2026 Resilience Expansion</div>
                         </motion.div>
-                    ))}
-                </div>
+                    </div>
 
-                {/* Legend/Status */}
-                <motion.div
-                    variants={fadeInUp}
-                    style={{
-                        marginTop: 'var(--space-md)',
-                        padding: '12px',
-                        background: 'var(--color-surface-elevated)',
-                        borderRadius: 'var(--radius-xl)',
+                    {/* Right: Immersive Metric Display */}
+                    <div className="glass-strong" style={{
+                        height: '100%',
+                        borderRadius: 'var(--radius-3xl)',
+                        padding: 'var(--space-3xl)',
                         display: 'flex',
-                        justifyContent: 'center',
-                        gap: 'var(--space-2xl)',
-                        fontSize: '0.8rem',
-                        fontWeight: 600,
-                        border: '1px solid var(--color-border-subtle)',
-                        color: 'var(--color-text-primary)'
-                    }}
-                >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--brand-teal)' }} />
-                        Operational Continuity
+                        flexDirection: 'column',
+                        background: 'rgba(255,255,255,0.02)',
+                        border: '1px solid rgba(255,255,255,0.05)',
+                        position: 'relative',
+                        overflow: 'hidden'
+                    }}>
+                        <AnimatePresence mode="wait">
+                            {activeCategory ? (
+                                <motion.div
+                                    key={activeCategory.id}
+                                    initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                                    exit={{ opacity: 0, scale: 1.05, y: -20 }}
+                                    transition={{ duration: 0.5, ease: "circOut" }}
+                                    style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                                >
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)', marginBottom: 'var(--space-2xl)' }}>
+                                        <div style={{ color: activeCategory.color }}><activeCategory.icon size={32} /></div>
+                                        <h3 style={{ margin: 0, fontSize: '2rem', fontWeight: 900 }}>{activeCategory.label}</h3>
+                                    </div>
+
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xl)', flex: 1, justifyContent: 'center' }}>
+                                        {activeCategory.metrics.map((m, i) => (
+                                            <div key={m.label} style={{ position: 'relative' }}>
+                                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '10px' }}>
+                                                    <div>
+                                                        <div style={{ fontSize: '0.9rem', color: 'var(--color-text-tertiary)', marginBottom: '4px' }}>{m.label}</div>
+                                                        <div style={{ fontSize: '2.5rem', fontWeight: 900, lineHeight: 1 }}>{m.v26} <span style={{ fontSize: '1rem', opacity: 0.5 }}>{m.unit}</span></div>
+                                                    </div>
+                                                    <div style={{ textAlign: 'right' }}>
+                                                        <div style={{
+                                                            fontSize: '1.2rem',
+                                                            fontWeight: 800,
+                                                            color: m.growth.includes('-') ? 'var(--brand-red)' : 'var(--color-success)',
+                                                            display: 'flex',
+                                                            alignItems: 'center',
+                                                            gap: '4px',
+                                                            justifyContent: 'flex-end'
+                                                        }}>
+                                                            {m.growth.includes('+') && <TrendingUp size={20} />}
+                                                            {m.growth}
+                                                        </div>
+                                                        <div style={{ fontSize: '0.8rem', opacity: 0.4 }}>vs {m.v25} base</div>
+                                                    </div>
+                                                </div>
+
+                                                {/* Animated Progress Bar Container */}
+                                                <div style={{
+                                                    height: '14px',
+                                                    background: 'rgba(255,255,255,0.05)',
+                                                    borderRadius: '7px',
+                                                    position: 'relative',
+                                                    overflow: 'hidden'
+                                                }}>
+                                                    {/* Baseline marker */}
+                                                    <div style={{
+                                                        position: 'absolute',
+                                                        left: '60%',
+                                                        top: 0,
+                                                        bottom: 0,
+                                                        width: '2px',
+                                                        background: 'rgba(255,255,255,0.2)',
+                                                        zIndex: 2
+                                                    }} />
+
+                                                    {/* Active Growth Bar */}
+                                                    <motion.div
+                                                        initial={{ width: 0 }}
+                                                        animate={{ width: '85%' }}
+                                                        transition={{ duration: 1.5, delay: 0.2 + (i * 0.2), ease: "circOut" }}
+                                                        style={{
+                                                            height: '100%',
+                                                            background: i === 0 ? `linear-gradient(90deg, ${activeCategory.color}22, ${activeCategory.color})` : 'var(--color-accent-primary)',
+                                                            borderRadius: '7px',
+                                                            boxShadow: `0 0 20px ${activeCategory.color}44`
+                                                        }}
+                                                    />
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <div style={{ marginTop: 'auto', paddingTop: 'var(--space-xl)', borderTop: '1px solid rgba(255,255,255,0.05)', display: 'flex', gap: 'var(--space-xl)' }}>
+                                        <div style={{ flex: 1, padding: '12px', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', textAlign: 'center' }}>
+                                            <div style={{ fontSize: '0.7rem', opacity: 0.5 }}>RESILIENCE INDEX</div>
+                                            <div style={{ fontSize: '1.1rem', fontWeight: 800, color: activeCategory.color }}>OPTIMIZED</div>
+                                        </div>
+                                        <div style={{ flex: 1, padding: '12px', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', textAlign: 'center' }}>
+                                            <div style={{ fontSize: '0.7rem', opacity: 0.5 }}>STATUS</div>
+                                            <div style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--color-success)' }}>ACTIVE</div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ) : (
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}
+                                >
+                                    <div style={{ width: '120px', height: '120px', borderRadius: '50%', background: 'var(--brand-teal)11', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 'var(--space-xl)' }}>
+                                        <Compass size={60} className="glow" style={{ color: 'var(--brand-teal)' }} />
+                                    </div>
+                                    <h3 style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--color-text-secondary)', marginBottom: '8px' }}>Select a Dimension</h3>
+                                    <p style={{ opacity: 0.6, maxWidth: '300px' }}>Explore the detailed resilience metrics of the Gaza Coworking Network.</p>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+
+                        {/* Background HUD elements */}
+                        <div style={{ position: 'absolute', bottom: '-5%', right: '-5%', width: '300px', height: '300px', border: '1px solid rgba(255,255,255,0.03)', borderRadius: '50%', pointerEvents: 'none' }} />
+                        <div style={{ position: 'absolute', top: '10%', right: '5%', opacity: 0.05, pointerEvents: 'none' }}>
+                            <Zap size={200} />
+                        </div>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--brand-orange)' }} />
-                        Community Empowerment
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--brand-red)' }} />
-                        Cost Resilience
-                    </div>
-                </motion.div>
+                </div>
             </motion.div>
         </Slide>
     );
