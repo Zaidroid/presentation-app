@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Slide from '../../components/Slide';
 import { FeatureCard } from '../../components/Card';
 import { staggerContainer, fadeInUp } from '../../utils/animations';
-import { Megaphone, Palette, Search, Users, ExternalLink, Globe, Wifi, Clock, Zap, Briefcase, TrendingUp, ArrowDown, Compass } from 'lucide-react';
+import { Megaphone, Palette, Search, Users, ExternalLink, Globe, Wifi, Clock, Zap, Briefcase, TrendingUp, ArrowDown, Compass, Building2 } from 'lucide-react';
 
 // Animation Variants
 const containerVariants = staggerContainer(0.15);
@@ -315,181 +315,242 @@ export function Marketing() {
 }
 
 export function WorkingSpaces() {
-    const quadrants = [
-        {
-            title: 'Digital Core',
-            icon: Wifi,
-            color: 'var(--brand-teal)',
-            stats: [
-                { label: 'Bandwidth', value: '162.5', unit: 'Mbps', impact: '+30%' },
-                { label: 'Latency Drop', value: '66.7%', unit: 'Exp.', impact: 'Optimized' }
-            ]
-        },
-        {
-            title: 'Operational Continuity',
-            icon: Clock,
-            color: 'var(--brand-orange)',
-            stats: [
-                { label: 'Operating Hours', value: '12.2', unit: 'H/D', impact: '+22.5%' },
-                { label: 'Utilization', value: '61.7', unit: '%', impact: '+11.3%' }
-            ]
-        },
-        {
-            title: 'Community Scale',
-            icon: Users,
-            color: 'var(--brand-navy)',
-            stats: [
-                { label: 'Daily Users', value: '33', unit: 'Active', impact: '+52%' },
-                { label: 'Capacity', value: '54', unit: 'Seats', impact: '+19.5%' }
-            ]
-        },
-        {
-            title: 'Cost Resilience',
-            icon: Zap,
-            color: 'var(--brand-red)',
-            stats: [
-                { label: 'Membership', value: '450', unit: 'ILS', impact: '-25% Drop' },
-                { label: 'Expansion', value: '7-10', unit: 'Hubs', impact: 'Feb 2026' }
-            ]
-        }
+    const metrics = [
+        { label: 'Bandwidth Gain', v25: 125, v26: 162.5, unit: 'Mbps', color: 'var(--brand-teal)', max: 200 },
+        { label: 'Latency / Exp.', v25: 4.5, v26: 7.5, unit: 'Mbps', color: 'var(--brand-teal)', max: 10 },
+        { label: 'Operating Hours', v25: 10, v26: 12.2, unit: 'H/D', color: 'var(--brand-orange)', max: 24 },
+        { label: 'Utilization Rate', v25: 50.4, v26: 61.7, unit: '%', color: 'var(--brand-orange)', max: 100 },
+        { label: 'Daily Active Users', v25: 22, v26: 33, unit: 'Users', color: 'var(--brand-navy)', max: 50 },
+        { label: 'Space Capacity', v25: 45, v26: 54, unit: 'Seats', color: 'var(--brand-navy)', max: 100 },
+    ];
+
+    const roadmap = [
+        { label: 'Planned Hubs', value: '7-10', sub: 'New Strategic Hubs', icon: Building2 },
+        { label: 'Program Price', value: '450', sub: 'Resilient ILS Rate', icon: Zap },
+        { label: 'Cohort Support', value: '75%', sub: 'Ops Subsidy Target', icon: Users },
+        { label: 'Target Launch', value: 'FEB 26', sub: 'Cohort 2 Kickoff', icon: Clock },
     ];
 
     return (
         <Slide>
-            {/* Background Texture */}
-            <div style={{ position: 'absolute', inset: 0, opacity: 0.3, pointerEvents: 'none' }}>
-                <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 50%, rgba(48, 157, 196, 0.1) 0%, transparent 70%)' }} />
-            </div>
+            {/* Background Effect inspired by Geo Slide */}
+            <div style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'radial-gradient(circle at 30% 20%, rgba(48, 157, 196, 0.05) 0%, transparent 50%)',
+                pointerEvents: 'none',
+                zIndex: 0
+            }} />
 
-            <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={containerVariants}
-                style={{
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    padding: 'var(--space-2xl) var(--space-3xl)',
-                    position: 'relative',
-                    zIndex: 1
-                }}
-            >
-                {/* Clean Header */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--space-2xl)' }}>
-                    <motion.div variants={fadeInUp}>
-                        <h2 style={{ fontSize: 'clamp(3rem, 5vmin, 4.5rem)', fontWeight: 900, margin: 0, lineHeight: 1 }}>
-                            Gaza <span className="gradient-text">Coworking</span> Support
-                        </h2>
-                        <p style={{ fontSize: 'var(--font-size-lg)', color: 'var(--color-text-secondary)', marginTop: 'var(--space-xs)', fontWeight: 500 }}>
-                            Revitalizing the digital ecosystem through resilient infrastructure
-                        </p>
-                    </motion.div>
-
-                    <motion.div variants={fadeInUp} className="glass-strong" style={{ padding: 'var(--space-md) var(--space-lg)', borderRadius: 'var(--radius-xl)', borderLeft: '4px solid var(--brand-orange)' }}>
-                        <div style={{ fontSize: '0.8rem', fontWeight: 700, opacity: 0.6, letterSpacing: '1px', textTransform: 'uppercase' }}>Current Focus</div>
-                        <div style={{ fontSize: '1.5rem', fontWeight: 900 }}>Cohort 2 Expansion</div>
-                    </motion.div>
-                </div>
-
-                {/* 4-Quadrant Visual Grid */}
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: '1fr 1fr',
-                    gridTemplateRows: '1fr 1fr',
-                    gap: 'var(--space-xl)',
-                    flex: 1
-                }}>
-                    {quadrants.map((q, idx) => (
-                        <motion.div
-                            key={q.title}
-                            variants={fadeInUp}
-                            className="glass"
-                            style={{
-                                padding: 'var(--space-xl)',
-                                borderRadius: 'var(--radius-3xl)',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                background: 'rgba(255,255,255,0.02)',
-                                border: '1px solid rgba(255,255,255,0.05)',
-                                position: 'relative',
-                                overflow: 'hidden'
-                            }}
-                        >
-                            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)', marginBottom: 'var(--space-lg)' }}>
-                                <div style={{
-                                    width: '40px',
-                                    height: '40px',
-                                    borderRadius: '12px',
-                                    background: `${q.color}15`,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    color: q.color
-                                }}>
-                                    <q.icon size={22} />
-                                </div>
-                                <h3 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 800 }}>{q.title}</h3>
-                            </div>
-
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-xl)', flex: 1, alignItems: 'center' }}>
-                                {q.stats.map(s => (
-                                    <div key={s.label}>
-                                        <div style={{ fontSize: '0.8rem', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' }}>
-                                            {s.label}
-                                        </div>
-                                        <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-                                            <span style={{ fontSize: '2.2rem', fontWeight: 900 }}>{s.value}</span>
-                                            <span style={{ fontSize: '0.8rem', opacity: 0.5 }}>{s.unit}</span>
-                                        </div>
-                                        <div style={{
-                                            fontSize: '0.9rem',
-                                            fontWeight: 700,
-                                            color: s.impact.includes('-') || s.impact.includes('Drop') ? 'var(--brand-red)' : 'var(--color-success)',
-                                            marginTop: '4px'
-                                        }}>
-                                            {s.impact}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-
-                            {/* Decorative Corner Icon */}
-                            <q.icon size={100} style={{ position: 'absolute', bottom: '-20px', right: '-20px', opacity: 0.03, transform: 'rotate(-15deg)' }} />
-                        </motion.div>
-                    ))}
-                </div>
-
-                {/* Bottom Impact Summary */}
+            <div style={{
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                padding: 'var(--space-2xl) var(--space-3xl) var(--space-xs)',
+                position: 'relative',
+                zIndex: 1
+            }}>
+                {/* Header inspired by Geo Slide */}
                 <motion.div
-                    variants={fadeInUp}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.6 }}
                     style={{
-                        marginTop: 'var(--space-xl)',
-                        padding: 'var(--space-lg)',
-                        background: 'rgba(255,255,255,0.03)',
-                        borderRadius: 'var(--radius-xl)',
                         display: 'flex',
-                        justifyContent: 'space-around',
-                        alignItems: 'center',
-                        border: '1px solid rgba(255,255,255,0.05)'
+                        justifyContent: 'space-between',
+                        alignItems: 'baseline',
+                        marginBottom: 'var(--space-lg)'
                     }}
                 >
-                    <div style={{ textAlign: 'center' }}>
-                        <div style={{ fontSize: '0.7rem', opacity: 0.5, textTransform: 'uppercase' }}>Network Resilience</div>
-                        <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--brand-teal)' }}>Operational</div>
+                    <div>
+                        <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 'var(--space-sm)',
+                            marginBottom: 'var(--space-sm)',
+                            color: 'var(--brand-teal)'
+                        }}>
+                            <Wifi size={20} />
+                            <span style={{
+                                fontSize: 'var(--font-size-sm)',
+                                fontWeight: 'var(--font-weight-bold)',
+                                textTransform: 'uppercase',
+                                letterSpacing: '2px'
+                            }}>
+                                Resilience Infrastructure
+                            </span>
+                        </div>
+                        <h2 style={{
+                            fontSize: 'clamp(2.5rem, 5vmin, 4rem)',
+                            fontWeight: 'var(--font-weight-extrabold)',
+                            margin: 0,
+                            lineHeight: 'var(--line-height-tight)'
+                        }}>
+                            Phase <span className="gradient-text">Expansion</span> Roadmap
+                        </h2>
                     </div>
-                    <div style={{ width: '1px', height: '30px', background: 'rgba(255,255,255,0.1)' }} />
-                    <div style={{ textAlign: 'center' }}>
-                        <div style={{ fontSize: '0.7rem', opacity: 0.5, textTransform: 'uppercase' }}>Efficiency Growth</div>
-                        <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--color-success)' }}>+11.3%</div>
-                    </div>
-                    <div style={{ width: '1px', height: '30px', background: 'rgba(255,255,255,0.1)' }} />
-                    <div style={{ textAlign: 'center' }}>
-                        <div style={{ fontSize: '0.7rem', opacity: 0.5, textTransform: 'uppercase' }}>Target Timeline</div>
-                        <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--brand-orange)' }}>Feb 2026</div>
+
+                    <div style={{ textAlign: 'right' }}>
+                        <div style={{ fontSize: 'var(--font-size-sm)', fontWeight: 800, color: 'var(--color-text-tertiary)', opacity: 0.6 }}>STRATEGIC HORIZON</div>
+                        <div style={{ fontSize: 'var(--font-size-2xl)', fontWeight: 900, color: 'var(--brand-navy)' }}>2025 - 2026</div>
                     </div>
                 </motion.div>
-            </motion.div>
+
+                {/* Main Content Grid */}
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: '1.2fr 0.8fr',
+                    gap: 'var(--space-2xl)',
+                    flex: 1
+                }}>
+
+                    {/* Left Card: Performance States (2025 vs 2026) */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.6, duration: 0.7 }}
+                        className="glass"
+                        style={{
+                            borderRadius: 'var(--radius-3xl)',
+                            padding: 'var(--space-xl)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            boxShadow: 'var(--shadow-lg)',
+                            border: '1px solid rgba(255,255,255,0.05)'
+                        }}
+                    >
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-xl)' }}>
+                            <div>
+                                <h3 style={{ margin: 0, fontSize: '1.5rem', fontWeight: 900 }}>Network <span className="gradient-text">Performance</span></h3>
+                                <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: 'var(--color-text-tertiary)' }}>2025 Baseline vs 2026 Targeted Impact</p>
+                            </div>
+                            <div style={{ display: 'flex', gap: 'var(--space-md)' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.2)' }} />
+                                    <span style={{ fontSize: '0.7rem', fontWeight: 700 }}>2025</span>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--brand-teal)' }} />
+                                    <span style={{ fontSize: '0.7rem', fontWeight: 700 }}>2026</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-xl)', flex: 1, alignItems: 'center' }}>
+                            {metrics.map((m, idx) => (
+                                <div key={m.label} style={{ background: 'rgba(255,255,255,0.02)', padding: 'var(--space-md)', borderRadius: 'var(--radius-xl)' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+                                        <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--color-text-secondary)', textTransform: 'uppercase' }}>{m.label}</span>
+                                        <span style={{ fontSize: '1rem', fontWeight: 900, color: 'var(--brand-teal)' }}>{m.v26} <small style={{ opacity: 0.5 }}>{m.unit}</small></span>
+                                    </div>
+                                    <div style={{ height: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', overflow: 'hidden', position: 'relative' }}>
+                                        {/* 2025 Reference */}
+                                        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: `${(m.v25 / m.max) * 100}%`, background: 'rgba(255,255,255,0.1)', borderRadius: '4px', zIndex: 1 }} />
+                                        {/* 2026 Progress */}
+                                        <motion.div
+                                            initial={{ width: 0 }}
+                                            animate={{ width: `${(m.v26 / m.max) * 100}%` }}
+                                            transition={{ duration: 1.2, delay: 1 + (idx * 0.1) }}
+                                            style={{ height: '100%', background: m.color, borderRadius: '4px', position: 'relative', zIndex: 2 }}
+                                        />
+                                    </div>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '6px' }}>
+                                        <span style={{ fontSize: '0.65rem', opacity: 0.4 }}>Base: {m.v25}</span>
+                                        <span style={{ fontSize: '0.7rem', color: 'var(--color-success)', fontWeight: 800 }}>+{Math.round(((m.v26 - m.v25) / m.v25) * 100)}%</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </motion.div>
+
+                    {/* Right Card: Cohort Strategy (Inspired by Geo Panel) */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.8, duration: 0.7 }}
+                        className="glass-strong"
+                        style={{
+                            borderRadius: 'var(--radius-3xl)',
+                            padding: 'var(--space-xl)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            borderLeft: '4px solid var(--brand-orange)',
+                            boxShadow: 'var(--shadow-xl)'
+                        }}
+                    >
+                        <div style={{ marginBottom: 'var(--space-2xl)' }}>
+                            <div className="badge" style={{ background: 'var(--brand-orange)', color: 'white', marginBottom: 'var(--space-md)' }}>NEXT CYCLE</div>
+                            <h3 style={{ margin: 0, fontSize: '1.8rem', fontWeight: 900 }}>Cohort 2 <span style={{ color: 'var(--brand-orange)' }}>Scale-Up</span></h3>
+                            <p style={{ margin: '8px 0 0', fontSize: '1rem', color: 'var(--color-text-secondary)', lineHeight: 1.5 }}>Strategic expansion of the resilience network across Gaza.</p>
+                        </div>
+
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 'var(--space-lg)', flex: 1 }}>
+                            {roadmap.map((item, idx) => (
+                                <motion.div
+                                    key={item.label}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 1.2 + (idx * 0.1) }}
+                                    style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: 'var(--space-lg)',
+                                        padding: 'var(--space-md)',
+                                        background: 'rgba(255,255,255,0.03)',
+                                        borderRadius: 'var(--radius-2xl)',
+                                        border: '1px solid rgba(255,255,255,0.05)'
+                                    }}
+                                >
+                                    <div style={{
+                                        width: '48px',
+                                        height: '48px',
+                                        borderRadius: '14px',
+                                        background: 'var(--brand-orange)15',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        color: 'var(--brand-orange)'
+                                    }}>
+                                        <item.icon size={24} />
+                                    </div>
+                                    <div>
+                                        <div style={{ fontSize: '1.5rem', fontWeight: 900, lineHeight: 1 }}>{item.value}</div>
+                                        <div style={{ fontSize: '0.85rem', fontWeight: 700, marginTop: '4px' }}>{item.label}</div>
+                                        <div style={{ fontSize: '0.75rem', opacity: 0.5 }}>{item.sub}</div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+                </div>
+
+                {/* Impact Badge inspired by Geo footer */}
+                <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.8 }}
+                    style={{
+                        marginTop: 'var(--space-md)',
+                        textAlign: 'center'
+                    }}
+                >
+                    <div style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: 'var(--space-sm)',
+                        padding: '10px 24px',
+                        background: 'rgba(48, 157, 196, 0.1)',
+                        borderRadius: 'full',
+                        border: '1px solid rgba(48, 157, 196, 0.2)',
+                        fontSize: '0.9rem',
+                        fontWeight: 'var(--font-weight-bold)'
+                    }}>
+                        <div style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--brand-teal)', boxShadow: '0 0 10px var(--brand-teal)' }} />
+                        Targeting 10+ Integrated Hubs by end of 2026 Cycle
+                    </div>
+                </motion.div>
+            </div>
         </Slide>
     );
 }
