@@ -5,6 +5,14 @@ import FeedbackWall from '../../components/FeedbackWall';
 import { FeatureCard } from '../../components/Card';
 import AnimatedMetric from '../../components/AnimatedMetric';
 import { staggerContainer, fadeInUp } from '../../utils/animations';
+import { FloatingBackground } from '../../components/FloatingBackground';
+import zaidBg1 from '../../assets/images/backgrounds/zaid/zaid-1.jpg';
+import zaidBg2 from '../../assets/images/backgrounds/zaid/zaid-2.jpg';
+import zaidBg3 from '../../assets/images/backgrounds/zaid/zaid-3.jpg';
+import zaidBg4 from '../../assets/images/backgrounds/zaid/zaid-4.jpg';
+import zaidBg5 from '../../assets/images/backgrounds/zaid/zaid-5.jpg';
+
+const zaidImages = [zaidBg1, zaidBg2, zaidBg3, zaidBg4, zaidBg5];
 
 // Animation Variants
 const containerVariants = staggerContainer(0.15);
@@ -12,6 +20,7 @@ const containerVariants = staggerContainer(0.15);
 export function MarketAccessGrid() {
     return (
         <Slide>
+            <FloatingBackground images={zaidImages} />
             <motion.div
                 initial="hidden"
                 animate="visible"
@@ -80,6 +89,7 @@ export function MarketAccessGrid() {
 export function ElevateBridgeModule() {
     return (
         <Slide>
+            <FloatingBackground images={zaidImages} />
             <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, opacity: 0.3 }}>
                 <FeedbackWall />
             </div>
@@ -181,60 +191,65 @@ export function MarketAccessImpact() {
     const metrics2024 = [
         { label: 'Strategic Outreach', value: 35, suffix: '+', color: 'var(--color-accent-primary)' },
         { label: 'Companies Supported', value: 20, suffix: '+', color: 'var(--color-accent-secondary)' },
-        { label: 'GITEX Expo Hub', value: 6, suffix: ' Co' },
     ];
 
     const metrics2025 = [
-        { label: 'Strategic Outreach', value: 85, suffix: '+', color: 'var(--color-success)', isNew: true },
-        { label: 'Companies Supported', value: 40, suffix: '+', color: 'var(--color-accent-secondary)', sub: '60+ Total' },
-        { label: 'C-Suite Mentoring', value: 11, suffix: ' Co' },
-        { label: 'Legal Entities', value: 7, suffix: ' Co' },
+        { label: 'Global Conferences', value: 3, suffix: '', icon: Globe, isNew: true },
+        { label: 'Companies Supported', value: 40, suffix: '+', icon: Building2, color: 'var(--color-accent-secondary)', sub: '60+ Total' },
+        { label: 'C-Suite Mentoring', value: 11, suffix: '', icon: Compass, isNew: true },
+        { label: 'Legal Entities', value: 7, suffix: '', icon: ShieldCheck, isNew: true },
     ];
 
-    const outreachGrowth = 50; // Outreach growth percentage or absolute
+    const outreachGrowth = 140;
 
     return (
         <Slide>
-            <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={containerVariants}
-                style={{
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    padding: 'var(--space-2xl) var(--space-3xl) var(--space-xs)',
-                    position: 'relative'
-                }}
-            >
-                {/* Background Effect */}
+            {/* Background Layer */}
+            <div style={{
+                position: 'absolute',
+                inset: 0,
+                zIndex: 0,
+                overflow: 'hidden'
+            }}>
                 <div style={{
                     position: 'absolute',
                     inset: 0,
                     background: 'radial-gradient(circle at 70% 30%, rgba(222, 99, 54, 0.08) 0%, transparent 60%)',
-                    pointerEvents: 'none',
-                    zIndex: 0
                 }} />
+                <FloatingBackground images={zaidImages} />
+            </div>
 
+            {/* Content Layer */}
+            <div style={{
+                position: 'relative',
+                zIndex: 1,
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                padding: 'var(--space-2xl) var(--space-3xl)'
+            }}>
                 {/* Header */}
                 <div style={{
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'flex-end',
-                    marginBottom: 'var(--space-xl)',
-                    zIndex: 1
+                    marginBottom: 'var(--space-xl)'
                 }}>
                     <div>
                         <motion.div
-                            variants={fadeInUp}
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
                             className="badge badge-primary"
                             style={{ marginBottom: 'var(--space-sm)' }}
                         >
                             Market Access Impact
                         </motion.div>
                         <motion.h2
-                            variants={fadeInUp}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.3 }}
                             style={{
                                 fontSize: 'clamp(2.5rem, 5vmin, 4rem)',
                                 fontWeight: 900,
@@ -251,38 +266,41 @@ export function MarketAccessImpact() {
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ delay: 0.5, type: 'spring', stiffness: 200 }}
-                        className="glass-strong"
+                        className="glass"
                         style={{
                             padding: 'var(--space-md) var(--space-xl)',
                             borderRadius: 'var(--radius-xl)',
                             display: 'flex',
-                            flexDirection: 'column',
                             alignItems: 'center',
-                            gap: '2px',
-                            border: '1px solid var(--color-success)'
+                            gap: 'var(--space-md)',
+                            border: '1px solid rgba(255,255,255,0.08)',
+                            background: 'rgba(16, 185, 129, 0.05)'
                         }}
                     >
-                        <div style={{ color: 'var(--color-success)', display: 'flex', alignItems: 'center', gap: 'var(--space-xs)' }}>
-                            <TrendingUp size={20} />
-                            <span style={{ fontSize: 'var(--font-size-2xl)', fontWeight: 900 }}>+{outreachGrowth}</span>
+                        <TrendingUp size={32} style={{ color: 'var(--color-success)' }} />
+                        <div>
+                            <div style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--color-success)', lineHeight: 1 }}>
+                                +{outreachGrowth}%
+                            </div>
+                            <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '1px', opacity: 0.7, fontWeight: 700 }}>
+                                Network Growth
+                            </div>
                         </div>
-                        <span style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--color-text-tertiary)' }}>
-                            Strategic Outreach Hubs
-                        </span>
                     </motion.div>
                 </div>
 
-                {/* Main Content Grid */}
+                {/* Main Grid */}
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: '1fr 1fr',
+                    gridTemplateColumns: 'minmax(300px, 1fr) 1.5fr',
                     gap: 'var(--space-2xl)',
-                    flex: 1,
-                    zIndex: 1
+                    flex: 1
                 }}>
-                    {/* 2024 Panel */}
+                    {/* 2024 Column (Baseline) */}
                     <motion.div
-                        variants={fadeInUp}
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
                         className="glass"
                         style={{
                             padding: 'var(--space-xl)',
@@ -290,25 +308,26 @@ export function MarketAccessImpact() {
                             display: 'flex',
                             flexDirection: 'column',
                             gap: 'var(--space-lg)',
-                            border: '1px solid rgba(255,255,255,0.05)'
+                            border: '1px solid rgba(255,255,255,0.03)',
+                            background: 'rgba(255,255,255,0.01)' // Subtle background
                         }}
                     >
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <h3 style={{ fontSize: '1.2rem', margin: 0, opacity: 0.7 }}>Elevate 1.0 (2024)</h3>
-                            <div className="badge" style={{ background: 'rgba(255,255,255,0.05)' }}>Baseline</div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: 'var(--space-md)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                            <h3 style={{ fontSize: '1.2rem', margin: 0, fontWeight: 700, opacity: 0.6 }}>2024 Baseline</h3>
+                            <div className="badge" style={{ background: 'rgba(255,255,255,0.05)', opacity: 0.6 }}>Elevate 1.0</div>
                         </div>
 
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xl)', justifyContent: 'center', flex: 1 }}>
                             {metrics2024.map((m, i) => (
                                 <div key={m.label}>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 'var(--space-xs)' }}>
-                                        <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-secondary)' }}>{m.label}</span>
-                                        <span style={{ fontWeight: 800 }}>{m.prefix}{m.value}{m.suffix}</span>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+                                        <span style={{ fontSize: '0.95rem', color: 'var(--color-text-secondary)' }}>{m.label}</span>
+                                        <span style={{ fontWeight: 800, fontSize: '1.1rem' }}>{m.value}{m.suffix}</span>
                                     </div>
                                     <div style={{ height: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', overflow: 'hidden' }}>
                                         <motion.div
                                             initial={{ width: 0 }}
-                                            animate={{ width: `${(m.value / 100) * 100}%` }}
+                                            animate={{ width: `${(m.value / 60) * 100}%` }} // Adjusted scale
                                             transition={{ duration: 1, delay: 0.8 + (i * 0.1) }}
                                             style={{ height: '100%', background: m.color || 'var(--color-text-tertiary)', borderRadius: '4px' }}
                                         />
@@ -318,71 +337,84 @@ export function MarketAccessImpact() {
                         </div>
                     </motion.div>
 
-                    {/* 2025 Panel */}
+                    {/* 2025 Column (Expansion) */}
                     <motion.div
-                        variants={fadeInUp}
-                        className="glass-strong"
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                        className="glass"
                         style={{
                             padding: 'var(--space-xl)',
                             borderRadius: 'var(--radius-2xl)',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: 'var(--space-lg)',
-                            border: '1px solid var(--color-accent-primary)'
+                            border: '1px solid rgba(222, 99, 54, 0.2)', // Accent border
+                            background: 'linear-gradient(145deg, rgba(222, 99, 54, 0.03) 0%, rgba(255,255,255,0.02) 100%)',
+                            position: 'relative',
+                            overflow: 'hidden'
                         }}
                     >
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <h3 style={{ fontSize: '1.5rem', margin: 0, fontWeight: 800 }}>Elevate 2.0 (2025)</h3>
-                            <div className="badge badge-success">Scaling</div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: 'var(--space-md)', borderBottom: '1px solid rgba(222, 99, 54, 0.1)' }}>
+                            <h3 style={{ fontSize: '1.5rem', margin: 0, fontWeight: 800 }}>2025 Expansion</h3>
+                            <div className="badge" style={{ background: 'rgba(222, 99, 54, 0.15)', color: 'var(--brand-orange)' }}>Elevate 2.0</div>
                         </div>
 
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)', flex: 1, justifyContent: 'center' }}>
+                        <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: '1fr 1fr',
+                            gap: 'var(--space-lg)',
+                            flex: 1,
+                            alignContent: 'center'
+                        }}>
                             {metrics2025.map((m, i) => (
-                                <div key={m.label}>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-xs)' }}>
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-xs)' }}>
-                                            <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-primary)', fontWeight: 600 }}>{m.label}</span>
-                                            {m.isNew && <span style={{ fontSize: '8px', padding: '2px 6px', background: 'var(--color-success)', borderRadius: '10px', color: 'white' }}>NEW</span>}
+                                <motion.div
+                                    key={m.label}
+                                    variants={fadeInUp}
+                                    whileHover={{ y: -5, backgroundColor: 'rgba(255,255,255,0.05)' }}
+                                    style={{
+                                        background: 'rgba(255,255,255,0.02)',
+                                        padding: '1.2rem',
+                                        borderRadius: 'var(--radius-xl)',
+                                        border: m.isNew ? '1px solid rgba(16, 185, 129, 0.3)' : '1px solid rgba(255,255,255,0.05)',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        justifyContent: 'space-between',
+                                        position: 'relative'
+                                    }}
+                                >
+                                    {m.isNew && (
+                                        <div style={{
+                                            position: 'absolute', top: 10, right: 10,
+                                            fontSize: '9px', fontWeight: 800,
+                                            padding: '2px 6px', borderRadius: '4px',
+                                            background: 'var(--color-success)', color: '#000'
+                                        }}>
+                                            NEW
                                         </div>
-                                        <div style={{ textAlign: 'right' }}>
-                                            <div style={{ fontWeight: 900, color: m.isNew ? 'var(--color-success)' : 'inherit' }}>{m.prefix}{m.value}{m.suffix}</div>
-                                            {m.sub && <div style={{ fontSize: '9px', color: 'var(--color-text-tertiary)' }}>{m.sub}</div>}
+                                    )}
+
+                                    <div style={{ marginBottom: 'var(--space-sm)', color: m.color || 'var(--color-text-primary)' }}>
+                                        {m.icon && <m.icon size={24} />}
+                                    </div>
+
+                                    <div>
+                                        <div style={{ fontSize: '2.2rem', fontWeight: 900, lineHeight: 1, marginBottom: '4px' }}>
+                                            {m.value}<span style={{ fontSize: '1rem', opacity: 0.6 }}>{m.suffix}</span>
                                         </div>
+                                        <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-text-secondary)', lineHeight: 1.2 }}>
+                                            {m.label}
+                                        </div>
+                                        {m.sub && (
+                                            <div style={{ fontSize: '0.75rem', marginTop: '4px', color: 'var(--color-text-tertiary)' }}>{m.sub}</div>
+                                        )}
                                     </div>
-                                    <div style={{ height: '12px', background: 'rgba(255,255,255,0.05)', borderRadius: '6px', overflow: 'hidden' }}>
-                                        <motion.div
-                                            initial={{ width: 0 }}
-                                            animate={{ width: `${(m.value / 100) * 100}%` }}
-                                            transition={{ duration: 1.2, delay: 1 + (i * 0.1), ease: "circOut" }}
-                                            style={{
-                                                height: '100%',
-                                                background: m.color || 'var(--color-accent-primary)',
-                                                borderRadius: '6px',
-                                                boxShadow: m.isNew ? '0 0 15px var(--color-success)' : 'none'
-                                            }}
-                                        />
-                                    </div>
-                                </div>
+                                </motion.div>
                             ))}
                         </div>
                     </motion.div>
                 </div>
-
-                {/* Footer Insight */}
-                <motion.div
-                    variants={fadeInUp}
-                    style={{
-                        marginTop: 'var(--space-xl)',
-                        textAlign: 'center',
-                        fontSize: 'var(--font-size-sm)',
-                        fontStyle: 'italic',
-                        color: 'var(--color-text-secondary)',
-                        zIndex: 1
-                    }}
-                >
-                    "Combining legal enablement, executive support, and international exposure to unlock commercial opportunities."
-                </motion.div>
-            </motion.div>
+            </div>
         </Slide>
     );
 }

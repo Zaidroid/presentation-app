@@ -29,6 +29,7 @@ import { CapacityBuilding, Marketing, WorkingSpaces, SuccessStories } from './sl
 import { MarketAccessProgressive } from './slides/Zaid/MarketAccessProgressive';
 import { ElevateBridge } from './slides/Zaid/ElevateBridge';
 import { MarketAccessImpact } from './slides/Zaid/Content';
+import { GazaResilience, Post2023Impact } from './slides/Alan/Content';
 
 import alanPhoto from './assets/speakers/Alan2.JPG';
 import randPhoto from './assets/speakers/Rand.JPG';
@@ -41,6 +42,7 @@ import adelPhoto from './assets/companies/Adel_Ewaida.png';
 import arefPhoto from './assets/companies/Aref.jpg';
 import radixPhoto from './assets/companies/Adel_Joudallah.jpg';
 import tech360Photo from './assets/companies/Imad.jpg';
+import dotlinePhoto from './assets/companies/dotline.jpeg';
 
 // Speaker Config
 const SPEAKERS = {
@@ -75,7 +77,13 @@ function App() {
       speaker: SPEAKERS.ALAN
     },
 
-    // 3. Rand Intro
+    // 3. Alan - Gaza Resilience (Emotional Slide)
+    { component: <GazaResilience />, speaker: SPEAKERS.ALAN },
+
+    // 4. Alan - Post-2023 Impact (Data Slide)
+    { component: <Post2023Impact />, speaker: SPEAKERS.ALAN },
+
+    // 5. Rand Intro
     {
       component: <SpeakerIntro
         name={SPEAKERS.RAND.name}
@@ -89,11 +97,11 @@ function App() {
     // 4. GSG Ecosystem Structure
     { component: <GSGStructure />, speaker: SPEAKERS.RAND },
 
-    // NEW: Ice Breaker
-    { component: <IceBreaker />, speaker: SPEAKERS.RAND },
-
     // NEW: CARM Slide (After Rand's Ice Breaker)
     { component: <CARM />, speaker: SPEAKERS.RAND },
+
+    // NEW: Ice Breaker
+    { component: <IceBreaker />, speaker: SPEAKERS.RAND },
 
     // Part I: Hazem (Individuals)
     {
@@ -191,11 +199,11 @@ function App() {
     { component: <ElevateBridge />, speaker: SPEAKERS.ZAID },
     { component: <MarketAccessImpact />, speaker: SPEAKERS.ZAID },
 
-    // Eligibility (Moved before Q&A)
-    { component: <Eligibility />, speaker: null },
-
     // Elevate Process (Moved before Q&A)
     { component: <ElevatePhases />, speaker: null },
+
+    // Eligibility (Moved before Q&A)
+    { component: <Eligibility />, speaker: null },
 
     // NEW: Q&A Session
     { component: <QASession />, speaker: SPEAKERS.ZAID },
@@ -212,7 +220,7 @@ function App() {
     { component: <TestimonialPlaceholder companyName="Top Mena Talents" speakerName="Aref Hanaysheh" role="CEO" photo={arefPhoto} />, speaker: null },
     { component: <TestimonialPlaceholder companyName="PITS" speakerName="Mohammed Abed Alraheem" role="CEO" />, speaker: null },
     { component: <TestimonialPlaceholder companyName="Radix" speakerName="Adel Jodalah" role="CEO" photo={radixPhoto} />, speaker: null },
-    { component: <TestimonialPlaceholder companyName="Dotline" speakerName="Odai Abu Baker" role="CEO" />, speaker: null },
+    { component: <TestimonialPlaceholder companyName="Dotline" speakerName="Odai Abu Baker" role="CEO" photo={dotlinePhoto} />, speaker: null },
     { component: <TestimonialPlaceholder companyName="Tech 360" speakerName="Imad Temeiza" role="Deputy CEO" photo={tech360Photo} />, speaker: null },
 
 
@@ -290,11 +298,11 @@ function App() {
         }}>
           {[
             { id: 'ALAN', label: 'Alan', photo: SPEAKERS.ALAN.photo, targetIndex: 2, isActive: (s) => s?.name.includes('Alan') },
-            { id: 'RAND', label: 'Rand', photo: SPEAKERS.RAND.photo, targetIndex: 3, isActive: (s) => s?.name.includes('Rand') },
-            { id: 'HAZEM', label: 'Hazem', photo: SPEAKERS.HAZEM.photo, targetIndex: 7, isActive: (s) => s?.name.includes('Hazem') },
-            { id: 'RAOUF', label: 'Raouf', photo: SPEAKERS.RAOUF.photo, targetIndex: 13, isActive: (s) => s?.name.includes('Raouf') },
-            { id: 'ZAID', label: 'Zaid', photo: SPEAKERS.ZAID.photo, targetIndex: 23, isActive: (s) => s?.name.includes('Zaid') },
-            { id: 'APPLY', label: 'Apply', isAction: true, targetIndex: 37, isActive: () => currentIndex === 37 },
+            { id: 'RAND', label: 'Rand', photo: SPEAKERS.RAND.photo, targetIndex: 5, isActive: (s) => s?.name.includes('Rand') },
+            { id: 'HAZEM', label: 'Hazem', photo: SPEAKERS.HAZEM.photo, targetIndex: 9, isActive: (s) => s?.name.includes('Hazem') },
+            { id: 'RAOUF', label: 'Raouf', photo: SPEAKERS.RAOUF.photo, targetIndex: 15, isActive: (s) => s?.name.includes('Raouf') },
+            { id: 'ZAID', label: 'Zaid', photo: SPEAKERS.ZAID.photo, targetIndex: 25, isActive: (s) => s?.name.includes('Zaid') },
+            { id: 'APPLY', label: 'Apply', isAction: true, targetIndex: 39, isActive: () => currentIndex === 39 },
           ].map(item => {
             const isActive = item.isActive(currentSlide.speaker);
             return (

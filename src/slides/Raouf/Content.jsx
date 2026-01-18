@@ -4,6 +4,13 @@ import Slide from '../../components/Slide';
 import { FeatureCard } from '../../components/Card';
 import { staggerContainer, fadeInUp } from '../../utils/animations';
 import { Megaphone, Palette, Search, Users, ExternalLink, Globe, Wifi, Clock, Zap, Briefcase, TrendingUp, ArrowDown, Compass, Building2 } from 'lucide-react';
+import { FloatingBackground } from '../../components/FloatingBackground';
+import raoufBg1 from '../../assets/images/backgrounds/raouf/raouf-1.jpg';
+import raoufBg2 from '../../assets/images/backgrounds/raouf/raouf-2.jpg';
+import raoufBg3 from '../../assets/images/backgrounds/raouf/raouf-3.jpg';
+import raoufBg4 from '../../assets/images/backgrounds/raouf/raouf-4.jpg';
+
+const raoufImages = [raoufBg1, raoufBg2, raoufBg3, raoufBg4];
 
 // Animation Variants
 const containerVariants = staggerContainer(0.15);
@@ -11,6 +18,7 @@ const containerVariants = staggerContainer(0.15);
 export function CapacityBuilding() {
     return (
         <Slide>
+            <FloatingBackground images={raoufImages} />
             <motion.div
                 initial="hidden"
                 animate="visible"
@@ -124,6 +132,7 @@ export function Marketing() {
                 pointerEvents: 'none',
                 zIndex: 0
             }} />
+            <FloatingBackground images={raoufImages} />
 
             <div style={{
                 width: '100%',
@@ -455,6 +464,7 @@ export function WorkingSpaces() {
                 pointerEvents: 'none',
                 zIndex: 0
             }} />
+            <FloatingBackground images={raoufImages} />
 
             <div style={{
                 width: '100%',

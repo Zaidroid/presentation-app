@@ -22,7 +22,7 @@ export function Individuals1() {
                     Part I: Individuals
                 </div>
                 <motion.h2 variants={fadeInUp} style={{ fontSize: 'var(--font-size-7xl)', marginBottom: 'var(--space-xl)', lineHeight: 1.1 }}>
-                    <span className="gradient-text">The individuals</span> — the talent, the learners, the future leaders.
+                    <span className="gradient-text">The individuals</span> the talent, the learners, the future leaders.
                 </motion.h2>
                 <motion.h3
                     variants={fadeInUp}
@@ -283,80 +283,101 @@ export function Individuals5() {
     return (
         <Slide>
             <motion.div initial="hidden" animate="visible" variants={containerVariants} style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <motion.h2 variants={fadeInUp} style={{ marginBottom: 'var(--space-xl)' }}>
-                    Impact & Success
+                <motion.h2 variants={fadeInUp} style={{ marginBottom: 'var(--space-2xl)', textAlign: 'center' }}>
+                    Impact & <span className="gradient-text">Success</span>
                 </motion.h2>
 
-                {/* Stats Row */}
-                <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', marginBottom: 'var(--space-3xl)' }}>
-                    <div style={{ textAlign: 'center' }}>
-                        <div className="gradient-text" style={{ fontSize: '5rem', fontWeight: 800, lineHeight: 1 }}>4,500</div>
-                        <div style={{ fontSize: '1.25rem', color: 'var(--color-text-secondary)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px' }}>Graduates</div>
-                    </div>
-                    <div style={{ width: '1px', height: '80px', background: 'var(--color-border-medium)' }} />
-                    <div style={{ textAlign: 'center' }}>
-                        <div className="gradient-text" style={{ fontSize: '5rem', fontWeight: 800, lineHeight: 1 }}>$20M+</div>
-                        <div style={{ fontSize: '1.25rem', color: 'var(--color-text-secondary)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px' }}>Annual Income Generated</div>
-                    </div>
+                {/* Top Metrics - Hero Style */}
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-xl)', marginBottom: 'var(--space-xl)' }}>
+                    <motion.div
+                        variants={scaleIn}
+                        className="glass"
+                        style={{
+                            padding: 'var(--space-xl)',
+                            borderRadius: 'var(--radius-2xl)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            textAlign: 'center',
+                            border: '1px solid rgba(255,255,255,0.1)'
+                        }}
+                    >
+                        <Users size={48} color="var(--color-accent-primary)" style={{ marginBottom: 'var(--space-md)' }} />
+                        <div className="gradient-text" style={{ fontSize: 'clamp(3rem, 5vmin, 5rem)', fontWeight: 800, lineHeight: 1 }}>4,500</div>
+                        <div style={{ fontSize: '1.25rem', color: 'var(--color-text-secondary)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '2px', marginTop: 'var(--space-sm)' }}>Graduates</div>
+                        <div style={{ fontSize: '0.9rem', opacity: 0.6, marginTop: 'var(--space-xs)' }}>Ready for the global market</div>
+                    </motion.div>
+
+                    <motion.div
+                        variants={scaleIn}
+                        className="glass"
+                        style={{
+                            padding: 'var(--space-xl)',
+                            borderRadius: 'var(--radius-2xl)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            textAlign: 'center',
+                            border: '1px solid rgba(255,255,255,0.1)'
+                        }}
+                    >
+                        <CircleDollarSign size={48} color="var(--color-accent-secondary)" style={{ marginBottom: 'var(--space-md)' }} />
+                        <div className="gradient-text" style={{ fontSize: 'clamp(3rem, 5vmin, 5rem)', fontWeight: 800, lineHeight: 1 }}>$20M+</div>
+                        <div style={{ fontSize: '1.25rem', color: 'var(--color-text-secondary)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '2px', marginTop: 'var(--space-sm)' }}>Annual Income</div>
+                        <div style={{ fontSize: '0.9rem', opacity: 0.6, marginTop: 'var(--space-xs)' }}>Generated by alumni</div>
+                    </motion.div>
                 </div>
 
-                <motion.div
-                    className="glass"
-                    variants={fadeInUp}
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        padding: 'var(--space-2xl)',
-                        marginTop: 'auto',
-                        marginBottom: 'auto',
-                        borderRadius: 'var(--radius-xl)',
-                        border: 'var(--glass-border)',
-                        width: '100%',
-                        justifyContent: 'space-around'
-                    }}
-                >
-                    {/* Income Growth Chart */}
-                    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <h3 style={{ fontSize: '1.5rem', marginBottom: '2rem', color: 'var(--color-text-primary)' }}>Income Growth</h3>
+                {/* Bottom Charts */}
+                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: 'var(--space-xl)', flex: 1 }}>
+                    {/* Income Growth Visual */}
+                    <motion.div
+                        variants={fadeInUp}
+                        className="glass"
+                        style={{
+                            padding: 'var(--space-xl)',
+                            borderRadius: 'var(--radius-xl)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center'
+                        }}
+                    >
+                        <h3 style={{ fontSize: '1.5rem', marginBottom: 'var(--space-xl)', color: 'var(--color-text-primary)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                            <TrendingUp size={24} color="var(--color-success)" />
+                            Income Multiplier
+                        </h3>
 
-                        <div style={{ display: 'flex', alignItems: 'flex-end', height: '220px', gap: 'var(--space-2xl)' }}>
-                            {/* Bar 1 */}
-                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+                        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-around', height: '100%', paddingBottom: 'var(--space-lg)' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
                                 <motion.div
                                     initial={{ height: 0 }}
-                                    animate={{ height: '80px' }}
+                                    animate={{ height: '60px' }}
                                     transition={{ duration: 1, delay: 0.5 }}
                                     style={{
-                                        width: '100px',
-                                        background: 'var(--color-bg-tertiary)',
-                                        borderRadius: 'var(--radius-md) var(--radius-md) 0 0',
-                                        position: 'relative',
-                                        overflow: 'hidden',
-                                        border: '1px solid var(--color-border-light)'
+                                        width: '80px',
+                                        background: 'rgba(255,255,255,0.1)',
+                                        borderRadius: '12px 12px 0 0',
+                                        border: '1px solid rgba(255,255,255,0.2)'
                                     }}
-                                >
-                                    <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '4px', background: 'var(--color-text-tertiary)', opacity: 0.3 }} />
-                                </motion.div>
-                                <span style={{ fontSize: 'var(--font-size-sm)', textAlign: 'center', fontWeight: 'bold', color: 'var(--color-text-secondary)', lineHeight: 1.2 }}>Avg<br />Graduate</span>
+                                />
+                                <span style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)' }}>Avg Graduate</span>
                             </div>
 
-                            {/* Arrow */}
-                            <div style={{ marginBottom: '60px', color: 'var(--color-accent-primary)' }}>
-                                <TrendingUp size={32} strokeWidth={2} />
-                            </div>
+                            <ArrowRight size={32} color="var(--color-text-tertiary)" style={{ paddingBottom: '30px' }} />
 
-                            {/* Bar 2 */}
-                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
                                 <motion.div
                                     initial={{ height: 0 }}
-                                    animate={{ height: '200px' }}
+                                    animate={{ height: '180px' }}
                                     transition={{ duration: 1, delay: 0.7 }}
                                     style={{
                                         width: '100px',
-                                        background: 'var(--gradient-primary)',
-                                        borderRadius: 'var(--radius-md) var(--radius-md) 0 0',
-                                        boxShadow: '0 8px 16px rgba(222, 99, 54, 0.25)',
-                                        position: 'relative'
+                                        background: 'linear-gradient(to top, var(--color-accent-primary), var(--color-accent-secondary))',
+                                        borderRadius: '12px 12px 0 0',
+                                        position: 'relative',
+                                        boxShadow: '0 0 20px rgba(222, 99, 54, 0.3)'
                                     }}
                                 >
                                     <div style={{
@@ -364,67 +385,57 @@ export function Individuals5() {
                                         top: '-40px',
                                         left: '50%',
                                         transform: 'translateX(-50%)',
-                                        fontWeight: '800',
-                                        color: 'var(--color-accent-primary)',
-                                        fontSize: '1.5rem'
+                                        fontSize: '2rem',
+                                        fontWeight: 900,
+                                        color: 'var(--color-accent-primary)'
                                     }}>
                                         3x
                                     </div>
                                 </motion.div>
-                                <span style={{ fontSize: 'var(--font-size-base)', fontWeight: 'bold', textAlign: 'center', color: 'var(--color-text-primary)', lineHeight: 1.2 }}>Specialist<br />Coder</span>
+                                <span style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--color-text-primary)' }}>Specialist</span>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    {/* Divider */}
-                    <div style={{ width: '1px', height: '240px', background: 'var(--color-border-medium)', opacity: 0.5 }} />
-
-                    {/* Gender Balance Chart */}
-                    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <h3 style={{ fontSize: '1.5rem', marginBottom: '2rem', color: 'var(--color-text-primary)' }}>Gender Balance</h3>
-
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2xl)' }}>
-                            <div style={{
-                                width: '200px',
-                                height: '200px',
-                                position: 'relative',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center'
-                            }}>
-                                {/* Donut Segments */}
-                                <svg width="100%" height="100%" viewBox="0 0 100 100" style={{ transform: 'rotate(-90deg)' }}>
-                                    {/* Segment 1: Women */}
-                                    <circle cx="50" cy="50" r="40" fill="transparent" stroke="var(--color-accent-secondary)" strokeWidth="8" strokeDasharray="125.6 251.2" /> {/* 50% */}
-                                    {/* Segment 2: Men */}
-                                    <circle cx="50" cy="50" r="40" fill="transparent" stroke="var(--color-accent-primary)" strokeWidth="8" strokeDasharray="125.6 251.2" strokeDashoffset="-125.6" /> {/* 50% */}
-                                </svg>
-
-                                <div style={{ position: 'absolute', textAlign: 'center' }}>
-                                    <span style={{ fontWeight: '800', color: 'var(--color-text-primary)', fontSize: '3rem', letterSpacing: '-1px' }}>50%</span>
-                                    <div style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-secondary)', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 600, marginTop: '-5px' }}>Women</div>
-                                </div>
-                            </div>
-
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)', justifyContent: 'center' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)' }}>
-                                    <div style={{ width: '16px', height: '16px', background: 'var(--color-accent-secondary)', borderRadius: '4px' }} />
-                                    <div>
-                                        <div style={{ fontSize: 'var(--font-size-xl)', fontWeight: 'bold' }}>Women</div>
-                                        <div style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-secondary)' }}>High Participation</div>
-                                    </div>
-                                </div>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)' }}>
-                                    <div style={{ width: '16px', height: '16px', background: 'var(--color-accent-primary)', borderRadius: '4px' }} />
-                                    <div>
-                                        <div style={{ fontSize: 'var(--font-size-xl)', fontWeight: 'bold' }}>Men</div>
-                                        <div style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-secondary)' }}>Equal Balance</div>
-                                    </div>
-                                </div>
+                    {/* Gender Balance */}
+                    <motion.div
+                        variants={fadeInUp}
+                        className="glass"
+                        style={{
+                            padding: 'var(--space-xl)',
+                            borderRadius: 'var(--radius-xl)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            background: 'linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)'
+                        }}
+                    >
+                        <h3 style={{ fontSize: '1.5rem', marginBottom: 'var(--space-lg)', color: 'var(--color-text-primary)' }}>
+                            Gender Balance
+                        </h3>
+                        <div style={{ position: 'relative', width: '200px', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <svg width="100%" height="100%" viewBox="0 0 100 100" style={{ transform: 'rotate(-90deg)' }}>
+                                <circle cx="50" cy="50" r="42" fill="transparent" stroke="rgba(255,255,255,0.1)" strokeWidth="12" />
+                                <motion.circle
+                                    initial={{ pathLength: 0 }}
+                                    animate={{ pathLength: 0.5 }}
+                                    transition={{ duration: 1.5, ease: "easeOut" }}
+                                    cx="50" cy="50" r="42"
+                                    fill="transparent"
+                                    stroke="var(--color-accent-secondary)"
+                                    strokeWidth="12"
+                                    strokeDasharray="1"
+                                    strokeLinecap="round"
+                                />
+                            </svg>
+                            <div style={{ position: 'absolute', textAlign: 'center' }}>
+                                <div className="gradient-text" style={{ fontSize: '3.5rem', fontWeight: 900, lineHeight: 1 }}>50%</div>
+                                <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', opacity: 0.8 }}>Women</div>
                             </div>
                         </div>
-                    </div>
-                </motion.div>
+                    </motion.div>
+                </div>
             </motion.div>
         </Slide>
     );
