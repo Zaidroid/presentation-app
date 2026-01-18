@@ -94,9 +94,7 @@ export default function TestimonialPlaceholder({ companyName = "Company Name", s
                         </div>
                     )}
 
-                    <p style={{ marginTop: 'var(--space-md)', color: 'var(--color-text-secondary)', fontStyle: 'italic' }}>
-                        Testimonial content will be added here.
-                    </p>
+
                 </motion.div>
             </div>
         </Slide>

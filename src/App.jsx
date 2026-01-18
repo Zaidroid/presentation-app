@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, TrendingUp, Megaphone, Globe, Monitor } from 'lucide-react';
 import Layout from './components/Layout';
 import Intro from './slides/Intro';
@@ -199,6 +199,17 @@ function App() {
     { component: <ElevateBridge />, speaker: SPEAKERS.ZAID },
     { component: <MarketAccessImpact />, speaker: SPEAKERS.ZAID },
 
+    // Part IV: The Journey
+    {
+      component: <SectionIntroModern
+        title="Program Roadmap"
+        subtitle="Phases, Timeline & Eligibility"
+        part="Part IV"
+        topImage={elevateLogo}
+      />,
+      speaker: null
+    },
+
     // Elevate Process (Moved before Q&A)
     { component: <ElevatePhases />, speaker: null },
 
@@ -297,86 +308,118 @@ function App() {
           boxShadow: '0 4px 20px rgba(0,0,0,0.1)'
         }}>
           {[
-            { id: 'ALAN', label: 'Alan', photo: SPEAKERS.ALAN.photo, targetIndex: 2, isActive: (s) => s?.name.includes('Alan') },
-            { id: 'RAND', label: 'Rand', photo: SPEAKERS.RAND.photo, targetIndex: 5, isActive: (s) => s?.name.includes('Rand') },
-            { id: 'HAZEM', label: 'Hazem', photo: SPEAKERS.HAZEM.photo, targetIndex: 9, isActive: (s) => s?.name.includes('Hazem') },
-            { id: 'RAOUF', label: 'Raouf', photo: SPEAKERS.RAOUF.photo, targetIndex: 15, isActive: (s) => s?.name.includes('Raouf') },
-            { id: 'ZAID', label: 'Zaid', photo: SPEAKERS.ZAID.photo, targetIndex: 25, isActive: (s) => s?.name.includes('Zaid') },
-            { id: 'APPLY', label: 'Apply', isAction: true, targetIndex: 39, isActive: () => currentIndex === 39 },
+            { id: 'ALAN', label: 'Alan', photo: SPEAKERS.ALAN.photo, targetIndex: 2, isActive: (s) => s?.name?.includes('Alan') },
+            { id: 'RAND', label: 'Rand', photo: SPEAKERS.RAND.photo, targetIndex: 5, isActive: (s) => s?.name?.includes('Rand'), objectPosition: 'center 20%' },
+            { id: 'HAZEM', label: 'Hazem', photo: SPEAKERS.HAZEM.photo, targetIndex: 9, isActive: (s) => s?.name?.includes('Hazem'), objectPosition: 'center 20%' },
+            { id: 'RAOUF', label: 'Raouf', photo: SPEAKERS.RAOUF.photo, targetIndex: 15, isActive: (s) => s?.name?.includes('Raouf'), objectPosition: 'center 20%' },
+            { id: 'ZAID', label: 'Zaid', photo: SPEAKERS.ZAID.photo, targetIndex: 25, isActive: (s) => s?.name?.includes('Zaid') },
+            { id: 'PART4', label: 'Roadmap', shortLabel: 'IV', targetIndex: 30, isActive: () => currentIndex >= 30 && currentIndex <= 34 },
+            { id: 'TESTIMONIALS', label: 'Testimonials', shortLabel: '™', targetIndex: 35, isActive: () => currentIndex >= 35 && currentIndex <= 42 },
+            { id: 'APPLY', label: 'Apply', isAction: true, targetIndex: 43, isActive: () => currentIndex === 43 },
           ].map(item => {
             const isActive = item.isActive(currentSlide.speaker);
             return (
-              <button
+              <motion.button
                 key={item.id}
                 onClick={() => {
                   setDirection(item.targetIndex > currentIndex ? 1 : -1);
                   setCurrentIndex(item.targetIndex);
                   setMarketAccessStep(0);
                 }}
-                style={{
-                  width: '45px',
-                  height: '45px',
-                  padding: 0,
-                  borderRadius: '50%',
-                  background: isActive ? 'var(--color-accent-primary)' : 'rgba(255,255,255,0.05)',
-                  color: isActive ? '#fff' : 'var(--color-text-secondary)',
-                  border: isActive ? '2px solid var(--color-accent-primary)' : '1px solid transparent',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                initial={{ width: '45px' }}
+                animate={{
+                  width: isActive ? 'auto' : '45px',
+                  backgroundColor: isActive ? 'var(--color-accent-primary)' : 'rgba(255,255,255,0.05)',
+                  borderColor: isActive ? 'var(--color-accent-primary)' : 'transparent',
                   opacity: isActive ? 1 : 0.7,
+                  scale: isActive ? 1.05 : 1
+                }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 500,
+                  damping: 30
+                }}
+                style={{
+                  height: '45px',
+                  padding: isActive ? '0 1rem 0 0' : 0, // Padding for text when active
+                  borderRadius: '24px',
                   display: 'flex',
-                  justifyContent: 'center',
                   alignItems: 'center',
+                  gap: isActive ? '0.5rem' : 0,
+                  color: isActive ? '#fff' : 'var(--color-text-secondary)',
+                  border: '1px solid transparent', // Base border
+                  cursor: 'pointer',
                   overflow: 'hidden',
                   position: 'relative',
-                  transform: isActive ? 'scale(1.1)' : 'scale(1)'
+                  whiteSpace: 'nowrap'
                 }}
                 title={item.label}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.opacity = 1;
-                  e.currentTarget.style.transform = 'scale(1.1)';
+                  if (!isActive) {
+                    e.currentTarget.style.opacity = 1;
+                    e.currentTarget.style.transform = 'scale(1.05)';
+                  }
                 }}
                 onMouseLeave={(e) => {
                   if (!isActive) {
                     e.currentTarget.style.opacity = 0.7;
                     e.currentTarget.style.transform = 'scale(1)';
-                  } else {
-                    e.currentTarget.style.transform = 'scale(1.1)';
                   }
                 }}
               >
-                {item.photo ? (
-                  <img
-                    src={item.photo}
-                    alt={item.label}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      objectPosition: 'top',
-                      filter: isActive ? 'none' : 'grayscale(20%)'
-                    }}
-                  />
-                ) : item.isAction ? (
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" />
-                  </svg>
-                ) : (
-                  <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.5px' }}>
-                    {item.label.substring(0, 2).toUpperCase()}
-                  </span>
-                )}
+                <div style={{
+                  width: '45px',
+                  height: '45px',
+                  borderRadius: '50%',
+                  flexShrink: 0,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  overflow: 'hidden',
+                  border: isActive ? '2px solid rgba(255,255,255,0.3)' : 'none'
+                }}>
+                  {item.photo ? (
+                    <img
+                      src={item.photo}
+                      alt={item.label}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        objectPosition: item.objectPosition || 'top',
+                        filter: isActive ? 'none' : 'grayscale(100%)',
+                        transition: 'filter 0.3s'
+                      }}
+                    />
+                  ) : item.isAction ? (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" />
+                    </svg>
+                  ) : (
+                    <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.5px' }}>
+                      {item.shortLabel || item.label.substring(0, 2).toUpperCase()}
+                    </span>
+                  )}
+                </div>
 
-                {isActive && (
-                  <div style={{
-                    position: 'absolute',
-                    inset: 0,
-                    borderRadius: '50%',
-                    border: '2px solid white',
-                    opacity: 0.3
-                  }} />
-                )}
-              </button>
+                <AnimatePresence mode="popLayout">
+                  {isActive && (
+                    <motion.span
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -10 }}
+                      transition={{ delay: 0.1 }}
+                      style={{
+                        fontSize: '0.9rem',
+                        fontWeight: 600,
+                        letterSpacing: '0.5px'
+                      }}
+                    >
+                      {item.label}
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </motion.button>
             );
           })}
         </div>
