@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import Slide from '../../components/Slide';
 import { FeatureCard } from '../../components/Card';
 import { staggerContainer, fadeInUp } from '../../utils/animations';
-import { Megaphone, Palette, Search, Users, ExternalLink, Globe } from 'lucide-react';
+import { Megaphone, Palette, Search, Users, ExternalLink, Globe, Wifi, Clock, Zap, Briefcase, TrendingUp, ArrowDown } from 'lucide-react';
 
 // Animation Variants
 const containerVariants = staggerContainer(0.15);
@@ -315,103 +315,201 @@ export function Marketing() {
 }
 
 export function WorkingSpaces() {
+    const metrics = [
+        { label: 'Bandwidth Speed', v25: '125', v26: '162.5', unit: 'Mbps', impact: '+30%', icon: Wifi, color: 'var(--brand-teal)' },
+        { label: 'Individual Experience', v25: '4.5', v26: '7.5', unit: 'Mbps', impact: '+66.7%', icon: Zap, color: 'var(--brand-orange)' },
+        { label: 'Operating Hours', v25: '10', v26: '12.2', unit: 'H/D', impact: '+22%', icon: Clock, color: 'var(--brand-navy)' },
+        { label: 'Membership Cost', v25: '600', v26: '450', unit: 'ILS', impact: '-25%', icon: ArrowDown, color: 'var(--brand-red)' },
+        { label: 'Space Capacity', v25: '45', v26: '54', unit: 'Seats', impact: '+19.5%', icon: Briefcase, color: 'var(--brand-teal)' },
+        { label: 'Daily Active Users', v25: '22', v26: '33', unit: 'Users', impact: '+52%', icon: Users, color: 'var(--brand-orange)' },
+    ];
+
     return (
         <Slide>
+            {/* Background Effects */}
+            <div style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'radial-gradient(circle at 90% 10%, rgba(48, 157, 196, 0.05) 0%, transparent 50%), radial-gradient(circle at 10% 90%, rgba(0, 210, 170, 0.05) 0%, transparent 50%)',
+                zIndex: 0,
+                pointerEvents: 'none'
+            }} />
+
             <motion.div
                 initial="hidden"
                 animate="visible"
                 variants={containerVariants}
-                style={{ width: '100%', height: '100%' }}
+                style={{
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    padding: 'var(--space-md) var(--space-2xl)',
+                    position: 'relative',
+                    zIndex: 1
+                }}
             >
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-xl)', height: '100%' }}>
+                {/* Header Row */}
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: '1.2fr 0.8fr',
+                    gap: 'var(--space-2xl)',
+                    marginBottom: 'var(--space-md)',
+                    alignItems: 'center'
+                }}>
+                    <motion.div variants={fadeInUp}>
+                        <div className="badge" style={{
+                            background: 'var(--brand-red)',
+                            color: 'white',
+                            marginBottom: 'var(--space-xs)',
+                            boxShadow: '0 4px 15px rgba(222, 99, 54, 0.2)'
+                        }} >
+                            Gaza Ecosystem
+                        </div>
+                        <h2 style={{
+                            fontSize: 'clamp(2.5rem, 5vmin, 3.5rem)',
+                            fontWeight: 900,
+                            margin: 0,
+                            letterSpacing: '-0.02em',
+                            lineHeight: 1
+                        }}>
+                            Supporting <span className="gradient-text">Resilience</span>
+                        </h2>
+                        <p style={{
+                            fontSize: 'var(--font-size-md)',
+                            margin: 'var(--space-xs) 0 0',
+                            color: 'var(--color-text-secondary)',
+                            fontWeight: 400,
+                            maxWidth: '600px'
+                        }}>
+                            Revitalizing Gaza’s tech ecosystem through high-performance community hubs.
+                        </p>
+                    </motion.div>
 
-                    {/* Left Column: Header & Context */}
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        <motion.h2 variants={fadeInUp} style={{ marginBottom: 'var(--space-md)' }}>
-                            Supporting Resilience
-                        </motion.h2>
-
-                        <motion.div variants={fadeInUp}>
-                            <h3 className="gradient-text" style={{ fontSize: 'var(--font-size-2xl)', marginBottom: 'var(--space-sm)' }}>
-                                Gaza Coworking Support
-                            </h3>
-                            <p style={{ fontSize: 'var(--font-size-md)', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
-                                Revitalizing Gaza’s tech ecosystem by providing direct support to existing co-working spaces to serve as access points, learning hubs, and community spaces.
-                            </p>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-md)' }}>
+                        <motion.div
+                            variants={fadeInUp}
+                            className="glass-strong"
+                            style={{
+                                padding: 'var(--space-md)',
+                                borderRadius: 'var(--radius-xl)',
+                                borderTop: '4px solid var(--brand-teal)',
+                                textAlign: 'center',
+                                background: 'var(--color-surface-elevated)'
+                            }}
+                        >
+                            <div style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--brand-teal)' }}>61.7%</div>
+                            <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', opacity: 0.7, color: 'var(--color-text-primary)' }}>Utilization Rate</div>
+                            <div style={{ fontSize: '0.7rem', color: 'var(--color-success)', fontWeight: 700 }}>+11.3% Efficiency</div>
                         </motion.div>
 
                         <motion.div
                             variants={fadeInUp}
-                            style={{ margin: 'var(--space-lg) 0' }}
+                            className="glass-strong"
+                            style={{
+                                padding: 'var(--space-md)',
+                                borderRadius: 'var(--radius-xl)',
+                                borderTop: '4px solid var(--brand-orange)',
+                                textAlign: 'center',
+                                background: 'var(--color-surface-elevated)'
+                            }}
                         >
-                            <h4 style={{ color: 'var(--color-accent-secondary)', marginBottom: 'var(--space-sm)' }}>Program Objectives</h4>
-                            <ul style={{ fontSize: 'var(--font-size-sm)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                                <li><strong>Infrastructure Rehabilitation:</strong> Restoring essential tech hubs.</li>
-                                <li><strong>Work Continuity:</strong> Enabling remote work & learning.</li>
-                                <li><strong>Geographic Reach:</strong> Expanding coverage across Gaza.</li>
-                                <li><strong>Sustainability:</strong> Developing resilient operating models.</li>
-                            </ul>
+                            <div style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--brand-orange)' }}>Cohort 2</div>
+                            <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', opacity: 0.7, color: 'var(--color-text-primary)' }}>Feb 2026 Expansion</div>
+                            <div style={{ fontSize: '0.7rem', color: 'var(--brand-orange)', fontWeight: 700 }}>7-10 New Spaces</div>
                         </motion.div>
-
-                        <motion.div variants={fadeInUp} style={{ marginTop: 'auto' }}>
-                            <div style={{ padding: 'var(--space-md)', background: 'rgba(255,255,255,0.05)', borderRadius: '12px' }}>
-                                <strong style={{ color: 'var(--color-accent-primary)' }}>Cohort 2 (Feb 2026):</strong>
-                                <p style={{ margin: '4px 0 0', fontSize: 'var(--font-size-sm)' }}>Targeting 7-10 additional spaces.</p>
-                            </div>
-                        </motion.div>
-                    </div>
-
-                    {/* Right Column: Cards & Details */}
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
-
-                        <FeatureCard
-                            title="Cohort 1 (Current)"
-                            description="5 Spaces Selected (Aug 2025 - Jan 2026)"
-                            delay={0.2}
-                            highlighted={true}
-                        >
-                            <div style={{ fontSize: 'var(--font-size-sm)', marginTop: 'var(--space-sm)' }}>
-                                <div style={{ display: 'flex', gap: 'var(--space-sm)', flexWrap: 'wrap' }}>
-                                    <span style={{ background: 'rgba(255,255,255,0.1)', padding: '4px 8px', borderRadius: '4px', fontSize: '12px' }}>Operational Spaces</span>
-                                    <span style={{ background: 'rgba(255,255,255,0.1)', padding: '4px 8px', borderRadius: '4px', fontSize: '12px' }}>Legally Registered</span>
-                                    <span style={{ background: 'rgba(255,255,255,0.1)', padding: '4px 8px', borderRadius: '4px', fontSize: '12px' }}>Safe Zones</span>
-                                </div>
-                            </div>
-                        </FeatureCard>
-
-                        <FeatureCard
-                            title="Cohort 2 Targets"
-                            description="Expanding geographic reach and continuity for 2026."
-                            delay={0.3}
-                        >
-                            <div style={{ marginTop: 'var(--space-md)' }}>
-                                <div style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '1rem',
-                                    background: 'rgba(255,255,255,0.05)',
-                                    padding: '1rem',
-                                    borderRadius: '12px',
-                                    border: '1px solid rgba(255,255,255,0.1)'
-                                }}>
-                                    <div style={{
-                                        fontSize: '2.5rem',
-                                        fontWeight: '700',
-                                        color: 'var(--color-accent-primary)',
-                                        lineHeight: 1
-                                    }}>
-                                        7-10
-                                    </div>
-                                    <div style={{ fontSize: '0.9rem', color: 'var(--color-text-primary)' }}>
-                                        Additional Spaces<br />
-                                        <span style={{ opacity: 0.7 }}>To be supported</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </FeatureCard>
-
                     </div>
                 </div>
+
+                {/* Metrics Bento Grid */}
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(3, 1fr)',
+                    gap: 'var(--space-md)',
+                    flex: 1
+                }}>
+                    {metrics.map((m, idx) => (
+                        <motion.div
+                            key={m.label}
+                            variants={fadeInUp}
+                            className="glass"
+                            whileHover={{ y: -5, boxShadow: 'var(--shadow-lg)' }}
+                            style={{
+                                padding: 'var(--space-lg)',
+                                borderRadius: 'var(--radius-2xl)',
+                                background: 'var(--color-surface)',
+                                border: '1px solid var(--color-border-subtle)',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: 'var(--space-sm)',
+                                position: 'relative',
+                                overflow: 'hidden'
+                            }}
+                        >
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                                <div style={{ padding: '8px', background: `${m.color}15`, borderRadius: '10px', color: m.color }}>
+                                    <m.icon size={20} />
+                                </div>
+                                <div style={{
+                                    padding: '2px 8px',
+                                    borderRadius: '20px',
+                                    fontSize: '0.75rem',
+                                    fontWeight: 700,
+                                    background: m.impact.includes('+') ? 'rgba(0, 210, 170, 0.1)' : 'rgba(222, 99, 54, 0.1)',
+                                    color: m.impact.includes('+') ? 'var(--color-success)' : 'var(--brand-red)'
+                                }}>
+                                    {m.impact}
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 style={{ margin: 0, fontSize: '0.85rem', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                                    {m.label}
+                                </h4>
+                                <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
+                                    <span style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--color-text-primary)' }}>{m.v26}</span>
+                                    <span style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)', opacity: 0.8 }}>{m.unit}</span>
+                                </div>
+                            </div>
+
+                            <div style={{ marginTop: 'auto', fontSize: '0.75rem', display: 'flex', justifyContent: 'space-between', color: 'var(--color-text-tertiary)' }}>
+                                <span>2025: {m.v25} {m.unit}</span>
+                                <span style={{ fontWeight: 600 }}>scaling...</span>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* Legend/Status */}
+                <motion.div
+                    variants={fadeInUp}
+                    style={{
+                        marginTop: 'var(--space-md)',
+                        padding: '12px',
+                        background: 'var(--color-surface-elevated)',
+                        borderRadius: 'var(--radius-xl)',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        gap: 'var(--space-2xl)',
+                        fontSize: '0.8rem',
+                        fontWeight: 600,
+                        border: '1px solid var(--color-border-subtle)',
+                        color: 'var(--color-text-primary)'
+                    }}
+                >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--brand-teal)' }} />
+                        Operational Continuity
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--brand-orange)' }} />
+                        Community Empowerment
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--brand-red)' }} />
+                        Cost Resilience
+                    </div>
+                </motion.div>
             </motion.div>
         </Slide>
     );
