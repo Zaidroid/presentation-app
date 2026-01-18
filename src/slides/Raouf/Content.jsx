@@ -1,9 +1,9 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Slide from '../../components/Slide';
 import { FeatureCard } from '../../components/Card';
 import { staggerContainer, fadeInUp } from '../../utils/animations';
-import { Megaphone, Palette, Search, Users, ExternalLink, Globe, Wifi, Clock, Zap, Briefcase, TrendingUp, ArrowDown } from 'lucide-react';
+import { Megaphone, Palette, Search, Users, ExternalLink, Globe, Wifi, Clock, Zap, Briefcase, TrendingUp, ArrowDown, Compass } from 'lucide-react';
 
 // Animation Variants
 const containerVariants = staggerContainer(0.15);
@@ -315,74 +315,50 @@ export function Marketing() {
 }
 
 export function WorkingSpaces() {
-    const [activeCategory, setActiveCategory] = React.useState(null);
-
-    const categories = [
+    const quadrants = [
         {
-            id: 'connectivity',
-            label: 'Network Strength',
+            title: 'Digital Core',
             icon: Wifi,
             color: 'var(--brand-teal)',
-            metrics: [
-                { label: 'Bandwidth Speed', v25: '125', v26: '162.5', unit: 'Mbps', growth: '+30%' },
-                { label: 'Individual Experience', v25: '4.5', v26: '7.5', unit: 'Mbps', growth: '+66.7%' }
+            stats: [
+                { label: 'Bandwidth', value: '162.5', unit: 'Mbps', impact: '+30%' },
+                { label: 'Latency Drop', value: '66.7%', unit: 'Exp.', impact: 'Optimized' }
             ]
         },
         {
-            id: 'availability',
-            label: 'Service Continuity',
+            title: 'Operational Continuity',
             icon: Clock,
             color: 'var(--brand-orange)',
-            metrics: [
-                { label: 'Operating Hours', v25: '10', v26: '12.2', unit: 'H/D', growth: '+22%' },
-                { label: 'Utilization Rate', v25: '50.4%', v26: '61.7%', unit: '', growth: '+11.3%' }
+            stats: [
+                { label: 'Operating Hours', value: '12.2', unit: 'H/D', impact: '+22.5%' },
+                { label: 'Utilization', value: '61.7', unit: '%', impact: '+11.3%' }
             ]
         },
         {
-            id: 'community',
-            label: 'Ecosystem Scale',
+            title: 'Community Scale',
             icon: Users,
             color: 'var(--brand-navy)',
-            metrics: [
-                { label: 'Space Capacity', v25: '45', v26: '54', unit: 'Seats', growth: '+19.5%' },
-                { label: 'Active Users', v25: '22', v26: '33', unit: 'Users', growth: '+52%' }
+            stats: [
+                { label: 'Daily Users', value: '33', unit: 'Active', impact: '+52%' },
+                { label: 'Capacity', value: '54', unit: 'Seats', impact: '+19.5%' }
             ]
         },
         {
-            id: 'resilience',
-            label: 'Cost Resilience',
-            icon: ArrowDown,
+            title: 'Cost Resilience',
+            icon: Zap,
             color: 'var(--brand-red)',
-            metrics: [
-                { label: 'Membership Cost', v25: '600', v26: '450', unit: 'ILS', growth: '-25%' }
+            stats: [
+                { label: 'Membership', value: '450', unit: 'ILS', impact: '-25% Drop' },
+                { label: 'Expansion', value: '7-10', unit: 'Hubs', impact: 'Feb 2026' }
             ]
         }
     ];
 
     return (
         <Slide>
-            {/* Immersive Background */}
-            <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', zIndex: 0 }}>
-                <div style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background: 'radial-gradient(circle at 50% 50%, rgba(48, 157, 196, 0.08) 0%, transparent 70%)',
-                }} />
-
-                {/* Animated Particles/Nodes Background */}
-                <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
-                    style={{
-                        position: 'absolute',
-                        top: '-50%',
-                        left: '-50%',
-                        width: '200%',
-                        height: '200%',
-                        opacity: 0.1,
-                        background: 'repeating-radial-gradient(circle at 50% 50%, white 0, white 1px, transparent 1px, transparent 100px)',
-                    }}
-                />
+            {/* Background Texture */}
+            <div style={{ position: 'absolute', inset: 0, opacity: 0.3, pointerEvents: 'none' }}>
+                <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 50%, rgba(48, 157, 196, 0.1) 0%, transparent 70%)' }} />
             </div>
 
             <motion.div
@@ -399,211 +375,120 @@ export function WorkingSpaces() {
                     zIndex: 1
                 }}
             >
-                {/* Central Focus Title */}
-                <div style={{ textAlign: 'center', marginBottom: 'var(--space-2xl)' }}>
-                    <motion.div variants={fadeInUp} className="badge" style={{ background: 'var(--brand-red)', color: 'white', marginBottom: 'var(--space-sm)' }}>
-                        RESILIENCE NETWORK 2026
+                {/* Clean Header */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--space-2xl)' }}>
+                    <motion.div variants={fadeInUp}>
+                        <h2 style={{ fontSize: 'clamp(3rem, 5vmin, 4.5rem)', fontWeight: 900, margin: 0, lineHeight: 1 }}>
+                            Gaza <span className="gradient-text">Coworking</span> Support
+                        </h2>
+                        <p style={{ fontSize: 'var(--font-size-lg)', color: 'var(--color-text-secondary)', marginTop: 'var(--space-xs)', fontWeight: 500 }}>
+                            Revitalizing the digital ecosystem through resilient infrastructure
+                        </p>
                     </motion.div>
-                    <motion.h2
-                        variants={fadeInUp}
-                        style={{ fontSize: 'clamp(3rem, 6vmin, 4.5rem)', fontWeight: 900, margin: 0 }}
-                    >
-                        Spatial <span className="gradient-text">Impact</span> View
-                    </motion.h2>
+
+                    <motion.div variants={fadeInUp} className="glass-strong" style={{ padding: 'var(--space-md) var(--space-lg)', borderRadius: 'var(--radius-xl)', borderLeft: '4px solid var(--brand-orange)' }}>
+                        <div style={{ fontSize: '0.8rem', fontWeight: 700, opacity: 0.6, letterSpacing: '1px', textTransform: 'uppercase' }}>Current Focus</div>
+                        <div style={{ fontSize: '1.5rem', fontWeight: 900 }}>Cohort 2 Expansion</div>
+                    </motion.div>
                 </div>
 
-                {/* Spatial Interface */}
+                {/* 4-Quadrant Visual Grid */}
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'minmax(350px, 1fr) 2fr',
-                    gap: 'var(--space-3xl)',
-                    flex: 1,
-                    alignItems: 'center'
+                    gridTemplateColumns: '1fr 1fr',
+                    gridTemplateRows: '1fr 1fr',
+                    gap: 'var(--space-xl)',
+                    flex: 1
                 }}>
-
-                    {/* Left: Category Orbiters */}
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
-                        {categories.map((cat, idx) => (
-                            <motion.div
-                                key={cat.id}
-                                variants={fadeInUp}
-                                whileHover={{ x: 10 }}
-                                onMouseEnter={() => setActiveCategory(cat)}
-                                style={{
-                                    padding: 'var(--space-lg)',
-                                    borderRadius: 'var(--radius-2xl)',
-                                    background: activeCategory?.id === cat.id ? 'var(--color-surface-elevated)' : 'rgba(255,255,255,0.03)',
-                                    border: `1px solid ${activeCategory?.id === cat.id ? cat.color : 'rgba(255,255,255,0.05)'}`,
-                                    cursor: 'pointer',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: 'var(--space-lg)',
-                                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                                    boxShadow: activeCategory?.id === cat.id ? `0 10px 30px ${cat.color}15` : 'none'
-                                }}
-                            >
+                    {quadrants.map((q, idx) => (
+                        <motion.div
+                            key={q.title}
+                            variants={fadeInUp}
+                            className="glass"
+                            style={{
+                                padding: 'var(--space-xl)',
+                                borderRadius: 'var(--radius-3xl)',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                background: 'rgba(255,255,255,0.02)',
+                                border: '1px solid rgba(255,255,255,0.05)',
+                                position: 'relative',
+                                overflow: 'hidden'
+                            }}
+                        >
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)', marginBottom: 'var(--space-lg)' }}>
                                 <div style={{
-                                    width: '48px',
-                                    height: '48px',
-                                    borderRadius: '14px',
-                                    background: `${cat.color}15`,
+                                    width: '40px',
+                                    height: '40px',
+                                    borderRadius: '12px',
+                                    background: `${q.color}15`,
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
-                                    color: cat.color,
-                                    boxShadow: activeCategory?.id === cat.id ? `0 0 20px ${cat.color}30` : 'none'
+                                    color: q.color
                                 }}>
-                                    <cat.icon size={24} />
+                                    <q.icon size={22} />
                                 </div>
-                                <div>
-                                    <div style={{ fontSize: '1.2rem', fontWeight: 800, color: activeCategory?.id === cat.id ? 'var(--color-text-primary)' : 'var(--color-text-tertiary)' }}>
-                                        {cat.label}
-                                    </div>
-                                    <div style={{ fontSize: '0.8rem', opacity: 0.6, letterSpacing: '0.5px' }}>
-                                        {cat.metrics.length} Critical Indicators
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
+                                <h3 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 800 }}>{q.title}</h3>
+                            </div>
 
-                        {/* Expansion Insight */}
-                        <motion.div
-                            variants={fadeInUp}
-                            className="glass-strong"
-                            style={{
-                                marginTop: 'var(--space-xl)',
-                                padding: 'var(--space-lg)',
-                                borderRadius: 'var(--radius-xl)',
-                                borderLeft: '4px solid var(--brand-orange)'
-                            }}
-                        >
-                            <div style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--brand-orange)' }}>Expansion Focus</div>
-                            <div style={{ fontSize: '1.4rem', fontWeight: 900 }}>7-10 New Hubs</div>
-                            <div style={{ fontSize: '0.75rem', opacity: 0.7 }}>Targeting Feb 2026 Resilience Expansion</div>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-xl)', flex: 1, alignItems: 'center' }}>
+                                {q.stats.map(s => (
+                                    <div key={s.label}>
+                                        <div style={{ fontSize: '0.8rem', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' }}>
+                                            {s.label}
+                                        </div>
+                                        <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
+                                            <span style={{ fontSize: '2.2rem', fontWeight: 900 }}>{s.value}</span>
+                                            <span style={{ fontSize: '0.8rem', opacity: 0.5 }}>{s.unit}</span>
+                                        </div>
+                                        <div style={{
+                                            fontSize: '0.9rem',
+                                            fontWeight: 700,
+                                            color: s.impact.includes('-') || s.impact.includes('Drop') ? 'var(--brand-red)' : 'var(--color-success)',
+                                            marginTop: '4px'
+                                        }}>
+                                            {s.impact}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Decorative Corner Icon */}
+                            <q.icon size={100} style={{ position: 'absolute', bottom: '-20px', right: '-20px', opacity: 0.03, transform: 'rotate(-15deg)' }} />
                         </motion.div>
-                    </div>
-
-                    {/* Right: Immersive Metric Display */}
-                    <div className="glass-strong" style={{
-                        height: '100%',
-                        borderRadius: 'var(--radius-3xl)',
-                        padding: 'var(--space-3xl)',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        background: 'rgba(255,255,255,0.02)',
-                        border: '1px solid rgba(255,255,255,0.05)',
-                        position: 'relative',
-                        overflow: 'hidden'
-                    }}>
-                        <AnimatePresence mode="wait">
-                            {activeCategory ? (
-                                <motion.div
-                                    key={activeCategory.id}
-                                    initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                                    exit={{ opacity: 0, scale: 1.05, y: -20 }}
-                                    transition={{ duration: 0.5, ease: "circOut" }}
-                                    style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-                                >
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)', marginBottom: 'var(--space-2xl)' }}>
-                                        <div style={{ color: activeCategory.color }}><activeCategory.icon size={32} /></div>
-                                        <h3 style={{ margin: 0, fontSize: '2rem', fontWeight: 900 }}>{activeCategory.label}</h3>
-                                    </div>
-
-                                    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xl)', flex: 1, justifyContent: 'center' }}>
-                                        {activeCategory.metrics.map((m, i) => (
-                                            <div key={m.label} style={{ position: 'relative' }}>
-                                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '10px' }}>
-                                                    <div>
-                                                        <div style={{ fontSize: '0.9rem', color: 'var(--color-text-tertiary)', marginBottom: '4px' }}>{m.label}</div>
-                                                        <div style={{ fontSize: '2.5rem', fontWeight: 900, lineHeight: 1 }}>{m.v26} <span style={{ fontSize: '1rem', opacity: 0.5 }}>{m.unit}</span></div>
-                                                    </div>
-                                                    <div style={{ textAlign: 'right' }}>
-                                                        <div style={{
-                                                            fontSize: '1.2rem',
-                                                            fontWeight: 800,
-                                                            color: m.growth.includes('-') ? 'var(--brand-red)' : 'var(--color-success)',
-                                                            display: 'flex',
-                                                            alignItems: 'center',
-                                                            gap: '4px',
-                                                            justifyContent: 'flex-end'
-                                                        }}>
-                                                            {m.growth.includes('+') && <TrendingUp size={20} />}
-                                                            {m.growth}
-                                                        </div>
-                                                        <div style={{ fontSize: '0.8rem', opacity: 0.4 }}>vs {m.v25} base</div>
-                                                    </div>
-                                                </div>
-
-                                                {/* Animated Progress Bar Container */}
-                                                <div style={{
-                                                    height: '14px',
-                                                    background: 'rgba(255,255,255,0.05)',
-                                                    borderRadius: '7px',
-                                                    position: 'relative',
-                                                    overflow: 'hidden'
-                                                }}>
-                                                    {/* Baseline marker */}
-                                                    <div style={{
-                                                        position: 'absolute',
-                                                        left: '60%',
-                                                        top: 0,
-                                                        bottom: 0,
-                                                        width: '2px',
-                                                        background: 'rgba(255,255,255,0.2)',
-                                                        zIndex: 2
-                                                    }} />
-
-                                                    {/* Active Growth Bar */}
-                                                    <motion.div
-                                                        initial={{ width: 0 }}
-                                                        animate={{ width: '85%' }}
-                                                        transition={{ duration: 1.5, delay: 0.2 + (i * 0.2), ease: "circOut" }}
-                                                        style={{
-                                                            height: '100%',
-                                                            background: i === 0 ? `linear-gradient(90deg, ${activeCategory.color}22, ${activeCategory.color})` : 'var(--color-accent-primary)',
-                                                            borderRadius: '7px',
-                                                            boxShadow: `0 0 20px ${activeCategory.color}44`
-                                                        }}
-                                                    />
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    <div style={{ marginTop: 'auto', paddingTop: 'var(--space-xl)', borderTop: '1px solid rgba(255,255,255,0.05)', display: 'flex', gap: 'var(--space-xl)' }}>
-                                        <div style={{ flex: 1, padding: '12px', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', textAlign: 'center' }}>
-                                            <div style={{ fontSize: '0.7rem', opacity: 0.5 }}>RESILIENCE INDEX</div>
-                                            <div style={{ fontSize: '1.1rem', fontWeight: 800, color: activeCategory.color }}>OPTIMIZED</div>
-                                        </div>
-                                        <div style={{ flex: 1, padding: '12px', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', textAlign: 'center' }}>
-                                            <div style={{ fontSize: '0.7rem', opacity: 0.5 }}>STATUS</div>
-                                            <div style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--color-success)' }}>ACTIVE</div>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            ) : (
-                                <motion.div
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}
-                                >
-                                    <div style={{ width: '120px', height: '120px', borderRadius: '50%', background: 'var(--brand-teal)11', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 'var(--space-xl)' }}>
-                                        <Compass size={60} className="glow" style={{ color: 'var(--brand-teal)' }} />
-                                    </div>
-                                    <h3 style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--color-text-secondary)', marginBottom: '8px' }}>Select a Dimension</h3>
-                                    <p style={{ opacity: 0.6, maxWidth: '300px' }}>Explore the detailed resilience metrics of the Gaza Coworking Network.</p>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-
-                        {/* Background HUD elements */}
-                        <div style={{ position: 'absolute', bottom: '-5%', right: '-5%', width: '300px', height: '300px', border: '1px solid rgba(255,255,255,0.03)', borderRadius: '50%', pointerEvents: 'none' }} />
-                        <div style={{ position: 'absolute', top: '10%', right: '5%', opacity: 0.05, pointerEvents: 'none' }}>
-                            <Zap size={200} />
-                        </div>
-                    </div>
+                    ))}
                 </div>
+
+                {/* Bottom Impact Summary */}
+                <motion.div
+                    variants={fadeInUp}
+                    style={{
+                        marginTop: 'var(--space-xl)',
+                        padding: 'var(--space-lg)',
+                        background: 'rgba(255,255,255,0.03)',
+                        borderRadius: 'var(--radius-xl)',
+                        display: 'flex',
+                        justifyContent: 'space-around',
+                        alignItems: 'center',
+                        border: '1px solid rgba(255,255,255,0.05)'
+                    }}
+                >
+                    <div style={{ textAlign: 'center' }}>
+                        <div style={{ fontSize: '0.7rem', opacity: 0.5, textTransform: 'uppercase' }}>Network Resilience</div>
+                        <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--brand-teal)' }}>Operational</div>
+                    </div>
+                    <div style={{ width: '1px', height: '30px', background: 'rgba(255,255,255,0.1)' }} />
+                    <div style={{ textAlign: 'center' }}>
+                        <div style={{ fontSize: '0.7rem', opacity: 0.5, textTransform: 'uppercase' }}>Efficiency Growth</div>
+                        <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--color-success)' }}>+11.3%</div>
+                    </div>
+                    <div style={{ width: '1px', height: '30px', background: 'rgba(255,255,255,0.1)' }} />
+                    <div style={{ textAlign: 'center' }}>
+                        <div style={{ fontSize: '0.7rem', opacity: 0.5, textTransform: 'uppercase' }}>Target Timeline</div>
+                        <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--brand-orange)' }}>Feb 2026</div>
+                    </div>
+                </motion.div>
             </motion.div>
         </Slide>
     );
