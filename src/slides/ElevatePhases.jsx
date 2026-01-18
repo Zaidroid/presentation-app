@@ -16,11 +16,12 @@ export default function ElevatePhases() {
     }, []);
 
     const phases = [
-        { icon: FileText, title: "Application", subtitle: "Submit & Screen" },
-        { icon: Users, title: "Selection", subtitle: "Vetting Process" },
-        { icon: PenTool, title: "Agreement", subtitle: "Sign Contracts" },
-        { icon: Rocket, title: "Kick Off", subtitle: "Program Start" },
-        { icon: CheckCircle, title: "Closure", subtitle: "Program End" },
+        { icon: FileText, title: "Application", subtitle: "January", description: "Open Call" },
+        { icon: Users, title: "Filtration & Assessment", subtitle: "February", description: "Screening & Interviews" },
+        { icon: CheckCircle, title: "Shortlisting", subtitle: "March", description: "Final Candidates" },
+        { icon: Users, title: "Selection", subtitle: "April", description: "Company Matching" },
+        { icon: PenTool, title: "Agreement", subtitle: "May", description: "Contract Signing" },
+        { icon: Rocket, title: "Kick Off", subtitle: "June", description: "Program Start" }
     ];
 
     return (
@@ -110,8 +111,9 @@ export default function ElevatePhases() {
                                         animate={{ opacity: isActive ? 1 : 0.4, y: isActive ? 0 : 10 }}
                                         style={{ textAlign: 'center', marginTop: '1rem' }}
                                     >
-                                        <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.25rem' }}>{phase.title}</h3>
-                                        <p style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)' }}>{phase.subtitle}</p>
+                                        <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.25rem' }}>{phase.title}</h3>
+                                        <p style={{ fontSize: '1rem', color: 'var(--color-accent-secondary)', fontWeight: 'bold' }}>{phase.subtitle}</p>
+                                        <p style={{ fontSize: '0.8rem', color: 'var(--color-text-tertiary)' }}>{phase.description}</p>
                                     </motion.div>
                                 </div>
 

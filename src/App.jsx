@@ -5,6 +5,7 @@ import Layout from './components/Layout';
 import Intro from './slides/Intro';
 import Agenda from './slides/Agenda';
 import SectionIntro from './slides/SectionIntro';
+import SectionIntroModern from './slides/SectionIntroModern';
 import ComponentBrief from './slides/ComponentBrief'; // Generic Brief
 import ElevateOverview from './slides/ElevateOverview'; // New Overview
 import ClosingCTA from './slides/ClosingCTA';
@@ -19,24 +20,30 @@ import Networking from './slides/Networking';
 import ElevatePhases from './slides/ElevatePhases';
 import InternTestimonials from './slides/InternTestimonials';
 import CompanyNiches from './slides/CompanyNiches';
+import CARM from './slides/CARM'; // New CARM Slide
+import GeographicalDistribution from './slides/GeographicalDistribution'; // New Geo Slide
+import IntroTestimonials from './slides/IntroTestimonials'; // New Intro Slide
 
 import { Individuals1, Individuals2, Individuals3, Individuals4, Individuals5 } from './slides/Hazem/Content';
 import { CapacityBuilding, Marketing, WorkingSpaces, SuccessStories } from './slides/Raouf/Content';
 import { MarketAccessProgressive } from './slides/Zaid/MarketAccessProgressive';
+import { ElevateBridge } from './slides/Zaid/ElevateBridge';
 import { MarketAccessImpact } from './slides/Zaid/Content';
 
+import alanPhoto from './assets/speakers/Alan.jpeg';
 import randPhoto from './assets/speakers/Rand.JPG';
 import hazemPhoto from './assets/speakers/Hazem.JPG';
 import raoufPhoto from './assets/speakers/Raouf.JPG';
 import zaidPhoto from './assets/speakers/Zaid.JPG';
+import elevateLogo from './assets/elevate-logo-03.png';
 
 // Speaker Config
 const SPEAKERS = {
-  ALAN: { name: "Alan El-Kadhi", role: "Program Director", photo: null },
-  RAND: { name: "Rand Safi", role: "Program Senior Manager", photo: randPhoto },
-  HAZEM: { name: "Hazem", role: "Individuals Program Manager", photo: hazemPhoto },
-  RAOUF: { name: "Raouf", role: "Elevate Program Senior Officer", photo: raoufPhoto },
-  ZAID: { name: "Zaid", role: "Market Access Officer", photo: zaidPhoto },
+  ALAN: { name: "Alan El Kadhi", role: "GSG Program Director", photo: alanPhoto },
+  RAND: { name: "Rand Safi", role: "GSG West Bank Senior Manager", photo: randPhoto },
+  HAZEM: { name: "Hazem Kiwan", role: "GSG Program Manager", photo: hazemPhoto },
+  RAOUF: { name: "Raouf Said", role: "Companies Program Senior Officer", photo: raoufPhoto },
+  ZAID: { name: "Zaid Salem", role: "Market Access Officer", photo: zaidPhoto },
 };
 
 function App() {
@@ -55,8 +62,8 @@ function App() {
     // 2. Alan Intro
     {
       component: <SpeakerIntro
-        name="Alan El-Kadhi"
-        role="Program Director"
+        name={SPEAKERS.ALAN.name}
+        role={SPEAKERS.ALAN.role}
         bio="Leading the strategic vision and expansion of Gaza Sky Geeks."
         photoUrl={SPEAKERS.ALAN.photo}
       />,
@@ -66,8 +73,8 @@ function App() {
     // 3. Rand Intro
     {
       component: <SpeakerIntro
-        name="Rand Safi"
-        role="Program Senior Manager"
+        name={SPEAKERS.RAND.name}
+        role={SPEAKERS.RAND.role}
         bio="Driving operational excellence and program impact across all regions."
         photoUrl={SPEAKERS.RAND.photo}
       />,
@@ -80,9 +87,12 @@ function App() {
     // NEW: Ice Breaker
     { component: <IceBreaker />, speaker: SPEAKERS.RAND },
 
+    // NEW: CARM Slide (After Rand's Ice Breaker)
+    { component: <CARM />, speaker: SPEAKERS.RAND },
+
     // Part I: Hazem (Individuals)
     {
-      component: <SectionIntro title="Individuals Program" subtitle="Talent & Freelancing" presenter="Hazem" presenterPhoto={SPEAKERS.HAZEM.photo} part="Part I" />,
+      component: <SectionIntroModern title="Individuals Program" subtitle="Talent & Freelancing" presenter={SPEAKERS.HAZEM.name} role={SPEAKERS.HAZEM.role} presenterPhoto={SPEAKERS.HAZEM.photo} part="Part I" />,
       speaker: SPEAKERS.HAZEM
     },
     { component: <Individuals1 />, speaker: SPEAKERS.HAZEM },
@@ -91,9 +101,19 @@ function App() {
     { component: <Individuals4 />, speaker: SPEAKERS.HAZEM },
     { component: <Individuals5 />, speaker: SPEAKERS.HAZEM },
 
+
+
     // Part II: Raouf (Capacity Building & Marketing)
     {
-      component: <SectionIntro title="Elevate Program" subtitle="Capacity Building & Marketing" presenter="Raouf" presenterPhoto={SPEAKERS.RAOUF.photo} part="Part II" />,
+      component: <SectionIntroModern
+        title="Elevate Program"
+        subtitle=""
+        topImage={elevateLogo}
+        presenter={SPEAKERS.RAOUF.name}
+        role={SPEAKERS.RAOUF.role}
+        presenterPhoto={SPEAKERS.RAOUF.photo}
+        part="Part II"
+      />,
       speaker: SPEAKERS.RAOUF
     },
     // NEW: Elevate Overview
@@ -101,6 +121,9 @@ function App() {
 
     // NEW: Company Niches
     { component: <CompanyNiches />, speaker: SPEAKERS.RAOUF },
+
+    // NEW: Geographical Distribution
+    { component: <GeographicalDistribution />, speaker: SPEAKERS.RAOUF },
 
 
 
@@ -145,7 +168,7 @@ function App() {
 
     // Part III: Zaid (Market Access)
     {
-      component: <SectionIntro title="Market Access" subtitle="Global Connections" presenter="Zaid" presenterPhoto={SPEAKERS.ZAID.photo} part="Part III" />,
+      component: <SectionIntroModern title="Market Access" subtitle="Global Connections" topImage={elevateLogo} presenter={SPEAKERS.ZAID.name} role={SPEAKERS.ZAID.role} presenterPhoto={SPEAKERS.ZAID.photo} part="Part III" />,
       speaker: SPEAKERS.ZAID
     },
 
@@ -160,7 +183,15 @@ function App() {
     },
     // Progressive Market Access reveal
     { component: <MarketAccessProgressive step={marketAccessStep} />, speaker: SPEAKERS.ZAID, isProgressive: true },
+    // ElevateBridge Full Slide (morphs from widget)
+    { component: <ElevateBridge />, speaker: SPEAKERS.ZAID },
     { component: <MarketAccessImpact />, speaker: SPEAKERS.ZAID },
+
+    // Eligibility (Moved before Q&A)
+    { component: <Eligibility />, speaker: null },
+
+    // Elevate Process (Moved before Q&A)
+    { component: <ElevatePhases />, speaker: null },
 
     // NEW: Q&A Session
     { component: <QASession />, speaker: SPEAKERS.ZAID },
@@ -168,18 +199,18 @@ function App() {
     // Gaza Video
     { component: <GazaVideoPlaceholder />, speaker: null },
 
+    // Intro to Testimonials
+    { component: <IntroTestimonials />, speaker: null },
+
     // Testimonials
     { component: <TestimonialPlaceholder companyName="Company 1" speakerName="Speaker 1" />, speaker: null },
     { component: <TestimonialPlaceholder companyName="Company 2" speakerName="Speaker 2" />, speaker: null },
     { component: <TestimonialPlaceholder companyName="Company 3" speakerName="Speaker 3" />, speaker: null },
     { component: <TestimonialPlaceholder companyName="Company 4" speakerName="Speaker 4" />, speaker: null },
     { component: <TestimonialPlaceholder companyName="Company 5" speakerName="Speaker 5" />, speaker: null },
+    { component: <TestimonialPlaceholder companyName="Company 6" speakerName="Speaker 6" />, speaker: null },
+    { component: <TestimonialPlaceholder companyName="Company 7" speakerName="Speaker 7" />, speaker: null },
 
-    // Eligibility
-    { component: <Eligibility />, speaker: null },
-
-    // Elevate Process
-    { component: <ElevatePhases />, speaker: null },
 
     // Closing CTA
     { component: <ClosingCTA />, speaker: null },
@@ -193,7 +224,7 @@ function App() {
   // Navigation Logic with Progressive Step Support
   const nextSlide = () => {
     // Check if current slide is progressive and has more steps
-    if (currentSlide.isProgressive && marketAccessStep < 2) {
+    if (currentSlide.isProgressive && marketAccessStep < 1) {
       setMarketAccessStep(prev => prev + 1);
     } else if (currentIndex < slides.length - 1) {
       setDirection(1);
@@ -214,8 +245,8 @@ function App() {
       setCurrentIndex(prev => prev - 1);
       // Set to last step when entering progressive slide from next
       const prevSlideIndex = currentIndex - 1;
-      if (slides[prevSlideIndex].isProgressive) {
-        setMarketAccessStep(2);
+      if (slides[prevSlideIndex]?.isProgressive) {
+        setMarketAccessStep(1);
       }
     }
   };
@@ -256,10 +287,10 @@ function App() {
           {[
             { id: 'ALAN', label: 'Alan', photo: SPEAKERS.ALAN.photo, targetIndex: 2, isActive: (s) => s?.name.includes('Alan') },
             { id: 'RAND', label: 'Rand', photo: SPEAKERS.RAND.photo, targetIndex: 3, isActive: (s) => s?.name.includes('Rand') },
-            { id: 'HAZEM', label: 'Hazem', photo: SPEAKERS.HAZEM.photo, targetIndex: 6, isActive: (s) => s?.name.includes('Hazem') },
-            { id: 'RAOUF', label: 'Raouf', photo: SPEAKERS.RAOUF.photo, targetIndex: 12, isActive: (s) => s?.name.includes('Raouf') },
-            { id: 'ZAID', label: 'Zaid', photo: SPEAKERS.ZAID.photo, targetIndex: 21, isActive: (s) => s?.name.includes('Zaid') },
-            { id: 'APPLY', label: 'Apply', isAction: true, targetIndex: 33, isActive: () => currentIndex === 33 },
+            { id: 'HAZEM', label: 'Hazem', photo: SPEAKERS.HAZEM.photo, targetIndex: 7, isActive: (s) => s?.name.includes('Hazem') },
+            { id: 'RAOUF', label: 'Raouf', photo: SPEAKERS.RAOUF.photo, targetIndex: 13, isActive: (s) => s?.name.includes('Raouf') },
+            { id: 'ZAID', label: 'Zaid', photo: SPEAKERS.ZAID.photo, targetIndex: 24, isActive: (s) => s?.name.includes('Zaid') },
+            { id: 'APPLY', label: 'Apply', isAction: true, targetIndex: 38, isActive: () => currentIndex === 38 },
           ].map(item => {
             const isActive = item.isActive(currentSlide.speaker);
             return (

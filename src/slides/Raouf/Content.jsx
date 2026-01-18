@@ -16,13 +16,11 @@ export function CapacityBuilding() {
                 variants={containerVariants}
                 style={{ width: '100%', height: '100%' }}
             >
-                <motion.div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 'var(--space-2xl)' }}>
-                    <motion.h2 variants={fadeInUp}>
-                        Capacity Building
+                <motion.div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: 'var(--space-2xl)', flexDirection: 'column' }}>
+                    {/* Elevate Logo Concept */}
+                    <motion.h2 variants={fadeInUp} style={{ fontSize: '4rem', fontWeight: '900', letterSpacing: '-2px', lineHeight: 1 }}>
+                        Elevate <span className="gradient-text">2025</span>
                     </motion.h2>
-                    <motion.div variants={fadeInUp} style={{ fontSize: 'var(--font-size-lg)', color: 'var(--color-text-secondary)', background: 'rgba(255,255,255,0.1)', padding: '4px 12px', borderRadius: '20px' }}>
-                        Elevate 2.0
-                    </motion.div>
                 </motion.div>
 
                 <div className="grid-3">
@@ -89,13 +87,28 @@ export function CapacityBuilding() {
                                 fontSize: 'var(--font-size-sm)',
                             }}
                         >
-                            <strong>1 Former Employee</strong> successfully rehired
-                            <div style={{ marginTop: 'var(--space-sm)', fontSize: 'var(--font-size-xs)', color: 'var(--color-text-secondary)' }}>
+                            <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-secondary)' }}>
                                 Helping retain former talents at Gaza companies
                             </div>
                         </div>
                     </FeatureCard>
                 </div>
+
+                {/* NEW: Stats Section */}
+                <motion.div variants={fadeInUp} style={{ marginTop: 'var(--space-xl)', display: 'flex', justifyContent: 'space-around', background: 'rgba(255,255,255,0.05)', padding: 'var(--space-lg)', borderRadius: 'var(--radius-lg)' }}>
+                    <div style={{ textAlign: 'center' }}>
+                        <div className="gradient-text" style={{ fontSize: '2.5rem', fontWeight: 800 }}>10</div>
+                        <div style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', textTransform: 'uppercase' }}>Companies Reached</div>
+                    </div>
+                    <div style={{ textAlign: 'center' }}>
+                        <div className="gradient-text" style={{ fontSize: '2.5rem', fontWeight: 800 }}>188</div>
+                        <div style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', textTransform: 'uppercase' }}>Applicants</div>
+                    </div>
+                    <div style={{ textAlign: 'center' }}>
+                        <div className="gradient-text" style={{ fontSize: '2.5rem', fontWeight: 800 }}>90+</div>
+                        <div style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', textTransform: 'uppercase' }}>Interviewed</div>
+                    </div>
+                </motion.div>
             </motion.div>
         </Slide>
     );
@@ -110,82 +123,69 @@ export function Marketing() {
                 variants={containerVariants}
                 style={{ width: '100%', height: '100%' }}
             >
-                <motion.h2 variants={fadeInUp} style={{ marginBottom: 'var(--space-2xl)' }}>
-                    Marketing & Branding
-                </motion.h2>
+                <motion.div variants={fadeInUp} style={{ marginBottom: 'var(--space-xl)' }}>
+                    <h2 style={{ marginBottom: 'var(--space-sm)' }}>Marketing & Branding</h2>
+                    <p style={{ fontSize: 'var(--font-size-lg)', color: 'var(--color-text-secondary)', maxWidth: '800px' }}>
+                        Improve the visibility and visual identity of companies
+                    </p>
+                </motion.div>
 
                 <div className="grid-2">
                     <FeatureCard
-                        title="Strategic Partnership"
+                        title="Sub-Interventions"
                         delay={0.1}
                     >
                         <div style={{ marginTop: 'var(--space-md)', fontSize: 'var(--font-size-sm)' }}>
-                            <div style={{ marginBottom: 'var(--space-md)' }}>
-                                <strong className="gradient-text" style={{ fontSize: 'var(--font-size-2xl)' }}>9 Companies</strong>
-                                <div style={{ color: 'var(--color-text-tertiary)', fontSize: 'var(--font-size-xs)' }}>
-                                    Supported in West Bank (6) & Gaza (3)
-                                </div>
-                            </div>
-                            <ul style={{ fontSize: 'var(--font-size-xs)', marginTop: 'var(--space-sm)' }}>
-                                <li>Brand & Marketing Strategy</li>
-                                <li>SEO, Social Media & Content Creation</li>
-                                <li>Campaign Management & Sponsorships</li>
+                            <ul style={{ fontSize: 'var(--font-size-sm)', marginTop: 'var(--space-sm)', display: 'flex', flexDirection: 'column', gap: 'var(--space-xs)' }}>
+                                <li><strong>Contracting Marketing Agency</strong></li>
+                                <li><strong>Placing Marketing Resources (TTH)</strong></li>
                             </ul>
                         </div>
                     </FeatureCard>
 
                     <FeatureCard
-                        title="Direct Support"
+                        title="Scope of Work"
                         delay={0.2}
                     >
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
-                            <div>
-                                <strong
-                                    style={{
-                                        display: 'block',
-                                        fontSize: 'var(--font-size-lg)',
-                                        marginBottom: 'var(--space-sm)',
-                                        color: 'var(--color-accent-secondary)',
-                                    }}
-                                >
-                                    Hiring Marketing Agencies
-                                </strong>
-                                <p style={{ margin: 0 }}>
-                                    Strengthening brand positioning, digital presence, SEO, and go-to-market readiness.
-                                </p>
-                            </div>
-
-                            <div>
-                                <strong
-                                    style={{
-                                        display: 'block',
-                                        fontSize: 'var(--font-size-lg)',
-                                        marginBottom: 'var(--space-sm)',
-                                        color: 'var(--color-accent-secondary)',
-                                    }}
-                                >
-                                    Hiring Marketing Resources (TTH)
-                                </strong>
-                                <p style={{ margin: 0 }}>
-                                    Stipends for dedicated marketing staff within companies.
-                                </p>
-                            </div>
-
-                            <div
-                                className="divider"
-                                style={{
-                                    margin: 'var(--space-sm) 0',
-                                }}
-                            />
-
-                            <div style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-tertiary)' }}>
-                                <strong>Beneficiaries:</strong> AccessLine, Edubook, Hexa, Pillars, Yummy
-                            </div>
+                        <div style={{ marginTop: 'var(--space-md)', fontSize: 'var(--font-size-sm)' }}>
+                            <ul style={{ fontSize: 'var(--font-size-sm)', display: 'flex', flexDirection: 'column', gap: 'var(--space-xs)' }}>
+                                <li>Brand Strategy & Positioning</li>
+                                <li>Marketing strategy</li>
+                                <li>Social Media Content & Creative Production</li>
+                                <li>SEO & Digital Visibility</li>
+                                <li>Coaching and Training of marketing resources</li>
+                                <li>Campaigns management</li>
+                                <li>Campaign sponsorship support</li>
+                            </ul>
                         </div>
                     </FeatureCard>
                 </div>
+
+                {/* Results Section */}
+                <motion.div variants={fadeInUp} style={{ marginTop: 'var(--space-2xl)' }}>
+                    <div style={{
+                        padding: 'var(--space-xl)',
+                        background: 'var(--color-surface)',
+                        backdropFilter: 'blur(var(--glass-blur))',
+                        WebkitBackdropFilter: 'blur(var(--glass-blur))',
+                        borderRadius: 'var(--radius-2xl)',
+                        border: '1px solid var(--color-border-subtle)',
+                        boxShadow: 'var(--shadow-lg)',
+                        textAlign: 'center'
+                    }}>
+                        <div style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: 'var(--space-sm)' }}>
+                            Results
+                        </div>
+                        <div style={{ fontSize: 'var(--font-size-4xl)', fontWeight: 'var(--font-weight-extrabold)', marginBottom: 'var(--space-xs)' }} className="gradient-text">
+                            9 Companies
+                        </div>
+                        <div style={{ fontSize: 'var(--font-size-lg)', color: 'var(--color-text-secondary)' }}>
+                            Supported (3 Gaza, 6 West Bank)
+                        </div>
+                    </div>
+                </motion.div>
             </motion.div>
-        </Slide>
+        </Slide >
     );
 }
 

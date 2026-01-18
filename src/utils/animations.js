@@ -135,6 +135,17 @@ export const slideTransitions = {
 
 // ===== Component Animation Variants =====
 
+// Component Animation Variants
+
+// Simple Fade In
+export const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { duration: 0.5, ease: easings.smooth },
+    },
+};
+
 // Fade in from bottom
 export const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
