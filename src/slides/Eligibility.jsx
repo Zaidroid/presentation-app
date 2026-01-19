@@ -97,38 +97,38 @@ export default function Eligibility() {
     const criteria = [
         {
             icon: Handshake,
-            title: "Legal & Banking",
-            desc: "Officially registered company with a corporate bank account in the company's name.",
+            title: "Official Registration",
+            desc: "The company must be officially registered and have an official bank account in the company's name.",
             delay: 0
         },
         {
             icon: Building2,
             title: "Market Presence",
-            desc: "Established and operating company with at least one active client.",
+            desc: "The company must be an established and operating company with at least one active client.",
             delay: 0.1
         },
         {
             icon: Heart,
-            title: "IT Social Impact",
-            desc: "Objectives supporting job creation for Palestinian women and youth in the IT sector.",
+            title: "Social Impact",
+            desc: "The company's orientation and objectives must support the creation of job opportunities for Palestinian women and youth in the IT sector.",
             delay: 0.2
         },
         {
             icon: MapPin,
             title: "Verified Premises",
-            desc: "Maintenance of an official address and registered premises in Palestine.",
+            desc: "The company must have an official address and registered premises in Palestine.",
             delay: 0.3
         },
         {
             icon: Monitor,
             title: "Digital Sector",
-            desc: "Operating specifically within digital services and software development fields.",
+            desc: "The registered company must operate in various digital services and software fields.",
             delay: 0.4
         },
         {
             icon: FileCheck,
-            title: "Full Application",
-            desc: "Completion and submission of the formal program application.",
+            title: "Program Application",
+            desc: "Full completion of the program application is required.",
             delay: 0.5
         }
     ];
