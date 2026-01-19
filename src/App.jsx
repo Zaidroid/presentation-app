@@ -30,7 +30,7 @@ import { CapacityBuilding, Marketing, WorkingSpaces } from './slides/Raouf/Conte
 import { MarketAccessProgressive } from './slides/Zaid/MarketAccessProgressive';
 import { ElevateBridge } from './slides/Zaid/ElevateBridge';
 import { MarketAccessImpact } from './slides/Zaid/Content';
-import { GazaResilience, Post2023Impact } from './slides/Alan/Content';
+import { AnqaaSlide } from './slides/Alan/Content';
 
 import alanPhoto from './assets/speakers/alan-new.jpg';
 import randPhoto from './assets/speakers/Rand.JPG';
@@ -78,11 +78,8 @@ function App() {
       speaker: SPEAKERS.ALAN
     },
 
-    // 3. Alan - Gaza Resilience (Emotional Slide)
-    { component: <GazaResilience />, speaker: SPEAKERS.ALAN },
-
-    // 4. Alan - Post-2023 Impact (Data Slide)
-    { component: <Post2023Impact />, speaker: SPEAKERS.ALAN },
+    // 3. Alan - Anqaa - collaborate & revive
+    { component: <AnqaaSlide />, speaker: SPEAKERS.ALAN },
 
     // 5. Rand Intro
     {
@@ -310,13 +307,13 @@ function App() {
         }}>
           {[
             { id: 'ALAN', label: 'Alan', photo: SPEAKERS.ALAN.photo, targetIndex: 2, isActive: (s) => s?.name?.includes('Alan') },
-            { id: 'RAND', label: 'Rand', photo: SPEAKERS.RAND.photo, targetIndex: 5, isActive: (s) => s?.name?.includes('Rand'), objectPosition: 'center 20%' },
-            { id: 'HAZEM', label: 'Hazem', photo: SPEAKERS.HAZEM.photo, targetIndex: 9, isActive: (s) => s?.name?.includes('Hazem'), objectPosition: 'center 20%' },
-            { id: 'RAOUF', label: 'Raouf', photo: SPEAKERS.RAOUF.photo, targetIndex: 15, isActive: (s) => s?.name?.includes('Raouf'), objectPosition: 'center 20%' },
-            { id: 'ZAID', label: 'Zaid', photo: SPEAKERS.ZAID.photo, targetIndex: 25, isActive: (s) => s?.name?.includes('Zaid') },
-            { id: 'PART4', label: 'Roadmap', shortLabel: 'IV', targetIndex: 30, isActive: () => currentIndex >= 30 && currentIndex <= 34 },
-            { id: 'TESTIMONIALS', label: 'Testimonials', shortLabel: '™', targetIndex: 35, isActive: () => currentIndex >= 35 && currentIndex <= 42 },
-            { id: 'APPLY', label: 'Apply', isAction: true, targetIndex: 43, isActive: () => currentIndex === 43 },
+            { id: 'RAND', label: 'Rand', photo: SPEAKERS.RAND.photo, targetIndex: 4, isActive: (s) => s?.name?.includes('Rand'), objectPosition: 'center 20%' },
+            { id: 'HAZEM', label: 'Hazem', photo: SPEAKERS.HAZEM.photo, targetIndex: 8, isActive: (s) => s?.name?.includes('Hazem'), objectPosition: 'center 20%' },
+            { id: 'RAOUF', label: 'Raouf', photo: SPEAKERS.RAOUF.photo, targetIndex: 14, isActive: (s) => s?.name?.includes('Raouf'), objectPosition: 'center 20%' },
+            { id: 'ZAID', label: 'Zaid', photo: SPEAKERS.ZAID.photo, targetIndex: 24, isActive: (s) => s?.name?.includes('Zaid') },
+            { id: 'PART4', label: 'Roadmap', shortLabel: 'IV', targetIndex: 29, isActive: () => currentIndex >= 29 && currentIndex <= 33 },
+            { id: 'TESTIMONIALS', label: 'Testimonials', shortLabel: '™', targetIndex: 34, isActive: () => currentIndex >= 34 && currentIndex <= 41 },
+            { id: 'APPLY', label: 'Apply', isAction: true, targetIndex: 42, isActive: () => currentIndex === 42 },
           ].map(item => {
             const isActive = item.isActive(currentSlide.speaker);
             return (
