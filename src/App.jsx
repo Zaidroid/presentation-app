@@ -176,7 +176,7 @@ function App() {
 
     // Part III: Zaid (Market Access)
     {
-      component: <SectionIntroModern title="Market Access" subtitle="Global Connections" topImage={elevateLogo} presenter={SPEAKERS.ZAID.name} role={SPEAKERS.ZAID.role} presenterPhoto={SPEAKERS.ZAID.photo} part="Part III" />,
+      component: <SectionIntroModern title="Market Access" subtitle="" topImage={elevateLogo} presenter={SPEAKERS.ZAID.name} role={SPEAKERS.ZAID.role} presenterPhoto={SPEAKERS.ZAID.photo} part="Part III" />,
       speaker: SPEAKERS.ZAID
     },
 
