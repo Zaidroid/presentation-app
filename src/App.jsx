@@ -25,7 +25,7 @@ import CARM from './slides/CARM'; // New CARM Slide
 import GeographicalDistribution from './slides/GeographicalDistribution'; // New Geo Slide
 import IntroTestimonials from './slides/IntroTestimonials'; // New Intro Slide
 
-import { Individuals1, Individuals2, Individuals3, Individuals4, Individuals5, Individuals6 } from './slides/Hazem/Content';
+import { Individuals1, Individuals2, Individuals3, Individuals4, IndividualsImpact } from './slides/Hazem/Content';
 import { CapacityBuilding, Marketing, WorkingSpaces } from './slides/Raouf/Content';
 import { MarketAccessProgressive } from './slides/Zaid/MarketAccessProgressive';
 import { ElevateBridge } from './slides/Zaid/ElevateBridge';
@@ -110,8 +110,7 @@ function App() {
     { component: <Individuals2 />, speaker: SPEAKERS.HAZEM },
     { component: <Individuals3 />, speaker: SPEAKERS.HAZEM },
     { component: <Individuals4 />, speaker: SPEAKERS.HAZEM },
-    { component: <Individuals5 />, speaker: SPEAKERS.HAZEM },
-    { component: <Individuals6 />, speaker: SPEAKERS.HAZEM },
+    { component: <IndividualsImpact />, speaker: SPEAKERS.HAZEM },
 
 
 
