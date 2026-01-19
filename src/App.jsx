@@ -103,7 +103,7 @@ function App() {
 
     // Part I: Hazem (Individuals)
     {
-      component: <SectionIntroModern title="Individuals Program" subtitle="Talent & Freelancing" presenter={SPEAKERS.HAZEM.name} role={SPEAKERS.HAZEM.role} presenterPhoto={SPEAKERS.HAZEM.photo} part="Part I" />,
+      component: <SectionIntroModern title="Individuals Program" subtitle="" presenter={SPEAKERS.HAZEM.name} role={SPEAKERS.HAZEM.role} presenterPhoto={SPEAKERS.HAZEM.photo} part="Part I" />,
       speaker: SPEAKERS.HAZEM
     },
     { component: <Individuals1 />, speaker: SPEAKERS.HAZEM },
