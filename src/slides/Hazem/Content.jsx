@@ -312,7 +312,7 @@ export function IndividualsImpact() {
         <Slide>
             <motion.div initial="hidden" animate="visible" variants={containerVariants} style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <motion.h2 variants={fadeInUp} style={{ marginBottom: 'var(--space-xl)', textAlign: 'center' }}>
-                    2025: <span className="gradient-text">Scale & Impact</span>
+                    2025: <span className="gradient-text">Outcomes & Impact</span>
                 </motion.h2>
 
                 {/* ROW 1: Unified Impact Panel */}
