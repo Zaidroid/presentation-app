@@ -309,10 +309,10 @@ function App() {
             { id: 'RAND', label: 'Rand', photo: SPEAKERS.RAND.photo, targetIndex: 4, isActive: (s) => s?.name?.includes('Rand'), objectPosition: 'center 20%' },
             { id: 'HAZEM', label: 'Hazem', photo: SPEAKERS.HAZEM.photo, targetIndex: 8, isActive: (s) => s?.name?.includes('Hazem'), objectPosition: 'center 20%' },
             { id: 'RAOUF', label: 'Raouf', photo: SPEAKERS.RAOUF.photo, targetIndex: 14, isActive: (s) => s?.name?.includes('Raouf'), objectPosition: 'center 20%' },
-            { id: 'ZAID', label: 'Zaid', photo: SPEAKERS.ZAID.photo, targetIndex: 24, isActive: (s) => s?.name?.includes('Zaid') },
-            { id: 'PART4', label: 'Roadmap', shortLabel: 'IV', targetIndex: 29, isActive: () => currentIndex >= 29 && currentIndex <= 33 },
-            { id: 'TESTIMONIALS', label: 'Testimonials', shortLabel: '™', targetIndex: 34, isActive: () => currentIndex >= 34 && currentIndex <= 41 },
-            { id: 'APPLY', label: 'Apply', isAction: true, targetIndex: 42, isActive: () => currentIndex === 42 },
+            { id: 'ZAID', label: 'Zaid', photo: SPEAKERS.ZAID.photo, targetIndex: 23, isActive: (s) => s?.name?.includes('Zaid') },
+            { id: 'PART4', label: 'Roadmap', shortLabel: 'IV', targetIndex: 28, isActive: () => currentIndex >= 28 && currentIndex <= 30 },
+            { id: 'TESTIMONIALS', label: 'Testimonials', shortLabel: '™', targetIndex: 33, isActive: () => currentIndex >= 33 && currentIndex <= 40 },
+            { id: 'APPLY', label: 'Apply', isAction: true, targetIndex: 41, isActive: () => currentIndex === 41 },
           ].map(item => {
             const isActive = item.isActive(currentSlide.speaker);
             return (
