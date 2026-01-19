@@ -25,7 +25,7 @@ import CARM from './slides/CARM'; // New CARM Slide
 import GeographicalDistribution from './slides/GeographicalDistribution'; // New Geo Slide
 import IntroTestimonials from './slides/IntroTestimonials'; // New Intro Slide
 
-import { Individuals1, Individuals2, Individuals3, Individuals4, Individuals5 } from './slides/Hazem/Content';
+import { Individuals1, Individuals2, Individuals3, Individuals4, Individuals5, Individuals6 } from './slides/Hazem/Content';
 import { CapacityBuilding, Marketing, WorkingSpaces } from './slides/Raouf/Content';
 import { MarketAccessProgressive } from './slides/Zaid/MarketAccessProgressive';
 import { ElevateBridge } from './slides/Zaid/ElevateBridge';
@@ -114,6 +114,7 @@ function App() {
     { component: <Individuals3 />, speaker: SPEAKERS.HAZEM },
     { component: <Individuals4 />, speaker: SPEAKERS.HAZEM },
     { component: <Individuals5 />, speaker: SPEAKERS.HAZEM },
+    { component: <Individuals6 />, speaker: SPEAKERS.HAZEM },
 
 
 
@@ -225,11 +226,11 @@ function App() {
     { component: <IntroTestimonials />, speaker: null },
 
     // Testimonials
+    { component: <TestimonialPlaceholder companyName="Radix" speakerName="Adel Jodalah" role="CEO" photo={radixPhoto} />, speaker: null },
     { component: <TestimonialPlaceholder companyName="Jaffa" speakerName="Dr. Yahya Alsalqan" role="CEO" photo={yahyaPhoto} />, speaker: null },
     { component: <TestimonialPlaceholder companyName="Scope Systems" speakerName="Adel Ewaida" role="Product Manager" photo={adelPhoto} photoPosition="center 15%" />, speaker: null },
     { component: <TestimonialPlaceholder companyName="Top Mena Talents" speakerName="Aref Hanaysheh" role="CEO" photo={arefPhoto} />, speaker: null },
-    { component: <TestimonialPlaceholder companyName="PITS" speakerName="Mohammed Abed Alraheem" role="CEO" />, speaker: null },
-    { component: <TestimonialPlaceholder companyName="Radix" speakerName="Adel Jodalah" role="CEO" photo={radixPhoto} />, speaker: null },
+    { component: <TestimonialPlaceholder companyName="PITS (المحترفون)" speakerName="Mohammed Abed Alraheem" role="CEO" />, speaker: null },
     { component: <TestimonialPlaceholder companyName="Dotline" speakerName="Odai Abu Baker" role="CEO" photo={dotlinePhoto} />, speaker: null },
     { component: <TestimonialPlaceholder companyName="Tech 360" speakerName="Imad Temeiza" role="Deputy CEO" photo={tech360Photo} />, speaker: null },
 

@@ -10,18 +10,18 @@ export default function ElevatePhases() {
     // Auto-advance the active step for the animation effect
     useEffect(() => {
         const interval = setInterval(() => {
-            setActiveStep((prev) => (prev + 1) % 6); // Cycle through 0 to 5 (5 is all done)
+            setActiveStep((prev) => (prev + 1) % 6); // Cycle through 0 to 5
         }, 1200);
         return () => clearInterval(interval);
     }, []);
 
     const phases = [
         { icon: FileText, title: "Application", subtitle: "January", description: "Open Call" },
-        { icon: Users, title: "Filtration & Assessment", subtitle: "February", description: "Screening & Interviews" },
-        { icon: CheckCircle, title: "Shortlisting", subtitle: "March", description: "Final Candidates" },
+        { icon: Users, title: "Filtration & Assessment", subtitle: "Feb - March", description: "Screening & Interviews" },
+        { icon: CheckCircle, title: "Shortlisting", subtitle: "Feb - March", description: "Final Candidates" },
         { icon: Users, title: "Selection", subtitle: "April", description: "Company Matching" },
-        { icon: PenTool, title: "Agreement", subtitle: "May", description: "Contract Signing" },
-        { icon: Rocket, title: "Kick Off", subtitle: "June", description: "Program Start" }
+        { icon: PenTool, title: "Agreement", subtitle: "April", description: "Contract Signing" },
+        { icon: Rocket, title: "Kick Off", subtitle: "May", description: "Program Start" }
     ];
 
     return (

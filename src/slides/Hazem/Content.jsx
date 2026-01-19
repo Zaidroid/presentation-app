@@ -1,10 +1,10 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Slide from '../../components/Slide';
 import { FeatureCard, StatCard } from '../../components/Card';
 import AnimatedMetric from '../../components/AnimatedMetric';
 import { staggerContainer, fadeInUp, scaleIn } from '../../utils/animations';
-import { Sprout, Hammer, Briefcase, CircleDollarSign, Users, Building2, TrendingUp, ArrowRight } from 'lucide-react';
+import { Sprout, Hammer, Briefcase, CircleDollarSign, Users, Building2, TrendingUp, ArrowRight, Globe } from 'lucide-react';
 
 const containerVariants = staggerContainer(0.15);
 
@@ -133,35 +133,63 @@ export function Individuals3() {
                 </motion.h2>
 
                 <div className="grid-3" style={{ flex: 1, marginBottom: 'var(--space-xl)', gap: 'var(--space-lg)' }}>
-                    <FeatureCard title="Technical Skills" delay={0.1}>
+                    <FeatureCard title="Specialist Skills" delay={0.1}>
                         <div style={{ marginTop: 'var(--space-md)' }}>
-                            <div style={{ color: 'var(--color-accent-secondary)', fontWeight: 'bold', marginBottom: 'var(--space-sm)', fontSize: 'var(--font-size-sm)', textTransform: 'uppercase' }}>Core Training</div>
-                            <ul style={{ listStyle: 'none', padding: 0, color: 'var(--color-text-secondary)', lineHeight: 1.6, textAlign: 'left', margin: 0 }}>
-                                <li>Intensive Bootcamps</li>
-                                <li>Advanced Courses</li>
-                                <li>Industry Certifications</li>
+                            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                {['Bootcamps & Courses', 'Advanced Training', 'Certifications'].map((item) => (
+                                    <li key={item} style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '12px',
+                                        color: 'var(--color-text-secondary)',
+                                        lineHeight: 2.2,
+                                        padding: 0 // Override global padding-left: 1.5em
+                                    }}>
+                                        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--color-accent-primary)', flexShrink: 0 }} />
+                                        <span>{item}</span>
+                                        <style dangerouslySetInnerHTML={{ __html: `li::before { display: none !important; }` }} />
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                     </FeatureCard>
 
                     <FeatureCard title="Employability" delay={0.2}>
                         <div style={{ marginTop: 'var(--space-md)' }}>
-                            <div style={{ color: 'var(--color-accent-secondary)', fontWeight: 'bold', marginBottom: 'var(--space-sm)', fontSize: 'var(--font-size-sm)', textTransform: 'uppercase' }}>Market Readiness</div>
-                            <ul style={{ listStyle: 'none', padding: 0, color: 'var(--color-text-secondary)', lineHeight: 1.6, textAlign: 'left', margin: 0 }}>
-                                <li>Soft Skills & English</li>
-                                <li>Remote Work Best Practices</li>
-                                <li>Career Coaching</li>
+                            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                {['Soft Skills & Remote Readiness', 'Career Coaching', 'Freelancing Pathways'].map((item) => (
+                                    <li key={item} style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '12px',
+                                        color: 'var(--color-text-secondary)',
+                                        lineHeight: 2.2,
+                                        padding: 0
+                                    }}>
+                                        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--color-accent-secondary)', flexShrink: 0 }} />
+                                        <span>{item}</span>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                     </FeatureCard>
 
-                    <FeatureCard title="Community" delay={0.3}>
+                    <FeatureCard title="Community & Mentorship" delay={0.3}>
                         <div style={{ marginTop: 'var(--space-md)' }}>
-                            <div style={{ color: 'var(--color-accent-secondary)', fontWeight: 'bold', marginBottom: 'var(--space-sm)', fontSize: 'var(--font-size-sm)', textTransform: 'uppercase' }}>Network & Support</div>
-                            <ul style={{ listStyle: 'none', padding: 0, color: 'var(--color-text-secondary)', lineHeight: 1.6, textAlign: 'left', margin: 0 }}>
-                                <li>Mentorship Matching</li>
-                                <li>Alumni Network</li>
-                                <li>Peer Learning</li>
+                            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                {['Mentor Matching', 'Alumni Network'].map((item) => (
+                                    <li key={item} style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '12px',
+                                        color: 'var(--color-text-secondary)',
+                                        lineHeight: 2.2,
+                                        padding: 0
+                                    }}>
+                                        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--color-accent-tertiary)', flexShrink: 0 }} />
+                                        <span>{item}</span>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                     </FeatureCard>
@@ -169,7 +197,7 @@ export function Individuals3() {
 
                 <motion.div variants={fadeInUp} style={{ textAlign: 'center', background: 'rgba(255,255,255,0.05)', padding: 'var(--space-lg)', borderRadius: 'var(--radius-lg)' }}>
                     <h3 style={{ fontSize: 'var(--font-size-xl)', color: 'var(--color-text-primary)' }}>
-                        Training for <strong style={{ color: 'var(--color-accent-secondary)' }}>income, employment, and growth</strong> — not just for training's sake.
+                        This is not training for training’s sake, <strong style={{ color: 'var(--color-accent-secondary)' }}>It’s training for income, employment, and growth</strong>
                     </h3>
                 </motion.div>
             </motion.div>
@@ -284,11 +312,11 @@ export function Individuals5() {
         <Slide>
             <motion.div initial="hidden" animate="visible" variants={containerVariants} style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <motion.h2 variants={fadeInUp} style={{ marginBottom: 'var(--space-2xl)', textAlign: 'center' }}>
-                    Impact & <span className="gradient-text">Success</span>
+                    2025 Impact & <span className="gradient-text">Success</span>
                 </motion.h2>
 
-                {/* Top Metrics - Hero Style */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-xl)', marginBottom: 'var(--space-xl)' }}>
+                <div className="grid-2" style={{ flex: 1, gap: 'var(--space-xl)', marginBottom: 'var(--space-xl)' }}>
+                    {/* Main Reach - 2025 Participants */}
                     <motion.div
                         variants={scaleIn}
                         className="glass"
@@ -297,144 +325,305 @@ export function Individuals5() {
                             borderRadius: 'var(--radius-2xl)',
                             display: 'flex',
                             flexDirection: 'column',
-                            alignItems: 'center',
                             justifyContent: 'center',
-                            textAlign: 'center',
-                            border: '1px solid rgba(255,255,255,0.1)'
+                            alignItems: 'center',
+                            background: 'linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(255, 255, 255, 0.02))',
+                            border: '1px solid rgba(20, 184, 166, 0.2)',
+                            position: 'relative',
+                            overflow: 'hidden'
                         }}
                     >
-                        <Users size={48} color="var(--color-accent-primary)" style={{ marginBottom: 'var(--space-md)' }} />
-                        <div className="gradient-text" style={{ fontSize: 'clamp(3rem, 5vmin, 5rem)', fontWeight: 800, lineHeight: 1 }}>4,500</div>
-                        <div style={{ fontSize: '1.25rem', color: 'var(--color-text-secondary)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '2px', marginTop: 'var(--space-sm)' }}>Graduates</div>
-                        <div style={{ fontSize: '0.9rem', opacity: 0.6, marginTop: 'var(--space-xs)' }}>Ready for the global market</div>
+                        <div style={{ position: 'absolute', top: -20, left: -20, opacity: 0.05 }}>
+                            <Users size={200} />
+                        </div>
+                        <div className="badge badge-primary" style={{ marginBottom: 'var(--space-md)' }}>2025 Reach</div>
+                        <div style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '2px' }}>Total Participants</div>
+                        <div className="gradient-text" style={{ fontSize: '8rem', fontWeight: 900, lineHeight: 1 }}>
+                            <AnimatedMetric value={525} />
+                        </div>
+                        <div style={{ fontSize: 'var(--font-size-2xl)', color: 'var(--color-text-primary)', fontWeight: 600 }}>Active Talent Enrolled</div>
                     </motion.div>
 
-                    <motion.div
-                        variants={scaleIn}
-                        className="glass"
-                        style={{
-                            padding: 'var(--space-xl)',
-                            borderRadius: 'var(--radius-2xl)',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            textAlign: 'center',
-                            border: '1px solid rgba(255,255,255,0.1)'
-                        }}
-                    >
-                        <CircleDollarSign size={48} color="var(--color-accent-secondary)" style={{ marginBottom: 'var(--space-md)' }} />
-                        <div className="gradient-text" style={{ fontSize: 'clamp(3rem, 5vmin, 5rem)', fontWeight: 800, lineHeight: 1 }}>$20M+</div>
-                        <div style={{ fontSize: '1.25rem', color: 'var(--color-text-secondary)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '2px', marginTop: 'var(--space-sm)' }}>Annual Income</div>
-                        <div style={{ fontSize: '0.9rem', opacity: 0.6, marginTop: 'var(--space-xs)' }}>Generated by alumni</div>
-                    </motion.div>
+                    <div style={{ display: 'grid', gridTemplateRows: '1fr 1fr', gap: 'var(--space-xl)' }}>
+                        {/* Gender Balance */}
+                        <motion.div
+                            variants={fadeInUp}
+                            className="glass"
+                            style={{
+                                padding: 'var(--space-xl)',
+                                borderRadius: 'var(--radius-2xl)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: 'var(--space-xl)',
+                                border: '1px solid rgba(255,255,255,0.1)'
+                            }}
+                        >
+                            <div style={{
+                                width: '80px',
+                                height: '80px',
+                                borderRadius: '20px',
+                                background: 'rgba(236, 72, 153, 0.1)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                color: '#ec4899'
+                            }}>
+                                <Users size={40} />
+                            </div>
+                            <div>
+                                <div style={{ fontSize: '3rem', fontWeight: 800, color: '#ec4899', lineHeight: 1 }}>
+                                    51.5%
+                                </div>
+                                <div style={{ fontSize: 'var(--font-size-lg)', color: 'var(--color-text-secondary)', fontWeight: 500 }}>
+                                    Female Participation
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* Implementation Method */}
+                        <motion.div
+                            variants={fadeInUp}
+                            className="glass"
+                            style={{
+                                padding: 'var(--space-xl)',
+                                borderRadius: 'var(--radius-2xl)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: 'var(--space-xl)',
+                                border: '1px solid rgba(255,255,255,0.1)'
+                            }}
+                        >
+                            <div style={{
+                                width: '80px',
+                                height: '80px',
+                                borderRadius: '20px',
+                                background: 'rgba(59, 130, 246, 0.1)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                color: '#3b82f6'
+                            }}>
+                                <Globe size={40} />
+                            </div>
+                            <div style={{ flex: 1 }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 'var(--space-xs)' }}>
+                                    <span style={{ fontWeight: 700, color: 'var(--color-text-primary)' }}>Online Reach</span>
+                                    <span style={{ color: '#3b82f6', fontWeight: 800 }}>77.5%</span>
+                                </div>
+                                <div style={{ width: '100%', height: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', overflow: 'hidden' }}>
+                                    <motion.div
+                                        initial={{ width: 0 }}
+                                        animate={{ width: '77.5%' }}
+                                        transition={{ duration: 1, delay: 0.5 }}
+                                        style={{ height: '100%', background: '#3b82f6' }}
+                                    />
+                                </div>
+                                <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-tertiary)', marginTop: 'var(--space-xs)' }}>
+                                    17.1% In-person | 5.4% Hybrid/Other
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
                 </div>
 
-                {/* Bottom Charts */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: 'var(--space-xl)', flex: 1 }}>
-                    {/* Income Growth Visual */}
-                    <motion.div
-                        variants={fadeInUp}
-                        className="glass"
-                        style={{
-                            padding: 'var(--space-xl)',
-                            borderRadius: 'var(--radius-xl)',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center'
-                        }}
-                    >
-                        <h3 style={{ fontSize: '1.5rem', marginBottom: 'var(--space-xl)', color: 'var(--color-text-primary)', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                            <TrendingUp size={24} color="var(--color-success)" />
-                            Income Multiplier
-                        </h3>
+                {/* Success Metric - Income Distribution */}
+                <motion.div
+                    variants={fadeInUp}
+                    className="glass"
+                    style={{
+                        padding: 'var(--space-xl)',
+                        borderRadius: 'var(--radius-2xl)',
+                        background: 'rgba(245, 158, 11, 0.05)',
+                        border: '1px solid rgba(245, 158, 11, 0.2)',
+                        display: 'flex',
+                        flexDirection: 'column'
+                    }}
+                >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-sm)', marginBottom: 'var(--space-lg)' }}>
+                        <CircleDollarSign size={24} color="var(--color-accent-tertiary)" />
+                        <span style={{ fontSize: 'var(--font-size-sm)', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-accent-tertiary)', letterSpacing: '1px' }}>
+                            2025 Economic Outcome (Post-Training)
+                        </span>
+                    </div>
 
-                        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-around', height: '100%', paddingBottom: 'var(--space-lg)' }}>
-                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
-                                <motion.div
-                                    initial={{ height: 0 }}
-                                    animate={{ height: '60px' }}
-                                    transition={{ duration: 1, delay: 0.5 }}
-                                    style={{
-                                        width: '80px',
-                                        background: 'rgba(255,255,255,0.1)',
-                                        borderRadius: '12px 12px 0 0',
-                                        border: '1px solid rgba(255,255,255,0.2)'
-                                    }}
-                                />
-                                <span style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)' }}>Avg Graduate</span>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-lg)' }}>
+                        <div style={{ textAlign: 'center' }}>
+                            <div style={{ fontSize: 'var(--font-size-3xl)', fontWeight: 800, color: 'var(--color-text-primary)' }}>41.6%</div>
+                            <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-secondary)', textTransform: 'uppercase' }}>Reporting Income</div>
+                        </div>
+                        <div style={{ textAlign: 'center', borderLeft: '1px solid rgba(255,255,255,0.1)' }}>
+                            <div style={{ fontSize: 'var(--font-size-3xl)', fontWeight: 800, color: 'var(--color-accent-tertiary)' }}>16.8%</div>
+                            <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-secondary)', textTransform: 'uppercase' }}>$500 – $900</div>
+                        </div>
+                        <div style={{ textAlign: 'center', borderLeft: '1px solid rgba(255,255,255,0.1)' }}>
+                            <div style={{ fontSize: 'var(--font-size-3xl)', fontWeight: 800, color: 'var(--color-accent-secondary)' }}>13.9%</div>
+                            <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-secondary)', textTransform: 'uppercase' }}>$900 – $1500</div>
+                        </div>
+                        <div style={{ textAlign: 'center', borderLeft: '1px solid rgba(255,255,255,0.1)' }}>
+                            <div style={{ fontSize: 'var(--font-size-3xl)', fontWeight: 800, color: 'var(--color-accent-primary)' }}>4.6%</div>
+                            <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-secondary)', textTransform: 'uppercase' }}>More than $1500</div>
+                        </div>
+                    </div>
+                </motion.div>
+            </motion.div>
+        </Slide>
+    );
+}
+
+// Slide 6: Data Deep Dive
+export function Individuals6() {
+    // Consolidated Data for Side-by-Side Comparison
+    const salaryData = [
+        { label: 'No Income', val3m: 79.8, val6m: 58.4, color: 'var(--color-text-tertiary)' },
+        { label: '$1-200', val3m: 3.6, val6m: 1.2, color: 'var(--color-accent-tertiary)' },
+        { label: '$200-500', val3m: 4.8, val6m: 5.2, color: 'var(--color-accent-tertiary)' },
+        { label: '$500-900', val3m: 9.5, val6m: 16.8, color: 'var(--color-accent-secondary)' },
+        { label: '$900-1500', val3m: 1.2, val6m: 13.9, color: 'var(--color-accent-primary)' },
+        { label: '>$1500', val3m: 1.2, val6m: 4.6, color: 'var(--color-accent-primary)' }
+    ];
+
+    const methodData = [
+        { label: 'Online', value: 77.5, color: '#3b82f6' },
+        { label: 'In-person', value: 17.1, color: '#10b981' },
+        { label: 'Hybrid', value: 5.4, color: '#8b5cf6' }
+    ];
+
+    return (
+        <Slide>
+            <motion.div initial="hidden" animate="visible" variants={containerVariants} style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}>
+                <motion.h2 variants={fadeInUp} style={{ marginBottom: 'var(--space-lg)' }}>
+                    Detailed <span className="gradient-text">Impact Analysis</span>
+                </motion.h2>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 0.4fr', gap: 'var(--space-xl)', flex: 1 }}>
+                    {/* Left: Grouped Salary Distribution Chart */}
+                    <motion.div variants={scaleIn} className="glass" style={{ padding: 'var(--space-lg)', borderRadius: 'var(--radius-xl)', display: 'flex', flexDirection: 'column' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 'var(--space-lg)', alignItems: 'center' }}>
+                            <h3 style={{ fontSize: 'var(--font-size-lg)', display: 'flex', alignItems: 'center', gap: 'var(--space-sm)' }}>
+                                <CircleDollarSign size={20} color="var(--color-accent-primary)" />
+                                Income Progression (3 vs 6 Months)
+                            </h3>
+                            <div style={{ display: 'flex', gap: 'var(--space-lg)' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: 'var(--font-size-xs)', color: 'var(--color-text-secondary)' }}>
+                                    <div style={{ width: '12px', height: '12px', background: 'rgba(255,255,255,0.2)', borderRadius: '2px' }} />
+                                    3 Months
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: 'var(--font-size-xs)', color: 'var(--color-text-primary)', fontWeight: 'bold' }}>
+                                    <div style={{ width: '12px', height: '12px', background: 'var(--color-accent-primary)', borderRadius: '2px' }} />
+                                    6 Months
+                                </div>
                             </div>
+                        </div>
 
-                            <ArrowRight size={32} color="var(--color-text-tertiary)" style={{ paddingBottom: '30px' }} />
+                        <div style={{ flex: 1, display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 'var(--space-md)', paddingBottom: 'var(--space-md)' }}>
+                            {salaryData.map((item, index) => (
+                                <div key={index} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, height: '100%' }}>
+                                    <div style={{ flex: 1, width: '100%', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', gap: '4px' }}>
+                                        {/* 3 Month Bar (Ghost) */}
+                                        <motion.div
+                                            initial={{ height: 0 }}
+                                            animate={{ height: `${item.val3m}%` }}
+                                            transition={{ duration: 0.8, delay: 0.1 + (index * 0.1) }}
+                                            style={{
+                                                flex: 1,
+                                                background: 'rgba(255,255,255,0.1)',
+                                                borderRadius: '4px 4px 0 0',
+                                                minHeight: '4px',
+                                                position: 'relative'
+                                            }}
+                                        >
+                                            {item.val3m > 5 && (
+                                                <div style={{
+                                                    position: 'absolute', top: -20, left: '50%', transform: 'translateX(-50%)',
+                                                    fontSize: '10px', color: 'rgba(255,255,255,0.4)'
+                                                }}>
+                                                    {item.val3m}%
+                                                </div>
+                                            )}
+                                        </motion.div>
 
-                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
-                                <motion.div
-                                    initial={{ height: 0 }}
-                                    animate={{ height: '180px' }}
-                                    transition={{ duration: 1, delay: 0.7 }}
-                                    style={{
-                                        width: '100px',
-                                        background: 'linear-gradient(to top, var(--color-accent-primary), var(--color-accent-secondary))',
-                                        borderRadius: '12px 12px 0 0',
-                                        position: 'relative',
-                                        boxShadow: '0 0 20px rgba(222, 99, 54, 0.3)'
-                                    }}
-                                >
-                                    <div style={{
-                                        position: 'absolute',
-                                        top: '-40px',
-                                        left: '50%',
-                                        transform: 'translateX(-50%)',
-                                        fontSize: '2rem',
-                                        fontWeight: 900,
-                                        color: 'var(--color-accent-primary)'
-                                    }}>
-                                        3x
+                                        {/* 6 Month Bar (Active) */}
+                                        <motion.div
+                                            initial={{ height: 0 }}
+                                            animate={{ height: `${item.val6m}%` }}
+                                            transition={{ duration: 1, delay: 0.4 + (index * 0.1), type: 'spring' }}
+                                            style={{
+                                                flex: 1,
+                                                background: item.color,
+                                                borderRadius: '4px 4px 0 0',
+                                                minHeight: '4px',
+                                                position: 'relative',
+                                                boxShadow: `0 0 15px ${item.color}40`
+                                            }}
+                                        >
+                                            <div style={{
+                                                position: 'absolute', top: -22, left: '50%', transform: 'translateX(-50%)',
+                                                fontSize: '12px', fontWeight: 'bold', color: 'var(--color-text-primary)'
+                                            }}>
+                                                {item.val6m}%
+                                            </div>
+                                        </motion.div>
                                     </div>
-                                </motion.div>
-                                <span style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--color-text-primary)' }}>Specialist</span>
-                            </div>
+                                    <div style={{
+                                        marginTop: 'var(--space-sm)',
+                                        fontSize: 'var(--font-size-xs)',
+                                        color: 'var(--color-text-tertiary)',
+                                        textAlign: 'center',
+                                        height: '40px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        lineHeight: 1.2
+                                    }}>
+                                        {item.label}
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </motion.div>
 
-                    {/* Gender Balance */}
-                    <motion.div
-                        variants={fadeInUp}
-                        className="glass"
-                        style={{
-                            padding: 'var(--space-xl)',
-                            borderRadius: 'var(--radius-xl)',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            background: 'linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)'
-                        }}
-                    >
-                        <h3 style={{ fontSize: '1.5rem', marginBottom: 'var(--space-lg)', color: 'var(--color-text-primary)' }}>
-                            Gender Balance
-                        </h3>
-                        <div style={{ position: 'relative', width: '200px', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <svg width="100%" height="100%" viewBox="0 0 100 100" style={{ transform: 'rotate(-90deg)' }}>
-                                <circle cx="50" cy="50" r="42" fill="transparent" stroke="rgba(255,255,255,0.1)" strokeWidth="12" />
-                                <motion.circle
-                                    initial={{ pathLength: 0 }}
-                                    animate={{ pathLength: 0.5 }}
-                                    transition={{ duration: 1.5, ease: "easeOut" }}
-                                    cx="50" cy="50" r="42"
-                                    fill="transparent"
-                                    stroke="var(--color-accent-secondary)"
-                                    strokeWidth="12"
-                                    strokeDasharray="1"
-                                    strokeLinecap="round"
-                                />
-                            </svg>
-                            <div style={{ position: 'absolute', textAlign: 'center' }}>
-                                <div className="gradient-text" style={{ fontSize: '3.5rem', fontWeight: 900, lineHeight: 1 }}>50%</div>
-                                <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', opacity: 0.8 }}>Women</div>
+                    {/* Right: Method & Gender/Other Stats */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
+
+                        {/* Delivery Method */}
+                        <motion.div variants={scaleIn} className="glass" style={{ padding: 'var(--space-lg)', borderRadius: 'var(--radius-xl)', flex: 1 }}>
+                            <h3 style={{ fontSize: 'var(--font-size-lg)', marginBottom: 'var(--space-lg)', display: 'flex', alignItems: 'center', gap: 'var(--space-sm)' }}>
+                                <Globe size={20} color="#3b82f6" />
+                                Delivery Methodology
+                            </h3>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)', justifyContent: 'center', height: '100%' }}>
+                                {methodData.map((item, index) => (
+                                    <div key={index}>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px', fontSize: 'var(--font-size-sm)' }}>
+                                            <span>{item.label}</span>
+                                            <span style={{ fontWeight: 700, color: item.color }}>{item.value}%</span>
+                                        </div>
+                                        <div style={{ width: '100%', height: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', overflow: 'hidden' }}>
+                                            <motion.div
+                                                initial={{ width: 0 }}
+                                                animate={{ width: `${item.value}%` }}
+                                                transition={{ duration: 1, delay: 0.5 + (index * 0.1) }}
+                                                style={{ height: '100%', background: item.color }}
+                                            />
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
-                        </div>
-                    </motion.div>
+                        </motion.div>
+
+                        {/* Summary Card */}
+                        <motion.div variants={scaleIn} className="glass" style={{ padding: 'var(--space-lg)', borderRadius: 'var(--radius-xl)', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(255, 255, 255, 0.02))' }}>
+                            <div style={{ textAlign: 'center', marginBottom: 'var(--space-md)' }}>
+                                <div style={{ fontSize: 'var(--font-size-4xl)', fontWeight: 800, color: 'var(--color-primary)' }}>+21.4%</div>
+                                <div style={{ fontSize: 'var(--font-size-xs)', textTransform: 'uppercase', letterSpacing: '1px', opacity: 0.7 }}>Employment Growth</div>
+                            </div>
+                            <div style={{ width: '100%', height: '1px', background: 'rgba(255,255,255,0.1)', marginBottom: 'var(--space-md)' }} />
+                            <div style={{ textAlign: 'center' }}>
+                                <div style={{ fontSize: 'var(--font-size-2xl)', fontWeight: 800, color: '#ec4899' }}>271</div>
+                                <div style={{ fontSize: 'var(--font-size-xs)', textTransform: 'uppercase', letterSpacing: '1px', opacity: 0.7 }}>Female Talent</div>
+                            </div>
+                        </motion.div>
+                    </div>
                 </div>
             </motion.div>
         </Slide>

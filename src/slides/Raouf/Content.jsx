@@ -680,7 +680,7 @@ export function WorkingSpaces() {
                                 >
                                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', alignItems: 'flex-end' }}>
                                         <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                            <span style={{ fontSize: '0.65rem', fontWeight: 700, color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '2px' }}>{m.label}</span>
+                                            <span style={{ fontSize: '0.65rem', fontWeight: 700, color: 'var(--brand-teal)', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '2px' }}>{m.label}</span>
                                             <span style={{ fontSize: '1.2rem', fontWeight: 900, color: 'white' }}>{m.v26} <small style={{ opacity: 0.6, fontSize: '0.75rem', fontWeight: 600 }}>{m.unit}</small></span>
                                         </div>
                                         <div style={{ textAlign: 'right' }}>
@@ -722,8 +722,8 @@ export function WorkingSpaces() {
                                         />
                                     </div>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '8px' }}>
-                                        <span style={{ fontSize: '0.65rem', fontWeight: 600, opacity: 0.5 }}>Baseline: {m.v25}</span>
-                                        <span style={{ fontSize: '0.65rem', fontWeight: 600, opacity: 0.5 }}>Target: {m.v26}</span>
+                                        <span style={{ fontSize: '0.65rem', fontWeight: 800, color: 'var(--brand-orange)' }}>Baseline: {m.v25}</span>
+                                        <span style={{ fontSize: '0.65rem', fontWeight: 800, color: 'var(--brand-teal)' }}>Current: {m.v26}</span>
                                     </div>
                                 </motion.div>
                             ))}
